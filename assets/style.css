@@ -21,8 +21,8 @@ nav{
   backdrop-filter:blur(8px);
   z-index:10;
 }
-nav .logo{font-weight:bold;font-size:22px}
-nav a, nav button{
+.logo{font-weight:bold;font-size:22px}
+.nav-links a, .nav-links button{
   margin-left:12px;
   text-decoration:none;
   font-weight:bold;
@@ -47,6 +47,7 @@ nav a, nav button{
   border:5px solid white;
   object-fit:cover;
   margin-bottom:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
 }
 .hero h1 span{color:#0066ff}
 .tagline{opacity:.85;margin-top:8px}
@@ -54,12 +55,14 @@ nav a, nav button{
 .box{
   max-width:950px;
   margin:90px auto;
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.95);
   padding:45px;
   border-radius:20px;
   box-shadow:0 20px 45px rgba(0,0,0,.2);
 }
-body.dark .box{background:rgba(30,30,30,.9)}
+body.dark .box{
+  background:rgba(30,30,30,.9);
+}
 
 .grid{
   display:grid;
@@ -67,8 +70,13 @@ body.dark .box{background:rgba(30,30,30,.9)}
   gap:15px;
 }
 
-.timeline{display:flex;flex-direction:column;gap:25px}
-.job h3{color:#0066ff}.role{font-weight:bold;margin-top:5px}
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+.job h3{color:#0066ff}
+.role{font-weight:bold;margin-top:5px}
 
 .chips span{
   display:inline-block;
@@ -113,7 +121,6 @@ footer{
   opacity:.8;
 }
 
-/* Loader */
 #loader{
   position:fixed;
   inset:0;
@@ -133,6 +140,5 @@ footer{
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Reveal */
 .reveal{opacity:0;transform:translateY(30px)}
 .reveal.show{opacity:1;transform:none;transition:1s}
