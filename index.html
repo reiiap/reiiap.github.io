@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reii | Home</title>
+  <title>Reii | Portfolio</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
+<div id="loader">Loading...</div>
 <canvas id="bg"></canvas>
+
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="projects.html">Projects</a>
-  <a href="skills.html">Skills</a>
-  <a href="contact.html">Contact</a>
+  <a href="#home">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <button onclick="toggleMode()">🌙</button>
 </nav>
 
+<div class="parallax" id="home">
+  Reii Portfolio
+</div>
+
 <div class="container">
-  <img src="profile.jpg" width="180" style="border-radius:50%">
   <div class="box">
     <h1>Raihan Reii Putra</h1>
-    <h3>Development Server & Chef</h3>
-    <a href="about.html" class="btn">Explore</a>
+    <p>Development Server & Chef</p>
+    <a href="assets/cv.pdf" class="btn" download>Download CV</a>
+  </div>
+
+  <div class="box" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project">VoxenSMP</div>
+      <div class="project">Revenge Legends</div>
+      <div class="project">Custom Plugins</div>
+    </div>
+  </div>
+
+  <div class="box" id="contact">
+    <h2>Contact</h2>
+    <p>Email: admin@reiiapweb.xyz</p>
+    <a href="mailto:admin@reiiapweb.xyz" class="btn">Send Email</a>
   </div>
 </div>
 
