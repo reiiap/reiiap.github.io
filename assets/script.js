@@ -1,20 +1,23 @@
+// Loader
 window.onload = () => {
-  document.getElementById("loader").style.display="none";
-  reveal();
+  document.getElementById("loader").style.display = "none";
 }
 
+// Dark mode
 function toggleMode(){
   document.body.classList.toggle("dark");
 }
 
-function reveal(){
-  let items = document.querySelectorAll(".reveal");
-  window.addEventListener("scroll", () => {
-    items.forEach(el => {
-      let top = el.getBoundingClientRect().top;
-      if(top < window.innerHeight - 100){
-        el.classList.add("active");
-      }
-    });
+// Reveal on scroll
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+  const trigger = window.innerHeight * 0.8;
+  reveals.forEach(r => {
+    if(r.getBoundingClientRect().top < trigger){
+      r.classList.add("show");
+    }
   });
 }
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
