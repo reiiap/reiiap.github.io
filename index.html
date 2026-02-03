@@ -7,7 +7,6 @@
 <body>
 
 <div id="loader">Loading...</div>
-<canvas id="bg"></canvas>
 
 <nav>
   <a href="#home">Home</a>
@@ -16,16 +15,14 @@
   <button onclick="toggleMode()">🌙</button>
 </nav>
 
-<div class="parallax" id="home">
-  Reii Portfolio
-</div>
+<header id="home" class="parallax">
+  <img src="assets/profile.jpg" class="avatar">
+  <h1>Raihan <span>Reii</span> Putra</h1>
+  <h2>Development Server & Chef</h2>
+  <a href="assets/cv.pdf" class="btn" download>Download CV</a>
+</header>
 
 <div class="container">
-  <div class="box">
-    <h1>Raihan Reii Putra</h1>
-    <p>Development Server & Chef</p>
-    <a href="assets/cv.pdf" class="btn" download>Download CV</a>
-  </div>
 
   <div class="box" id="projects">
     <h2>Projects</h2>
@@ -41,6 +38,7 @@
     <p>Email: admin@reiiapweb.xyz</p>
     <a href="mailto:admin@reiiapweb.xyz" class="btn">Send Email</a>
   </div>
+
 </div>
 
 <script src="assets/anim.js"></script>
