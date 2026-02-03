@@ -2,99 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Reii | Portfolio</title>
+  <title>Reii | Professional Portfolio</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<div id="loader">Loading...</div>
+<div id="loader">
+  <div class="spinner"></div>
+</div>
 
-<nav class="glass">
-  <a href="#home">Home</a>
-  <a href="#biodata">Biodata</a>
-  <a href="#experience">Experience</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
-  <button onclick="toggleMode()">🌙</button>
+<nav>
+  <div class="logo">Reii</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#biodata">Biodata</a>
+    <a href="#experience">Experience</a>
+    <a href="#dev">Development</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button onclick="toggleMode()">🌙</button>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section id="home" class="hero">
-  <img src="profile.jpg" class="avatar">
-  <h1>Raihan <span>Reii</span> Putra</h1>
-  <h2>Development Server & Chef</h2>
-</section>
-
-<section id="biodata" class="box reveal">
-  <h2>Personal Biodata</h2>
-  <div class="grid">
-    <div><b>Birth</b><br>03 Januari 2002</div>
-    <div><b>Address</b><br>Kp. Bojong Suren Girang, Pasawahan, Bandung</div>
-    <div><b>Status</b><br>Married</div>
-    <div><b>Phone</b><br>+62 8382 4555 187</div>
-    <div><b>Email</b><br>raihanalena@gmail.com</div>
+  <div class="hero-content">
+    <img src="profile.jpg" class="avatar">
+    <h1>Raihan <span>Alena</span> Putra</h1>
+    <h2>Development Server & Chef</h2>
+    <p class="tagline">Building systems, managing servers, crafting experiences.</p>
   </div>
 </section>
 
+<!-- BIODATA -->
+<section id="biodata" class="box reveal">
+  <h2>Personal Biodata</h2>
+  <div class="grid">
+    <div><b>Birth Date</b><br>03 Januari 2002</div>
+    <div><b>Address</b><br>Kp. Bojong Suren Girang, Desa Pasawahan, Kab. Bandung</div>
+    <div><b>Status</b><br>Married</div>
+    <div><b>Phone</b><br>+62 8382 4555 187</div>
+    <div><b>Personal Email</b><br>raihanalena@gmail.com</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
 <section id="experience" class="box reveal">
   <h2>Work Experience</h2>
+
   <div class="timeline">
     <div class="job">
       <h3>SAFEZONE CAFFE AND BAR</h3>
-      <span>2020 - 2023</span>
+      <span>2020 – 2023</span>
       <p class="role">Head Barista</p>
-      <p>Started as Barista & Waiter, promoted to Head Barista.</p>
+      <p>
+        Started as Barista & Waiter (July 2020 – April 2021).  
+        Promoted to Head Barista from May 2021 until January 2023.
+      </p>
     </div>
+
     <div class="job">
       <h3>PT. WOM FINANCE</h3>
       <span>2023</span>
       <p class="role">Office Boy</p>
-      <p>Contract for 6 months.</p>
+      <p>
+        Contract employee from May 2023 to November 2023 (6 months).
+      </p>
     </div>
   </div>
 </section>
 
-<section id="skills" class="box reveal">
-  <h2>Skills</h2>
-  <div class="skill">
-    <span>Minecraft Development</span>
-    <div class="bar"><div style="width:90%"></div></div>
-  </div>
-  <div class="skill">
-    <span>Java & Skript</span>
-    <div class="bar"><div style="width:85%"></div></div>
-  </div>
-  <div class="skill">
-    <span>Server Optimization</span>
-    <div class="bar"><div style="width:80%"></div></div>
-  </div>
-  <div class="skill">
-    <span>Culinary</span>
-    <div class="bar"><div style="width:75%"></div></div>
+<!-- DEV -->
+<section id="dev" class="box reveal">
+  <h2>Development Server Experience</h2>
+  <div class="chips">
+    <span>Dev KandangAlwi SkyBlock</span>
+    <span>Dev VoxenSMP</span>
+    <span>Dev Alra Legends</span>
+    <span>Dev WaveMC</span>
+    <span>Dev Revenge Legend</span>
   </div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects" class="box reveal">
   <h2>Projects</h2>
   <div class="project-grid">
-    <div class="project">VoxenSMP</div>
-    <div class="project">Revenge Legends</div>
-    <div class="project">Custom Plugins</div>
-    <div class="project">RPG Systems</div>
+    <div class="project-card">Legendary Weapon</div>
+    <div class="project-card">Skript Build</div>
+    <div class="project-card">Custom Plugins</div>
+    <div class="project-card">RPG Systems</div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="box reveal">
   <h2>Contact</h2>
-  <p>Email: admin@reiiapweb.xyz</p>
-  <a href="mailto:admin@reiiapweb.xyz" class="btn">Send Email</a>
+  <p>For collaboration or professional inquiries</p>
+  <a href="mailto:admin@reiiapweb.xyz" class="btn">admin@reiiapweb.xyz</a>
 </section>
 
-<div class="social">
-  <a href="#">🌐</a>
-  <a href="#">💬</a>
-  <a href="#">📧</a>
-</div>
+<footer>
+  © 2026 Raihan Alena Putra — Reii
+</footer>
 
 <script src="assets/script.js"></script>
 </body>
