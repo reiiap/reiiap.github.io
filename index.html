@@ -3,43 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <title>Reii | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {margin:0;padding:0;font-family:Segoe UI,Arial}
+    body {background:#0f0f0f;color:white}
+    header {
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#111,#1f1f1f);
+    }
+    header h1 {font-size:3.5em}
+    header span {color:#00ffee}
+    section {padding:80px 20px;text-align:center}
+    .box {
+      max-width:800px;
+      margin:auto;
+      background:#161616;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 0 30px rgba(0,255,238,0.1);
+    }
+    .info {text-align:left}
+    .info p {margin:10px 0}
+    .skills span {
+      display:inline-block;
+      background:#00ffee;
+      color:black;
+      padding:8px 15px;
+      margin:5px;
+      border-radius:20px;
+      font-size:14px;
+    }
+    footer {
+      padding:30px;
+      text-align:center;
+      background:#111;
+      color:#777;
+    }
+    a.btn {
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 30px;
+      background:#00ffee;
+      color:black;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:bold;
+    }
+  </style>
 </head>
 <body>
 
-<header class="hero">
-  <h1>Raihan Alena Putra</h1>
-  <h2 class="typing">Development Server & Chef</h2>
+<header>
+  <h1>Raihan <span>Reii</span> Putra</h1>
+  <h2>Development Server & Chef</h2>
+  <a href="#about" class="btn">Explore</a>
 </header>
 
-<section class="about">
-  <h2>About Me</h2>
-  <p>
-    Hi, my name is <b>Reii</b>. I was born in Bandung, January 3rd 2002.  
-    I am a professional in game server development and culinary field as a chef.
-  </p>
+<section id="about">
+  <div class="box">
+    <h2>About Me</h2><br>
+    <p>
+      My name is <b>Raihan Alena Putra</b>, also known as <b>Reii</b>.  
+      Born in Bandung, January 3rd 2002.  
+      I specialize in game server development and culinary as a professional chef.
+    </p>
+  </div>
 </section>
 
-<section class="info">
-  <h2>Profile</h2>
-  <ul>
-    <li><b>Full Name:</b> Raihan Alena Putra</li>
-    <li><b>Nickname:</b> Reii</li>
-    <li><b>Birth:</b> Bandung, 3 January 2002</li>
-    <li><b>Email:</b> admin@reiiapweb.xyz</li>
-    <li><b>Profession:</b> Development Server & Chef</li>
-  </ul>
+<section>
+  <div class="box info">
+    <h2>Profile</h2><br>
+    <p><b>Full Name:</b> Raihan Alena Putra</p>
+    <p><b>Nickname:</b> Reii</p>
+    <p><b>Birth:</b> Bandung, 3 January 2002</p>
+    <p><b>Email:</b> admin@reiiapweb.xyz</p>
+    <p><b>Profession:</b> Development Server & Chef</p>
+  </div>
 </section>
 
-<section class="contact">
-  <h2>Contact</h2>
-  <a href="mailto:admin@reiiapweb.xyz" class="btn">Email Me</a>
+<section>
+  <div class="box skills">
+    <h2>Skills</h2><br>
+    <span>Minecraft Development</span>
+    <span>Java</span>
+    <span>Skript</span>
+    <span>Server Optimization</span>
+    <span>DevOps</span>
+    <span>Culinary</span>
+  </div>
+</section>
+
+<section>
+  <div class="box">
+    <h2>Contact</h2>
+    <p>Feel free to contact me for collaboration or projects.</p>
+    <a href="mailto:admin@reiiapweb.xyz" class="btn">Email Me</a>
+  </div>
 </section>
 
 <footer>
   © 2026 Reii Portfolio
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
