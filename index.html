@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ReiiKajurawa — Home</title>
-  <meta name="description" content="ReiiKajurawa: Home, Store, Jasa Setup, My Servers, Contact." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
+  <title>ReiiKajurawa — Beranda</title>
+  <meta name="description" content="ReiiKajurawa: Beranda, Toko, Jasa Setup, Server Saya, Kontak." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <style>
     :root{
       --bg:#0b1220;
@@ -32,7 +32,13 @@
         radial-gradient(1200px 700px at 15% 10%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
+        linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
+        url("assets/minecraft-bg.png"),
         var(--bg);
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+      background-size: auto, auto, auto, auto, 560px 560px, auto;
+      background-position: center, center, center, center, top left, center;
+      background-attachment: scroll, scroll, scroll, scroll, fixed, scroll;
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
@@ -96,7 +102,7 @@
       place-items:center;
       user-select:none;
     }
-    .brand-badge svg{ width:22px; height:22px; display:block; }
+    .brand-badge img{ width:22px; height:22px; display:block; }
     .menu{
       display:flex;
       align-items:center;
@@ -277,71 +283,62 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Ke Home">
+        <a class="brand" href="index.html" aria-label="Ke Beranda">
           <div class="brand-badge" aria-hidden="true">
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <defs>
-                <linearGradient id="rkGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#38bdf8" />
-                  <stop offset="100%" stop-color="#facc15" />
-                </linearGradient>
-              </defs>
-              <rect x="8" y="8" width="48" height="48" rx="14" fill="url(#rkGrad)" />
-              <text x="32" y="39" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#0b1220">RK</text>
-            </svg>
+            <img src="assets/logo.png" alt="ReiiKajurawa" />
           </div>
           <div>ReiiKajurawa</div>
         </a>
         <nav class="menu" aria-label="Menu utama">
-          <a class="active" href="index.html">Home</a>
-          <a href="store.html">Store</a>
+          <a class="active" href="index.html">Beranda</a>
+          <a href="store.html">Toko</a>
           <a href="jasa-setup.html">Jasa Setup</a>
-          <a href="my-servers.html">My Servers</a>
-          <a href="contact.html">Contact</a>
+          <a href="my-servers.html">Server Saya</a>
+          <a href="contact.html">Kontak</a>
         </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero" aria-label="Hero Home">
+    <section class="hero" aria-label="Hero Beranda">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-card">
-            <h1 class="hero-title">ReiiKajurawa — Jasa Developer Server Minecraft</h1>
+            <h1 class="hero-title">ReiiKajurawa — Layanan Developer Server Minecraft</h1>
             <p class="hero-sub">
-              Fokus gue: setup & develop server Minecraft, instalasi panel (Pterodactyl), optimasi TPS, plugin, permission,
-              plus bantu pembelian/pemasangan hosting buat server kamu.
+              Fokus saya mencakup setup dan pengembangan server Minecraft, instalasi panel (Pterodactyl), optimasi TPS, plugin, serta konfigurasi permission.
+              Saya juga membantu pembelian dan pemasangan hosting untuk server Anda.
             </p>
             <div class="chips" aria-label="Highlights">
               <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Setup & Deploy</span>
-              <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Optimasi & Security</span>
+              <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Optimasi & Keamanan</span>
               <span class="chip"><span class="chip-dot" style="background:#94a3b8"></span> Hosting & Panel</span>
             </div>
             <div class="cta-row">
               <a class="btn primary" href="store.html">Lihat Paket Hosting</a>
-              <a class="btn" href="qris.html">Bayar QRIS</a>
-              <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20konsultasi%20developer%20server%20Minecraft%20%2B%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              <a class="btn" href="qris.html">Pembayaran QRIS</a>
+              <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20developer%20server%20Minecraft%20dan%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
             </div>
           </div>
 
           <div class="hero-card">
-            <div class="quick" aria-label="Quick links">
+            <div class="quick" aria-label="Tautan cepat">
               <a href="my-servers.html">
-                <span>My Servers</span>
-                <small>Portofolio & status</small>
+                <span>Server Saya</span>
+                <small>Portofolio dan status</small>
               </a>
               <a href="store.html">
-                <span>Store</span>
-                <small>Hosting & instalasi</small>
+                <span>Toko</span>
+                <small>Hosting dan instalasi</small>
               </a>
               <a href="jasa-setup.html">
                 <span>Jasa Setup</span>
-                <small>Setup server & panel</small>
+                <small>Setup server dan panel</small>
               </a>
               <a href="contact.html">
-                <span>Contact</span>
-                <small>Discord / Email / WA / GitHub</small>
+                <span>Kontak</span>
+                <small>Discord / Email / WhatsApp / GitHub</small>
               </a>
             </div>
           </div>
@@ -349,24 +346,24 @@
       </div>
     </section>
 
-    <section class="section" aria-label="Spill Populer">
+    <section class="section" aria-label="Paket Populer">
       <div class="container">
         <div class="split">
           <div class="panel">
-            <h2>Populer di Store (Spill)</h2>
-            <p>Ini contoh paket yang paling sering ditanyain (dummy, bisa kamu ubah).</p>
-            <ul class="list" aria-label="Store populer">
+            <h2>Paket Populer di Toko</h2>
+            <p>Berikut contoh paket yang paling sering diminta (dapat disesuaikan).</p>
+            <ul class="list" aria-label="Toko populer">
               <li><span>VPS Basic (SMP kecil)</span><span class="tag">Rp 85k/bln</span></li>
-              <li><span>VPS Pro (SMP rame)</span><span class="tag">Rp 165k/bln</span></li>
+              <li><span>VPS Pro (SMP ramai)</span><span class="tag">Rp 165k/bln</span></li>
               <li><span>Install Panel Pterodactyl</span><span class="tag">Rp 150k</span></li>
               <li><span>Setup Server + Plugin Pack</span><span class="tag">Rp 120k</span></li>
-              <li><span>Optimasi TPS & Security</span><span class="tag">Rp 100k</span></li>
+              <li><span>Optimasi TPS & Keamanan</span><span class="tag">Rp 100k</span></li>
             </ul>
           </div>
 
           <div class="panel">
-            <h2>Jasa Setup (Spill)</h2>
-            <p>Contoh layanan (dummy) yang sering dipesan.</p>
+            <h2>Layanan Jasa Setup</h2>
+            <p>Berikut contoh layanan yang sering dipesan (dapat disesuaikan).</p>
             <ul class="list" aria-label="Jasa setup populer">
               <li><span>Setup SMP + Spawn</span><span class="tag">1–2 hari</span></li>
               <li><span>Permission & Group Rapi</span><span class="tag">1 hari</span></li>

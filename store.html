@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ReiiKajurawa — Store</title>
-  <meta name="description" content="Store ReiiKajurawa: paket hosting, instalasi panel, dan layanan server Minecraft." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
+  <title>ReiiKajurawa — Toko</title>
+  <meta name="description" content="Toko ReiiKajurawa: paket hosting, instalasi panel, dan layanan server Minecraft." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
   <style>
     :root{
       --bg:#0b1220;
@@ -28,7 +28,13 @@
       background:
         radial-gradient(1100px 650px at 20% 15%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 650px at 75% 25%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
+        linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
+        url("assets/minecraft-bg.png"),
         var(--bg);
+      background-repeat: no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+      background-size: auto, auto, auto, 560px 560px, auto;
+      background-position: center, center, center, top left, center;
+      background-attachment: scroll, scroll, scroll, fixed, scroll;
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
@@ -92,7 +98,7 @@
       place-items:center;
       user-select:none;
     }
-    .brand-badge svg{ width:22px; height:22px; display:block; }
+    .brand-badge img{ width:22px; height:22px; display:block; }
     .menu{
       display:flex;
       align-items:center;
@@ -307,39 +313,30 @@
   <header class="nav">
     <div class="container">
       <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Ke Home">
+        <a class="brand" href="index.html" aria-label="Ke Beranda">
           <div class="brand-badge" aria-hidden="true">
-            <svg viewBox="0 0 64 64" aria-hidden="true">
-              <defs>
-                <linearGradient id="rkGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#38bdf8" />
-                  <stop offset="100%" stop-color="#facc15" />
-                </linearGradient>
-              </defs>
-              <rect x="8" y="8" width="48" height="48" rx="14" fill="url(#rkGrad)" />
-              <text x="32" y="39" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#0b1220">RK</text>
-            </svg>
+            <img src="assets/logo.png" alt="ReiiKajurawa" />
           </div>
           <div>ReiiKajurawa</div>
         </a>
         <nav class="menu" aria-label="Menu utama">
-          <a href="index.html">Home</a>
-          <a class="active" href="store.html">Store</a>
+          <a href="index.html">Beranda</a>
+          <a class="active" href="store.html">Toko</a>
           <a href="jasa-setup.html">Jasa Setup</a>
-          <a href="my-servers.html">My Servers</a>
-          <a href="contact.html">Contact</a>
+          <a href="my-servers.html">Server Saya</a>
+          <a href="contact.html">Kontak</a>
         </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section" aria-label="Store">
+    <section class="section" aria-label="Toko">
       <div class="container">
         <div class="panel">
           <div class="head">
-            <h1 class="title">Store</h1>
-            <p class="sub">Paket hosting + instalasi/pemasangan. Semua tombol langsung ke QRIS dan WhatsApp.</p>
+            <h1 class="title">Toko</h1>
+            <p class="sub">Paket hosting serta layanan instalasi. Setiap tombol mengarah langsung ke QRIS dan WhatsApp.</p>
           </div>
 
           <div class="products" aria-label="Produk dan layanan">
@@ -348,14 +345,14 @@
                 <h2 class="product-title">VPS Basic</h2>
                 <span class="pill">Hosting</span>
               </div>
-              <p class="product-desc">Cocok buat SMP kecil / test server. Stabil, gampang di-upgrade.</p>
+              <p class="product-desc">Cocok untuk SMP kecil atau server uji coba. Stabil dan mudah ditingkatkan.</p>
               <div class="product-meta">
                 <span class="price">Rp 85.000 <span class="muted">/bulan</span></span>
                 <span class="muted">Setup opsional</span>
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=VPS%20Basic&price=85000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20VPS%20Basic%20(Rp%2085.000%2Fbulan).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Basic%20(Rp%2085.000%2Fbulan).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -364,14 +361,14 @@
                 <h2 class="product-title">VPS Pro</h2>
                 <span class="pill">Hosting</span>
               </div>
-              <p class="product-desc">Buat SMP rame / banyak plugin. Cocok untuk produksi.</p>
+              <p class="product-desc">Untuk SMP ramai atau penggunaan banyak plugin. Cocok untuk produksi.</p>
               <div class="product-meta">
                 <span class="price">Rp 165.000 <span class="muted">/bulan</span></span>
                 <span class="muted">Setup opsional</span>
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=VPS%20Pro&price=165000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20VPS%20Pro%20(Rp%20165.000%2Fbulan).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Pro%20(Rp%20165.000%2Fbulan).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -380,14 +377,14 @@
                 <h2 class="product-title">Install Panel Pterodactyl</h2>
                 <span class="pill">Instalasi</span>
               </div>
-              <p class="product-desc">Pemasangan panel + konfigurasi dasar. Tinggal pakai.</p>
+              <p class="product-desc">Pemasangan panel dan konfigurasi dasar. Siap digunakan.</p>
               <div class="product-meta">
                 <span class="price">Rp 150.000</span>
                 <span class="muted">1x pengerjaan</span>
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&price=150000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Install%20Panel%20Pterodactyl%20(Rp%20150.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Instalasi%20Panel%20Pterodactyl%20(Rp%20150.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -403,7 +400,7 @@
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=Setup%20Server%20SMP%20%2B%20Spawn&price=200000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Server%20SMP%20%2B%20Spawn%20(Rp%20200.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Server%20SMP%20%2B%20Spawn%20(Rp%20200.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -419,23 +416,23 @@
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=Permission%20%26%20Group&price=120000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Permission%20%26%20Group%20(Rp%20120.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Konfigurasi%20Permission%20%26%20Group%20(Rp%20120.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
             <article class="product-card">
               <div class="product-head">
-                <h2 class="product-title">Optimasi TPS & Security</h2>
+                <h2 class="product-title">Optimasi TPS & Keamanan</h2>
                 <span class="pill">Optimasi</span>
               </div>
-              <p class="product-desc">Tuning config, timings/spark, hardening, dan basic anti-exploit.</p>
+              <p class="product-desc">Tuning konfigurasi, timings/spark, hardening, serta anti-exploit dasar.</p>
               <div class="product-meta">
                 <span class="price">Rp 100.000</span>
                 <span class="muted">1 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Security&price=100000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Optimasi%20TPS%20%26%20Security%20(Rp%20100.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Keamanan&price=100000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Optimasi%20TPS%20%26%20Keamanan%20(Rp%20100.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -444,14 +441,14 @@
                 <h2 class="product-title">Proxy Velocity</h2>
                 <span class="pill">Network</span>
               </div>
-              <p class="product-desc">Setup Velocity + forwarding + basic security untuk network server.</p>
+              <p class="product-desc">Setup Velocity, forwarding, serta keamanan dasar untuk network server.</p>
               <div class="product-meta">
                 <span class="price">Rp 180.000</span>
                 <span class="muted">1–2 hari</span>
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=Setup%20Proxy%20Velocity&price=180000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Proxy%20Velocity%20(Rp%20180.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Proxy%20Velocity%20(Rp%20180.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
 
@@ -460,21 +457,21 @@
                 <h2 class="product-title">Setup Bot Discord</h2>
                 <span class="pill">Add-on</span>
               </div>
-              <p class="product-desc">Webhook, log, panel basic command, dan integrasi server.</p>
+              <p class="product-desc">Webhook, log, panel perintah dasar, serta integrasi server.</p>
               <div class="product-meta">
                 <span class="price">Rp 90.000</span>
                 <span class="muted">1 hari</span>
               </div>
               <div class="product-actions">
                 <a class="btn primary" href="qris.html?item=Setup%20Bot%20Discord&price=90000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Bot%20Discord%20(Rp%2090.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Bot%20Discord%20(Rp%2090.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
               </div>
             </article>
           </div>
 
           <div class="cta" aria-label="Aksi">
-            <a class="btn primary" href="qris.html">Bayar QRIS</a>
-            <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20konsultasi%20hosting%20%2B%20developer%20server%20Minecraft.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+            <a class="btn primary" href="qris.html">Pembayaran QRIS</a>
+            <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20hosting%20dan%20developer%20server%20Minecraft.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
             <a class="btn" href="my-servers.html">Lihat Portofolio Server</a>
           </div>
         </div>
