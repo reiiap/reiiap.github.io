@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ReiiKajurawa — Store</title>
-  <meta name="description" content="Store ReiiKajurawa (dummy items dulu)." />
+  <meta name="description" content="Store ReiiKajurawa: paket hosting, instalasi panel, dan layanan server Minecraft." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
   <style>
     :root{
@@ -31,6 +31,31 @@
         var(--bg);
       color:var(--text);
       line-height:1.55;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      background: linear-gradient(120deg, rgba(56,189,248,.14), rgba(250,204,21,.10), rgba(248,113,113,.10));
+      filter: blur(60px);
+      opacity:.45;
+      transform: translate3d(0,0,0);
+      animation: drift 10s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:-1;
+    }
+    @keyframes drift{
+      0%{ transform: translate3d(-2%, -1%, 0) rotate(0.2deg); }
+      100%{ transform: translate3d(2%, 1%, 0) rotate(-0.2deg); }
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      body::before{ animation:none; }
+      *{ scroll-behavior:auto !important; }
     }
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(1120px, 92vw); margin:0 auto; }
@@ -102,6 +127,7 @@
       border-radius: var(--radius);
       padding: 16px;
       box-shadow: var(--shadowSoft);
+      animation: fadeUp .55s ease both;
     }
     .head{
       display:flex;
@@ -176,6 +202,78 @@
       background: rgba(56,189,248,.18);
       border-color: rgba(56,189,248,.34);
     }
+    .muted{ color: var(--muted); }
+    .products{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .product-card{
+      grid-column: span 4;
+      background: rgba(148,163,184,.06);
+      border: 1px solid rgba(148,163,184,.12);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      animation: fadeUp .55s ease both;
+    }
+    .product-card:hover{
+      transform: translateY(-4px);
+      background: rgba(148,163,184,.10);
+      border-color: rgba(148,163,184,.18);
+    }
+    .product-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+    .product-title{
+      margin:0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:.15px;
+    }
+    .pill{
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(56,189,248,.26);
+      background: rgba(56,189,248,.12);
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .product-desc{
+      margin:0;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .product-meta{
+      margin-top: 12px;
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15,23,42,.55);
+      border: 1px solid rgba(148,163,184,.14);
+    }
+    .price{
+      font-weight: 900;
+      letter-spacing:.1px;
+    }
+    .product-actions{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .footer{
       margin-top: 22px;
       border-top: 1px solid var(--border);
@@ -197,9 +295,11 @@
     }
     @media (max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
+      .product-card{ grid-column: span 6; }
     }
     @media (max-width: 620px){
       .menu a{ padding:9px 10px; }
+      .product-card{ grid-column: span 12; }
     }
   </style>
 </head>
@@ -239,36 +339,143 @@
         <div class="panel">
           <div class="head">
             <h1 class="title">Store</h1>
-            <p class="sub">Dummy items 5–10 dulu. Nanti tinggal ganti nama, price, dan link.</p>
+            <p class="sub">Paket hosting + instalasi/pemasangan. Semua tombol langsung ke QRIS dan WhatsApp.</p>
           </div>
 
-          <div class="grid" aria-label="Daftar item store">
-            <div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
-              <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:.2px;">Ranks</h2>
-              <ul class="list" aria-label="Daftar rank">
-                <li><span>VIP</span><span class="tag">Rp 25k</span></li>
-                <li><span>MVP</span><span class="tag">Rp 50k</span></li>
-                <li><span>ELITE</span><span class="tag">Rp 80k</span></li>
-                <li><span>LEGEND</span><span class="tag">Rp 120k</span></li>
-                <li><span>IMMORTAL</span><span class="tag">Rp 200k</span></li>
-              </ul>
-            </div>
+          <div class="products" aria-label="Produk dan layanan">
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">VPS Basic</h2>
+                <span class="pill">Hosting</span>
+              </div>
+              <p class="product-desc">Cocok buat SMP kecil / test server. Stabil, gampang di-upgrade.</p>
+              <div class="product-meta">
+                <span class="price">Rp 85.000 <span class="muted">/bulan</span></span>
+                <span class="muted">Setup opsional</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=VPS%20Basic&price=85000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20VPS%20Basic%20(Rp%2085.000%2Fbulan).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
 
-            <div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
-              <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:.2px;">Items</h2>
-              <ul class="list" aria-label="Daftar item">
-                <li><span>Crate Key x1</span><span class="tag">Rp 3k</span></li>
-                <li><span>Crate Key x5</span><span class="tag">Rp 10k</span></li>
-                <li><span>Crate Key x20</span><span class="tag">Rp 35k</span></li>
-                <li><span>Rename Ticket</span><span class="tag">Rp 5k</span></li>
-                <li><span>Cosmetic Bundle</span><span class="tag">Rp 15k</span></li>
-              </ul>
-            </div>
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">VPS Pro</h2>
+                <span class="pill">Hosting</span>
+              </div>
+              <p class="product-desc">Buat SMP rame / banyak plugin. Cocok untuk produksi.</p>
+              <div class="product-meta">
+                <span class="price">Rp 165.000 <span class="muted">/bulan</span></span>
+                <span class="muted">Setup opsional</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=VPS%20Pro&price=165000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20VPS%20Pro%20(Rp%20165.000%2Fbulan).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Install Panel Pterodactyl</h2>
+                <span class="pill">Instalasi</span>
+              </div>
+              <p class="product-desc">Pemasangan panel + konfigurasi dasar. Tinggal pakai.</p>
+              <div class="product-meta">
+                <span class="price">Rp 150.000</span>
+                <span class="muted">1x pengerjaan</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&price=150000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Install%20Panel%20Pterodactyl%20(Rp%20150.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Setup Server SMP + Spawn</h2>
+                <span class="pill">Setup</span>
+              </div>
+              <p class="product-desc">Setup core plugin, spawn, rules dasar, dan struktur folder rapi.</p>
+              <div class="product-meta">
+                <span class="price">Rp 200.000</span>
+                <span class="muted">1–2 hari</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Setup%20Server%20SMP%20%2B%20Spawn&price=200000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Server%20SMP%20%2B%20Spawn%20(Rp%20200.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Permission & Group</h2>
+                <span class="pill">Konfigurasi</span>
+              </div>
+              <p class="product-desc">LuckPerms: group, prefix, rank, dan permission per plugin.</p>
+              <div class="product-meta">
+                <span class="price">Rp 120.000</span>
+                <span class="muted">1 hari</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Permission%20%26%20Group&price=120000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Permission%20%26%20Group%20(Rp%20120.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Optimasi TPS & Security</h2>
+                <span class="pill">Optimasi</span>
+              </div>
+              <p class="product-desc">Tuning config, timings/spark, hardening, dan basic anti-exploit.</p>
+              <div class="product-meta">
+                <span class="price">Rp 100.000</span>
+                <span class="muted">1 hari</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Security&price=100000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Optimasi%20TPS%20%26%20Security%20(Rp%20100.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Proxy Velocity</h2>
+                <span class="pill">Network</span>
+              </div>
+              <p class="product-desc">Setup Velocity + forwarding + basic security untuk network server.</p>
+              <div class="product-meta">
+                <span class="price">Rp 180.000</span>
+                <span class="muted">1–2 hari</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Setup%20Proxy%20Velocity&price=180000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Proxy%20Velocity%20(Rp%20180.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-head">
+                <h2 class="product-title">Setup Bot Discord</h2>
+                <span class="pill">Add-on</span>
+              </div>
+              <p class="product-desc">Webhook, log, panel basic command, dan integrasi server.</p>
+              <div class="product-meta">
+                <span class="price">Rp 90.000</span>
+                <span class="muted">1 hari</span>
+              </div>
+              <div class="product-actions">
+                <a class="btn primary" href="qris.html?item=Setup%20Bot%20Discord&price=90000">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20order%20Setup%20Bot%20Discord%20(Rp%2090.000).%20Saya%20sudah%20bayar%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+              </div>
+            </article>
           </div>
 
           <div class="cta" aria-label="Aksi">
-            <a class="btn primary" href="my-servers.html">Cek My Servers</a>
-            <a class="btn" href="contact.html">Tanya via Contact</a>
+            <a class="btn primary" href="qris.html">Bayar QRIS</a>
+            <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20konsultasi%20hosting%20%2B%20developer%20server%20Minecraft.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
+            <a class="btn" href="my-servers.html">Lihat Portofolio Server</a>
           </div>
         </div>
       </div>

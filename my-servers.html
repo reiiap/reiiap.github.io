@@ -35,6 +35,31 @@
         var(--bg);
       color:var(--text);
       line-height:1.55;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      background: linear-gradient(120deg, rgba(56,189,248,.14), rgba(250,204,21,.10), rgba(248,113,113,.10));
+      filter: blur(60px);
+      opacity:.45;
+      transform: translate3d(0,0,0);
+      animation: drift 10s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:-1;
+    }
+    @keyframes drift{
+      0%{ transform: translate3d(-2%, -1%, 0) rotate(0.2deg); }
+      100%{ transform: translate3d(2%, 1%, 0) rotate(-0.2deg); }
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      body::before{ animation:none; }
+      *{ scroll-behavior:auto !important; }
     }
     a{ color:inherit; text-decoration:none; }
     button{ font-family:inherit; }
@@ -107,6 +132,7 @@
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadowSoft);
+      animation: fadeUp .55s ease both;
     }
     .hero-title{ margin:0 0 6px; font-size: 26px; letter-spacing:.2px; }
     .hero-sub{ margin:0; color: var(--muted); max-width: 78ch; }
@@ -143,6 +169,7 @@
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
       position:relative;
       overflow:hidden;
+      animation: fadeUp .55s ease both;
     }
     .server-card:hover{
       transform: translateY(-4px);
@@ -367,13 +394,18 @@
         <div class="hero-card">
           <h1 class="hero-title">My Servers</h1>
           <p class="hero-sub">
-            Status & player count update real-time via API mcstatus.io:
+            Contoh portofolio/monitoring server yang pernah gue handle. Status & player count update real-time via API mcstatus.io:
             <span class="muted">https://api.mcstatus.io/v2/status/java/&lt;server-address&gt;</span>
           </p>
           <div class="chips" aria-label="Legend status">
             <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Online</span>
             <span class="chip"><span class="chip-dot" style="background:#f87171"></span> Offline</span>
             <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Error</span>
+          </div>
+          <div class="server-actions" style="margin-top:12px;">
+            <a class="btn primary" href="store.html">Order Hosting</a>
+            <a class="btn" href="qris.html">Bayar QRIS</a>
+            <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20konsultasi%20developer%20server%20Minecraft%20%2B%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
           </div>
         </div>
       </div>

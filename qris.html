@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ReiiKajurawa — Home</title>
-  <meta name="description" content="ReiiKajurawa: Home, Store, Jasa Setup, My Servers, Contact." />
+  <title>ReiiKajurawa — Pembayaran QRIS</title>
+  <meta name="description" content="Halaman pembayaran QRIS ReiiKajurawa." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
   <style>
     :root{
@@ -119,61 +119,7 @@
       border-color: rgba(148,163,184,.14);
       color: var(--text);
     }
-    .menu a.active{
-      background: rgba(56,189,248,.10);
-      border-color: rgba(56,189,248,.22);
-      color: var(--text);
-    }
-    .hero{ padding: 26px 0 10px; }
-    .hero-grid{ display:grid; grid-template-columns: 1.25fr .75fr; gap:18px; }
-    .hero-card{
-      background: rgba(15,23,42,.70);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadowSoft);
-      animation: fadeUp .55s ease both;
-    }
-    .hero-title{ margin:0 0 6px; font-size: 28px; letter-spacing:.2px; }
-    .hero-sub{ margin:0; color: var(--muted); max-width: 70ch; }
-    .chips{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      background: rgba(148,163,184,.08);
-      border: 1px solid rgba(148,163,184,.14);
-      color: var(--text);
-      font-weight:700;
-      font-size:13px;
-    }
-    .chip-dot{ width:8px; height:8px; border-radius:999px; background: var(--muted); opacity:.9; }
-    .quick{ display:grid; gap:10px; }
-    .quick a{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 12px 14px;
-      border-radius: var(--radiusSm);
-      background: rgba(148,163,184,.06);
-      border: 1px solid rgba(148,163,184,.12);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      color: var(--text);
-      font-weight:800;
-    }
-    .quick a:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.10);
-      border-color: rgba(148,163,184,.18);
-    }
-    .quick small{ color: var(--muted); font-weight:700; }
-    .section{ padding: 20px 0; }
-    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing:.2px; }
-    .section p{ margin:0; color: var(--muted); }
-    .split{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .section{ padding: 26px 0; }
     .panel{
       background: rgba(15,23,42,.70);
       border: 1px solid var(--border);
@@ -182,40 +128,52 @@
       box-shadow: var(--shadowSoft);
       animation: fadeUp .55s ease both;
     }
-    .list{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .list li{
+    .head{
       display:flex;
-      align-items:center;
+      align-items:flex-end;
       justify-content:space-between;
       gap:12px;
-      padding: 12px 12px;
-      border-radius: 14px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .title{ margin:0; font-size: 22px; letter-spacing:.2px; }
+    .sub{ margin:0; color: var(--muted); max-width: 80ch; font-weight:700; }
+    .grid{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .qris-box{
       background: rgba(148,163,184,.06);
       border: 1px solid rgba(148,163,184,.12);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      border-radius: var(--radius);
+      padding: 16px;
+      display:grid;
+      place-items:center;
+      min-height: 320px;
     }
-    .list li:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.10);
-      border-color: rgba(148,163,184,.18);
+    .qris-svg{ width:min(320px, 100%); height:auto; display:block; }
+    .info{
+      background: rgba(148,163,184,.06);
+      border: 1px solid rgba(148,163,184,.12);
+      border-radius: var(--radius);
+      padding: 16px;
     }
-    .tag{
-      padding: 6px 8px;
-      border-radius: 999px;
-      font-size: 12px;
+    .row{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15,23,42,.55);
+      border: 1px solid rgba(148,163,184,.14);
+      margin-top: 10px;
       font-weight: 900;
-      border: 1px solid rgba(148,163,184,.18);
-      background: rgba(148,163,184,.08);
-      color: var(--text);
-      white-space:nowrap;
     }
-    .cta-row{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .muted{ color: var(--muted); font-weight:800; }
+    .actions{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
     .btn{
       appearance:none;
       border: 1px solid rgba(148,163,184,.18);
@@ -264,9 +222,7 @@
       max-width: 80ch;
     }
     @media (max-width: 920px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .split{ grid-template-columns: 1fr; }
-      .hero-title{ font-size: 24px; }
+      .grid{ grid-template-columns: 1fr; }
     }
     @media (max-width: 620px){
       .menu a{ padding:9px 10px; }
@@ -293,7 +249,7 @@
           <div>ReiiKajurawa</div>
         </a>
         <nav class="menu" aria-label="Menu utama">
-          <a class="active" href="index.html">Home</a>
+          <a href="index.html">Home</a>
           <a href="store.html">Store</a>
           <a href="jasa-setup.html">Jasa Setup</a>
           <a href="my-servers.html">My Servers</a>
@@ -304,76 +260,70 @@
   </header>
 
   <main>
-    <section class="hero" aria-label="Hero Home">
+    <section class="section" aria-label="Pembayaran QRIS">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <h1 class="hero-title">ReiiKajurawa — Jasa Developer Server Minecraft</h1>
-            <p class="hero-sub">
-              Fokus gue: setup & develop server Minecraft, instalasi panel (Pterodactyl), optimasi TPS, plugin, permission,
-              plus bantu pembelian/pemasangan hosting buat server kamu.
-            </p>
-            <div class="chips" aria-label="Highlights">
-              <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Setup & Deploy</span>
-              <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Optimasi & Security</span>
-              <span class="chip"><span class="chip-dot" style="background:#94a3b8"></span> Hosting & Panel</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn primary" href="store.html">Lihat Paket Hosting</a>
-              <a class="btn" href="qris.html">Bayar QRIS</a>
-              <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20mau%20konsultasi%20developer%20server%20Minecraft%20%2B%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Chat WhatsApp</a>
-            </div>
+        <div class="panel">
+          <div class="head">
+            <h1 class="title">Pembayaran QRIS</h1>
+            <p class="sub">Scan QR lalu kirim bukti pembayaran via WhatsApp biar langsung diproses.</p>
           </div>
 
-          <div class="hero-card">
-            <div class="quick" aria-label="Quick links">
-              <a href="my-servers.html">
-                <span>My Servers</span>
-                <small>Portofolio & status</small>
-              </a>
-              <a href="store.html">
-                <span>Store</span>
-                <small>Hosting & instalasi</small>
-              </a>
-              <a href="jasa-setup.html">
-                <span>Jasa Setup</span>
-                <small>Setup server & panel</small>
-              </a>
-              <a href="contact.html">
-                <span>Contact</span>
-                <small>Discord / Email / WA / GitHub</small>
-              </a>
+          <div class="grid" aria-label="QRIS dan detail pembayaran">
+            <div class="qris-box" aria-label="QRIS placeholder">
+              <svg class="qris-svg" viewBox="0 0 240 240" aria-hidden="true">
+                <rect x="0" y="0" width="240" height="240" rx="22" fill="rgba(15,23,42,.60)" stroke="rgba(148,163,184,.22)" />
+                <rect x="20" y="20" width="60" height="60" rx="10" fill="rgba(56,189,248,.16)" stroke="rgba(56,189,248,.30)" />
+                <rect x="160" y="20" width="60" height="60" rx="10" fill="rgba(250,204,21,.16)" stroke="rgba(250,204,21,.34)" />
+                <rect x="20" y="160" width="60" height="60" rx="10" fill="rgba(248,113,113,.16)" stroke="rgba(248,113,113,.34)" />
+                <g fill="rgba(148,163,184,.40)">
+                  <rect x="98" y="30" width="10" height="10" rx="2" />
+                  <rect x="112" y="30" width="10" height="10" rx="2" />
+                  <rect x="126" y="30" width="10" height="10" rx="2" />
+                  <rect x="98" y="44" width="10" height="10" rx="2" />
+                  <rect x="126" y="44" width="10" height="10" rx="2" />
+                  <rect x="98" y="58" width="10" height="10" rx="2" />
+                  <rect x="112" y="58" width="10" height="10" rx="2" />
+                  <rect x="126" y="58" width="10" height="10" rx="2" />
+                  <rect x="92" y="104" width="12" height="12" rx="2" />
+                  <rect x="110" y="104" width="12" height="12" rx="2" />
+                  <rect x="128" y="104" width="12" height="12" rx="2" />
+                  <rect x="146" y="104" width="12" height="12" rx="2" />
+                  <rect x="92" y="124" width="12" height="12" rx="2" />
+                  <rect x="128" y="124" width="12" height="12" rx="2" />
+                  <rect x="146" y="124" width="12" height="12" rx="2" />
+                  <rect x="92" y="144" width="12" height="12" rx="2" />
+                  <rect x="110" y="144" width="12" height="12" rx="2" />
+                  <rect x="146" y="144" width="12" height="12" rx="2" />
+                </g>
+                <text x="120" y="118" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900" fill="#e5e7eb">QRIS</text>
+                <text x="120" y="142" text-anchor="middle" font-family="Arial" font-size="12" font-weight="800" fill="#94a3b8">Replace dengan QR asli</text>
+              </svg>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" aria-label="Spill Populer">
-      <div class="container">
-        <div class="split">
-          <div class="panel">
-            <h2>Populer di Store (Spill)</h2>
-            <p>Ini contoh paket yang paling sering ditanyain (dummy, bisa kamu ubah).</p>
-            <ul class="list" aria-label="Store populer">
-              <li><span>VPS Basic (SMP kecil)</span><span class="tag">Rp 85k/bln</span></li>
-              <li><span>VPS Pro (SMP rame)</span><span class="tag">Rp 165k/bln</span></li>
-              <li><span>Install Panel Pterodactyl</span><span class="tag">Rp 150k</span></li>
-              <li><span>Setup Server + Plugin Pack</span><span class="tag">Rp 120k</span></li>
-              <li><span>Optimasi TPS & Security</span><span class="tag">Rp 100k</span></li>
-            </ul>
-          </div>
+            <div class="info" aria-label="Detail pembayaran">
+              <div class="row">
+                <span class="muted">Item</span>
+                <span id="itemText">Custom Order</span>
+              </div>
+              <div class="row">
+                <span class="muted">Nominal</span>
+                <span id="priceText">—</span>
+              </div>
+              <div class="row">
+                <span class="muted">Catatan</span>
+                <span id="noteText">Kirim bukti bayar</span>
+              </div>
 
-          <div class="panel">
-            <h2>Jasa Setup (Spill)</h2>
-            <p>Contoh layanan (dummy) yang sering dipesan.</p>
-            <ul class="list" aria-label="Jasa setup populer">
-              <li><span>Setup SMP + Spawn</span><span class="tag">1–2 hari</span></li>
-              <li><span>Permission & Group Rapi</span><span class="tag">1 hari</span></li>
-              <li><span>Konfigurasi Economy/Shop</span><span class="tag">1–2 hari</span></li>
-              <li><span>Anti-Cheat + Hardening</span><span class="tag">1–2 hari</span></li>
-              <li><span>Network Proxy (Velocity)</span><span class="tag">1–2 hari</span></li>
-            </ul>
+              <div class="actions" aria-label="Aksi pembayaran">
+                <a class="btn primary" id="waBtn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20bayar%20via%20QRIS.%20Item%3A%20Custom%20Order.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" rel="noopener">Saya Sudah Bayar (Chat WhatsApp)</a>
+                <a class="btn" href="store.html">Kembali ke Store</a>
+                <a class="btn" href="contact.html">Buka Contact</a>
+              </div>
+
+              <div style="margin-top:12px;color:var(--muted);font-weight:800;font-size:13px;">
+                Tip: kalau item kamu beda dari list, cukup pakai halaman ini dan tulis kebutuhan di chat.
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -390,7 +340,22 @@
   </footer>
 
   <script>
+    const params = new URLSearchParams(location.search);
+    const item = params.get("item") || "Custom Order";
+    const price = params.get("price") || "";
+    const note = params.get("note") || "Kirim bukti bayar";
+
     document.getElementById("year").textContent = String(new Date().getFullYear());
+    document.getElementById("itemText").textContent = item;
+    document.getElementById("noteText").textContent = note;
+
+    const formatted = price ? "Rp " + Number(price).toLocaleString("id-ID") : "—";
+    document.getElementById("priceText").textContent = formatted;
+
+    const waNumber = "6281200000000";
+    const text = "Halo ReiiKajurawa, saya sudah bayar via QRIS. Item: " + item + ". Nominal: " + (price ? formatted : "-") + ". Bukti pembayaran: ";
+    const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
+    document.getElementById("waBtn").setAttribute("href", waUrl);
   </script>
 </body>
 </html>
