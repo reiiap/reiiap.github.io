@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>ReiiKajurawa — Pembayaran QRIS</title>
   <meta name="description" content="Halaman pembayaran QRIS ReiiKajurawa." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
   <style>
     :root{
       --bg:#0b1220;
@@ -35,7 +38,7 @@
         radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
         linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
-        url("assets/minecraft-bg.png"),
+        url("assets/minecraft-bg.png?v=20260315"),
         var(--bg);
       background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
       background-size: auto, auto, auto, auto, auto, auto, 560px 560px, auto;
@@ -243,7 +246,7 @@
       <div class="nav-inner">
         <a class="brand" href="index.html" aria-label="Ke Beranda">
           <div class="brand-badge" aria-hidden="true">
-            <img src="assets/logo.png" alt="ReiiKajurawa" />
+            <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
           </div>
           <div>ReiiKajurawa</div>
         </a>
@@ -269,7 +272,7 @@
 
           <div class="grid" aria-label="QRIS dan detail pembayaran">
             <div class="qris-box" aria-label="QRIS placeholder">
-              <img class="qris-svg" src="assets/qris.png" alt="QRIS ReiiKajurawa" />
+              <img class="qris-svg" src="assets/qris.png?v=20260315" alt="QRIS ReiiKajurawa" />
             </div>
 
             <div class="info" aria-label="Detail pembayaran">
@@ -324,7 +327,7 @@
     const formatted = price ? "Rp " + Number(price).toLocaleString("id-ID") : "—";
     document.getElementById("priceText").textContent = formatted;
 
-    const waNumber = "6281200000000";
+    const waNumber = "6287828254466"
     const text = "Halo ReiiKajurawa, saya sudah melakukan pembayaran via QRIS. Item: " + item + ". Nominal: " + (price ? formatted : "-") + ". Bukti pembayaran: ";
     const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
     document.getElementById("waBtn").setAttribute("href", waUrl);

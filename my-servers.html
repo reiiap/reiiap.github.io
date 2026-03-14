@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>ReiiKajurawa — Server Saya</title>
   <meta name="description" content="Status dan jumlah pemain server Minecraft ReiiKajurawa secara real-time." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
   <style>
     :root{
       --bg:#0b1220;
@@ -35,7 +38,7 @@
         radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
         linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
-        url("assets/minecraft-bg.png"),
+        url("assets/minecraft-bg.png?v=20260315"),
         var(--bg);
       background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
       background-size: auto, auto, auto, auto, auto, auto, 560px 560px, auto;
@@ -385,7 +388,7 @@
       <div class="nav-inner">
         <a class="brand" href="index.html" aria-label="Ke Beranda">
           <div class="brand-badge" aria-hidden="true">
-            <img src="assets/logo.png" alt="ReiiKajurawa" />
+            <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
           </div>
           <div>ReiiKajurawa</div>
         </a>
@@ -406,7 +409,7 @@
         <div class="hero-card">
           <h1 class="hero-title">Server Saya</h1>
           <p class="hero-sub">
-            Contoh portofolio dan monitoring server yang pernah saya tangani. Status serta jumlah pemain diperbarui secara real-time melalui API mcstatus.io:
+            portofolio dan monitoring server yang saya tangani. Status serta jumlah pemain diperbarui secara real-time
             <span class="muted">https://api.mcstatus.io/v2/status/java/&lt;server-address&gt;</span>
           </p>
           <div class="chips" aria-label="Legend status">
@@ -426,7 +429,7 @@
     <section class="section" aria-label="Daftar server">
       <div class="container">
         <h2>Daftar Server</h2>
-        <p>Ubah alamat server pada variabel <span class="muted">SERVER_LIST</span> di skrip bagian bawah.</p>
+        <p>Berikut Server Yang <span class="muted">SERVER_LIST</span> Saya Kelola.</p>
 
         <div class="grid" aria-label="Kartu server">
           <article class="server-card" data-server-card="srv1">
@@ -527,9 +530,9 @@
 
   <script>
     const SERVER_LIST = [
-      { id: "srv1", name: "Kandang Alwi", address: "play.kandangalwi.net" },
-      { id: "srv2", name: "VoxenSMP", address: "play.voxensmp.net" },
-      { id: "srv3", name: "Noverin", address: "play.noverin.net" }
+      { id: "srv1", name: "Kandang Alwi", address: "kalwi.id" },
+      { id: "srv2", name: "VoxenSMP", address: "voxensmp.xyz" },
+      { id: "srv3", name: "Noverin", address: "play.noverin.xyz" }
     ];
 
     const REFRESH_INTERVAL_MS = 30000;

@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>ReiiKajurawa — Toko</title>
   <meta name="description" content="Toko ReiiKajurawa: paket hosting, instalasi panel, dan layanan server Minecraft." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
   <style>
     :root{
       --bg:#0b1220;
@@ -31,7 +34,7 @@
         radial-gradient(1100px 650px at 20% 15%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 650px at 75% 25%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
-        url("assets/minecraft-bg.png"),
+        url("assets/minecraft-bg.png?v=20260315"),
         var(--bg);
       background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
       background-size: auto, auto, auto, auto, auto, 560px 560px, auto;
@@ -260,6 +263,27 @@
       font-weight: 700;
       font-size: 13px;
     }
+    .spec{
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .spec li{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(15,23,42,.45);
+      border: 1px solid rgba(148,163,184,.12);
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--text);
+    }
+    .spec span:first-child{ color: var(--muted); font-weight: 800; }
     .product-meta{
       margin-top: 12px;
       display:flex;
@@ -317,7 +341,7 @@
       <div class="nav-inner">
         <a class="brand" href="index.html" aria-label="Ke Beranda">
           <div class="brand-badge" aria-hidden="true">
-            <img src="assets/logo.png" alt="ReiiKajurawa" />
+            <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
           </div>
           <div>ReiiKajurawa</div>
         </a>
@@ -347,14 +371,21 @@
                 <h2 class="product-title">VPS Basic</h2>
                 <span class="pill">Hosting</span>
               </div>
-              <p class="product-desc">Cocok untuk SMP kecil atau server uji coba. Stabil dan mudah ditingkatkan.</p>
+              <p class="product-desc">Cocok untuk SMP kecil atau server uji coba. Harga menyesuaikan spesifikasi dan kebutuhan.</p>
+              <ul class="spec" aria-label="Spesifikasi VPS Basic">
+                <li><span>CPU</span><span>Mulai dari 1 vCore</span></li>
+                <li><span>RAM</span><span>Mulai dari 2 GB</span></li>
+                <li><span>Penyimpanan</span><span>Mulai dari 20 GB NVMe</span></li>
+                <li><span>Bandwidth</span><span>Mulai dari 1 TB</span></li>
+                <li><span>Lokasi</span><span>Menyesuaikan ketersediaan</span></li>
+              </ul>
               <div class="product-meta">
-                <span class="price">Rp 45.000 <span class="muted">/bulan</span></span>
+                <span class="price">Mulai dari Rp 45.000 <span class="muted">/bulan</span></span>
                 <span class="muted">Setup opsional</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=VPS%20Basic&price=45000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Basic%20(Rp%2045.000%2Fbulan).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=VPS%20Basic&note=Harga%20mulai%20dari%20Rp%2045.000%2Fbulan.%20Total%20akhir%20menyesuaikan%20spesifikasi%20dan%20kebutuhan.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Basic%20(harga%20mulai%20dari%20Rp%2045.000%2Fbulan).%20Mohon%20rekomendasi%20spesifikasi%20dan%20total%20akhir.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -363,14 +394,21 @@
                 <h2 class="product-title">VPS Pro</h2>
                 <span class="pill">Hosting</span>
               </div>
-              <p class="product-desc">Untuk SMP ramai atau penggunaan banyak plugin. Cocok untuk produksi.</p>
+              <p class="product-desc">Untuk SMP ramai atau penggunaan banyak plugin. Harga menyesuaikan spesifikasi dan kebutuhan.</p>
+              <ul class="spec" aria-label="Spesifikasi VPS Pro">
+                <li><span>CPU</span><span>Mulai dari 2 vCore</span></li>
+                <li><span>RAM</span><span>Mulai dari 4 GB</span></li>
+                <li><span>Penyimpanan</span><span>Mulai dari 40 GB NVMe</span></li>
+                <li><span>Bandwidth</span><span>Mulai dari 2 TB</span></li>
+                <li><span>Lokasi</span><span>Menyesuaikan ketersediaan</span></li>
+              </ul>
               <div class="product-meta">
-                <span class="price">Rp 90.000 <span class="muted">/bulan</span></span>
+                <span class="price">Mulai dari Rp 90.000 <span class="muted">/bulan</span></span>
                 <span class="muted">Setup opsional</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=VPS%20Pro&price=90000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Pro%20(Rp%2090.000%2Fbulan).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=VPS%20Pro&note=Harga%20mulai%20dari%20Rp%2090.000%2Fbulan.%20Total%20akhir%20menyesuaikan%20spesifikasi%20dan%20kebutuhan.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20VPS%20Pro%20(harga%20mulai%20dari%20Rp%2090.000%2Fbulan).%20Mohon%20rekomendasi%20spesifikasi%20dan%20total%20akhir.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -381,12 +419,12 @@
               </div>
               <p class="product-desc">Pemasangan panel dan konfigurasi dasar. Siap digunakan.</p>
               <div class="product-meta">
-                <span class="price">Rp 75.000</span>
+                <span class="price">Mulai dari Rp 75.000</span>
                 <span class="muted">1x pengerjaan</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&price=75000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Instalasi%20Panel%20Pterodactyl%20(Rp%2075.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&note=Harga%20mulai%20dari%20Rp%2075.000.%20Total%20akhir%20menyesuaikan%20kebutuhan%20dan%20kondisi%20server.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Instalasi%20Panel%20Pterodactyl%20(harga%20mulai%20dari%20Rp%2075.000).%20Mohon%20konfirmasi%20kebutuhan%20dan%20total%20akhir.%20Detail%20server%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -397,12 +435,12 @@
               </div>
               <p class="product-desc">Setup core plugin, spawn, rules dasar, dan struktur folder rapi.</p>
               <div class="product-meta">
-                <span class="price">Rp 120.000</span>
+                <span class="price">Mulai dari Rp 120.000</span>
                 <span class="muted">1–2 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Setup%20Server%20SMP%20%2B%20Spawn&price=120000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Server%20SMP%20%2B%20Spawn%20(Rp%20120.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Setup%20Server%20SMP%20%2B%20Spawn&note=Harga%20mulai%20dari%20Rp%20120.000.%20Total%20akhir%20menyesuaikan%20fitur%20dan%20kebutuhan.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Server%20SMP%20%2B%20Spawn%20(harga%20mulai%20dari%20Rp%20120.000).%20Mohon%20konfirmasi%20fitur%20dan%20total%20akhir.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -413,12 +451,12 @@
               </div>
               <p class="product-desc">LuckPerms: group, prefix, rank, dan permission per plugin.</p>
               <div class="product-meta">
-                <span class="price">Rp 70.000</span>
+                <span class="price">Mulai dari Rp 70.000</span>
                 <span class="muted">1 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Permission%20%26%20Group&price=70000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Konfigurasi%20Permission%20%26%20Group%20(Rp%2070.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Permission%20%26%20Group&note=Harga%20mulai%20dari%20Rp%2070.000.%20Total%20akhir%20menyesuaikan%20jumlah%20plugin%20dan%20struktur%20rank.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Konfigurasi%20Permission%20%26%20Group%20(harga%20mulai%20dari%20Rp%2070.000).%20Mohon%20konfirmasi%20jumlah%20plugin%20dan%20total%20akhir.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -429,12 +467,12 @@
               </div>
               <p class="product-desc">Tuning konfigurasi, timings/spark, hardening, serta anti-exploit dasar.</p>
               <div class="product-meta">
-                <span class="price">Rp 60.000</span>
+                <span class="price">Mulai dari Rp 60.000</span>
                 <span class="muted">1 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Keamanan&price=60000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Optimasi%20TPS%20%26%20Keamanan%20(Rp%2060.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Keamanan&note=Harga%20mulai%20dari%20Rp%2060.000.%20Total%20akhir%20menyesuaikan%20kondisi%20server%20dan%20lingkup%20tuning.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Optimasi%20TPS%20%26%20Keamanan%20(harga%20mulai%20dari%20Rp%2060.000).%20Mohon%20konfirmasi%20lingkup%20pekerjaan%20dan%20total%20akhir.%20Kondisi%20server%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -445,12 +483,12 @@
               </div>
               <p class="product-desc">Setup Velocity, forwarding, serta keamanan dasar untuk network server.</p>
               <div class="product-meta">
-                <span class="price">Rp 110.000</span>
+                <span class="price">Mulai dari Rp 110.000</span>
                 <span class="muted">1–2 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Setup%20Proxy%20Velocity&price=110000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Proxy%20Velocity%20(Rp%20110.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Setup%20Proxy%20Velocity&note=Harga%20mulai%20dari%20Rp%20110.000.%20Total%20akhir%20menyesuaikan%20jumlah%20server%20dan%20konfigurasi%20network.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Proxy%20Velocity%20(harga%20mulai%20dari%20Rp%20110.000).%20Mohon%20konfirmasi%20jumlah%20server%20dan%20total%20akhir.%20Kebutuhan%20network%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
 
@@ -461,19 +499,19 @@
               </div>
               <p class="product-desc">Webhook, log, panel perintah dasar, serta integrasi server.</p>
               <div class="product-meta">
-                <span class="price">Rp 60.000</span>
+                <span class="price">Mulai dari Rp 60.000</span>
                 <span class="muted">1 hari</span>
               </div>
               <div class="product-actions">
-                <a class="btn primary" href="qris.html?item=Setup%20Bot%20Discord&price=60000">Bayar QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Bot%20Discord%20(Rp%2060.000).%20Saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp (Setelah Bayar)</a>
+                <a class="btn primary" href="qris.html?item=Setup%20Bot%20Discord&note=Harga%20mulai%20dari%20Rp%2060.000.%20Total%20akhir%20menyesuaikan%20fitur%20dan%20kompleksitas%20integrasi.">Bayar QRIS</a>
+                <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20memesan%20Setup%20Bot%20Discord%20(harga%20mulai%20dari%20Rp%2060.000).%20Mohon%20konfirmasi%20fitur%20dan%20total%20akhir.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">WhatsApp (Konsultasi)</a>
               </div>
             </article>
           </div>
 
           <div class="cta" aria-label="Aksi">
             <a class="btn primary" href="qris.html">Pembayaran QRIS</a>
-            <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20hosting%20dan%20developer%20server%20Minecraft.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
+            <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20hosting%20dan%20developer%20server%20Minecraft.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
             <a class="btn" href="my-servers.html">Lihat Portofolio Server</a>
           </div>
         </div>

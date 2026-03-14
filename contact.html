@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>ReiiKajurawa — Kontak</title>
   <meta name="description" content="Kontak ReiiKajurawa: Discord, Email, WhatsApp, GitHub." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
   <style>
     :root{
       --bg:#0b1220;
@@ -32,285 +35,249 @@
         radial-gradient(900px 650px at 75% 25%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
         linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
-        url("assets/minecraft-bg.png"),
+        url("assets/minecraft-bg.png?v=20260315"),
         var(--bg);
-      background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-      background-size: auto, auto, auto, auto, auto, auto, 560px 560px, auto;
-      background-position: center, center, center, center, center, center, top left, center;
-      background-attachment: scroll, scroll, scroll, scroll, scroll, scroll, fixed, scroll;
       color:var(--text);
       line-height:1.55;
-      overflow-x:hidden;
     }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      background: linear-gradient(120deg, rgba(56,189,248,.14), rgba(250,204,21,.10), rgba(248,113,113,.10));
-      filter: blur(60px);
-      opacity:.45;
-      transform: translate3d(0,0,0);
-      animation: drift 10s ease-in-out infinite alternate;
-      pointer-events:none;
-      z-index:-1;
-    }
-    @keyframes drift{
-      0%{ transform: translate3d(-2%, -1%, 0) rotate(0.2deg); }
-      100%{ transform: translate3d(2%, 1%, 0) rotate(-0.2deg); }
-    }
-    @keyframes fadeUp{
-      from{ opacity:0; transform: translateY(10px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce){
-      body::before{ animation:none; }
-      *{ scroll-behavior:auto !important; }
-    }
+
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(1120px, 92vw); margin:0 auto; }
+
     .nav{
       position:sticky;
       top:0;
-      z-index:50;
       backdrop-filter: blur(10px);
       background: rgba(15,23,42,.72);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
       padding:14px 0;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
       font-weight:800;
-      letter-spacing:.2px;
     }
+
     .brand-badge{
       width:34px;
       height:34px;
       border-radius:10px;
-      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
-      border:1px solid rgba(148,163,184,.22);
-      box-shadow: var(--shadowSoft);
       display:grid;
       place-items:center;
-      user-select:none;
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
     }
-    .brand-badge img{ width:22px; height:22px; display:block; }
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+
+    .brand-badge img{ width:22px; }
+
+    .menu{ display:flex; gap:6px; }
+
     .menu a{
       padding:10px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      border-radius:12px;
+      color:var(--muted);
       font-weight:700;
-      font-size:14px;
     }
-    .menu a:hover{
-      transform: translateY(-1px);
-      background: rgba(148,163,184,.08);
-      border-color: rgba(148,163,184,.14);
-      color: var(--text);
-    }
+
     .menu a.active{
       background: rgba(56,189,248,.10);
-      border-color: rgba(56,189,248,.22);
       color: var(--text);
     }
+
     .section{ padding: 26px 0; }
+
     .panel{
       background: rgba(15,23,42,.70);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 16px;
-      box-shadow: var(--shadowSoft);
-      animation: fadeUp .55s ease both;
     }
-    .head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-bottom: 12px;
+
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
-    .title{ margin:0; font-size: 22px; letter-spacing:.2px; }
-    .sub{ margin:0; color: var(--muted); max-width: 80ch; }
-    .grid{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
     .list{
-      margin: 10px 0 0;
-      padding: 0;
       list-style:none;
+      padding:0;
       display:grid;
       gap:10px;
     }
+
     .list li{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
-      padding: 12px 12px;
-      border-radius: 14px;
+      padding: 12px;
+      border-radius:14px;
       background: rgba(148,163,184,.06);
       border: 1px solid rgba(148,163,184,.12);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
-    .list li:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.10);
-      border-color: rgba(148,163,184,.18);
-    }
+
     .tag{
-      padding: 6px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      border: 1px solid rgba(148,163,184,.18);
+      padding:6px 8px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:900;
       background: rgba(148,163,184,.08);
-      color: var(--text);
-      white-space:nowrap;
     }
+
     .btn{
-      appearance:none;
-      border: 1px solid rgba(148,163,184,.18);
+      border:1px solid rgba(148,163,184,.18);
       background: rgba(148,163,184,.08);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 900;
-      font-size: 13px;
-      cursor:pointer;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:900;
     }
-    .btn:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.12);
-      border-color: rgba(148,163,184,.26);
-    }
+
     .btn.primary{
       background: rgba(56,189,248,.14);
-      border-color: rgba(56,189,248,.26);
     }
-    .btn.primary:hover{
-      background: rgba(56,189,248,.18);
-      border-color: rgba(56,189,248,.34);
-    }
+
     .footer{
       margin-top: 22px;
       border-top: 1px solid var(--border);
       background: rgba(15,23,42,.70);
     }
+
     .footer-inner{
-      padding: 18px 0;
+      padding:18px 0;
       display:flex;
-      align-items:flex-start;
       justify-content:space-between;
-      gap: 14px;
       flex-wrap:wrap;
     }
+
     .footer p{
       margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 80ch;
+      color:var(--muted);
+      font-size:13px;
     }
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 620px){
-      .menu a{ padding:9px 10px; }
+
+    @media (max-width:920px){
+      .grid{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Ke Beranda">
-          <div class="brand-badge" aria-hidden="true">
-            <img src="assets/logo.png" alt="ReiiKajurawa" />
-          </div>
-          <div>ReiiKajurawa</div>
-        </a>
-        <nav class="menu" aria-label="Menu utama">
-          <a href="index.html">Beranda</a>
-          <a href="store.html">Toko</a>
-          <a href="jasa-setup.html">Jasa Setup</a>
-          <a href="my-servers.html">Server Saya</a>
-          <a class="active" href="contact.html">Kontak</a>
-        </nav>
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <section class="section" aria-label="Kontak">
-      <div class="container">
-        <div class="panel">
-          <div class="head">
-            <h1 class="title">Kontak</h1>
-              <p class="sub">Seluruh tautan aktif. Silakan sesuaikan dengan kontak Anda.</p>
-          </div>
+<header class="nav">
+<div class="container">
+<div class="nav-inner">
 
-          <div class="grid" aria-label="Kontak dan catatan">
-            <div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
-              <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:.2px;">Kontak</h2>
-              <ul class="list" aria-label="Daftar kontak">
-                <li><span>Discord</span><a class="tag" href="https://discord.gg/your-invite" target="_blank" rel="noopener">discord.gg/your-invite</a></li>
-                <li><span>Email</span><a class="tag" href="mailto:reii@example.com">reii@example.com</a></li>
-                <li><span>WhatsApp</span><a class="tag" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20developer%20server%20Minecraft%20dan%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a></li>
-                <li><span>GitHub</span><a class="tag" href="https://github.com/reii" target="_blank" rel="noopener">github.com/reii</a></li>
-                <li><span>Jam Layanan</span><span class="tag">10:00–22:00</span></li>
-              </ul>
-            </div>
+<a class="brand" href="index.html">
+<div class="brand-badge">
+<img src="assets/logo.png?v=20260315" alt="ReiiKajurawa">
+</div>
+<div>ReiiKajurawa</div>
+</a>
 
-            <div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
-              <h2 style="margin:0 0 10px;font-size:16px;letter-spacing:.2px;">Aksi Cepat</h2>
-              <p style="margin:0;color:var(--muted);">
-                Untuk pemesanan layanan atau pertanyaan terkait toko, Anda dapat memulai dari sini.
-              </p>
-              <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
-                <a class="btn primary" href="qris.html">Pembayaran QRIS</a>
-                <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Item%3A%20.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi Pembayaran (WhatsApp)</a>
-                <a class="btn" href="store.html">Lihat Paket Hosting</a>
-                <a class="btn" href="jasa-setup.html">Lihat Jasa Setup</a>
-              </div>
-              <div style="margin-top:14px;color:var(--muted);font-weight:900;font-size:12px;">
-                Endpoint status server: https://api.mcstatus.io/v2/status/java/&lt;server-address&gt;
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+<nav class="menu">
+<a href="index.html">Beranda</a>
+<a href="store.html">Toko</a>
+<a href="jasa-setup.html">Jasa Setup</a>
+<a href="my-servers.html">Server Saya</a>
+<a class="active" href="contact.html">Kontak</a>
+</nav>
 
-  <footer class="footer" aria-label="Footer">
-    <div class="container">
-      <div class="footer-inner">
-        <p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
-        <p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta. Dilarang menyalin tanpa izin.</p>
-      </div>
-    </div>
-  </footer>
+</div>
+</div>
+</header>
 
-  <script>
-    document.getElementById("year").textContent = String(new Date().getFullYear());
-  </script>
+<main>
+<section class="section">
+<div class="container">
+<div class="panel">
+
+<h1>Kontak</h1>
+<p style="color:var(--muted)">Seluruh tautan aktif. Silakan hubungi sesuai kebutuhan.</p>
+
+<div class="grid">
+
+<div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
+<h2 style="margin:0 0 10px;font-size:16px;">Kontak</h2>
+
+<ul class="list">
+
+<li>
+<span>Discord</span>
+<a class="tag" href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">discord.gg/MCc7gPvj</a>
+</li>
+
+<li>
+<span>Email</span>
+<a class="tag" href="mailto:raihanalena@gmail.com">raihanalena@gmail.com</a>
+</li>
+
+<li>
+<span>WhatsApp</span>
+<a class="tag" href="https://wa.me/6287828254466" target="_blank">Chat WhatsApp</a>
+</li>
+
+<li>
+<span>GitHub</span>
+<a class="tag" href="https://github.com/reiiap/" target="_blank">github.com/reiiap</a>
+</li>
+
+<li>
+<span>Jam Layanan</span>
+<span class="tag">Fleksibel</span>
+</li>
+
+</ul>
+</div>
+
+<div class="panel" style="background:rgba(148,163,184,.06);border-color:rgba(148,163,184,.12);">
+
+<h2 style="margin:0 0 10px;font-size:16px;">Aksi Cepat</h2>
+
+<p style="margin:0;color:var(--muted)">
+Untuk pemesanan layanan atau pertanyaan terkait toko, Anda dapat memulai dari sini.
+</p>
+
+<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+<a class="btn primary" href="qris.html">Pembayaran QRIS</a>
+
+<a class="btn" href="https://wa.me/6287828254466" target="_blank">
+Konfirmasi Pembayaran (WhatsApp)
+</a>
+
+<a class="btn" href="store.html">Lihat Paket Hosting</a>
+<a class="btn" href="jasa-setup.html">Lihat Jasa Setup</a>
+</div>
+
+<div style="margin-top:14px;color:var(--muted);font-weight:900;font-size:12px;">
+Endpoint status server: https://api.mcstatus.io/v2/status/java/&lt;server-address&gt;
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-inner">
+<p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
+<p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta.</p>
+</div>
+</div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
