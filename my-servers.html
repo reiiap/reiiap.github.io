@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ReiiKajurawa — My Servers</title>
+  <meta name="description" content="Status & player count server Minecraft ReiiKajurawa secara real-time." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --card:#1e293b;
+      --cardHover:#334155;
+      --border:rgba(148,163,184,.18);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --online:#38bdf8;
+      --offline:#f87171;
+      --error:#facc15;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --shadowSoft: 0 10px 24px rgba(0,0,0,.25);
+      --radius: 16px;
+      --radiusSm: 12px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand-badge{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
+      border:1px solid rgba(148,163,184,.22);
+      box-shadow: var(--shadowSoft);
+      display:grid;
+      place-items:center;
+      user-select:none;
+    }
+    .brand-badge svg{ width:22px; height:22px; display:block; }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      font-weight:700;
+      font-size:14px;
+    }
+    .menu a:hover{
+      transform: translateY(-1px);
+      background: rgba(148,163,184,.08);
+      border-color: rgba(148,163,184,.14);
+      color: var(--text);
+    }
+    .menu a.active{
+      background: rgba(56,189,248,.10);
+      border-color: rgba(56,189,248,.22);
+      color: var(--text);
+    }
+    .hero{ padding: 26px 0 10px; }
+    .hero-card{
+      background: rgba(15,23,42,.70);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadowSoft);
+    }
+    .hero-title{ margin:0 0 6px; font-size: 26px; letter-spacing:.2px; }
+    .hero-sub{ margin:0; color: var(--muted); max-width: 78ch; }
+    .chips{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(148,163,184,.08);
+      border: 1px solid rgba(148,163,184,.14);
+      color: var(--text);
+      font-weight:700;
+      font-size:13px;
+    }
+    .chip-dot{ width:8px; height:8px; border-radius:999px; background: var(--muted); opacity:.9; }
+    .section{ padding: 20px 0; }
+    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing:.2px; }
+    .section p{ margin:0; color: var(--muted); }
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .server-card{
+      grid-column: span 4;
+      background: var(--card);
+      border: 1px solid rgba(148,163,184,.14);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadowSoft);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .server-card:hover{
+      transform: translateY(-4px);
+      background: var(--cardHover);
+      border-color: rgba(148,163,184,.22);
+    }
+    .server-top{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+    }
+    .server-logo{
+      width:48px;
+      height:48px;
+      border-radius: 14px;
+      background: rgba(148,163,184,.10);
+      border: 1px solid rgba(148,163,184,.16);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      flex: 0 0 auto;
+      position:relative;
+    }
+    .server-logo svg{ width:100%; height:100%; display:block; }
+    .server-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      position:absolute;
+      inset:0;
+    }
+    .server-meta{ min-width: 0; flex:1; }
+    .server-name{
+      margin:0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:.15px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .server-addr{
+      margin: 2px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .server-stats{
+      margin-top: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.16);
+      background: rgba(148,163,184,.08);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+    }
+    .status-dot{ width:9px; height:9px; border-radius: 999px; background: var(--muted); }
+    .status--online{
+      border-color: rgba(56,189,248,.30);
+      background: rgba(56,189,248,.12);
+      color: var(--text);
+    }
+    .status--online .status-dot{ background: var(--online); }
+    .status--offline{
+      border-color: rgba(248,113,113,.30);
+      background: rgba(248,113,113,.12);
+      color: var(--text);
+    }
+    .status--offline .status-dot{ background: var(--offline); }
+    .status--error{
+      border-color: rgba(250,204,21,.32);
+      background: rgba(250,204,21,.12);
+      color: var(--text);
+    }
+    .status--error .status-dot{ background: var(--error); }
+    .status--loading{ opacity:.9; }
+    .status--loading .status-dot{
+      background: linear-gradient(90deg, rgba(148,163,184,.55), rgba(148,163,184,.18));
+    }
+    .players{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.14);
+      background: rgba(148,163,184,.06);
+      color: var(--text);
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing:.1px;
+    }
+    .players small{ color: var(--muted); font-weight: 800; letter-spacing: .15px; }
+    .server-actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(148,163,184,.12);
+      border-color: rgba(148,163,184,.26);
+    }
+    .btn.primary{
+      background: rgba(56,189,248,.14);
+      border-color: rgba(56,189,248,.26);
+    }
+    .btn.primary:hover{
+      background: rgba(56,189,248,.18);
+      border-color: rgba(56,189,248,.34);
+    }
+    .muted{ color: var(--muted); }
+    .footer{
+      margin-top: 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(15,23,42,.70);
+    }
+    .footer-inner{
+      padding: 18px 0;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .footer p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 80ch;
+    }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 16px;
+      transform: translateX(-50%);
+      background: rgba(15,23,42,.92);
+      border: 1px solid rgba(148,163,184,.22);
+      box-shadow: var(--shadow);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    @media (max-width: 920px){
+      .server-card{ grid-column: span 6; }
+      .hero-title{ font-size: 22px; }
+    }
+    @media (max-width: 620px){
+      .server-card{ grid-column: span 12; }
+      .menu a{ padding:9px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Ke Home">
+          <div class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <defs>
+                <linearGradient id="rkGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#facc15" />
+                </linearGradient>
+              </defs>
+              <rect x="8" y="8" width="48" height="48" rx="14" fill="url(#rkGrad)" />
+              <text x="32" y="39" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#0b1220">RK</text>
+            </svg>
+          </div>
+          <div>ReiiKajurawa</div>
+        </a>
+        <nav class="menu" aria-label="Menu utama">
+          <a href="index.html">Home</a>
+          <a href="store.html">Store</a>
+          <a href="jasa-setup.html">Jasa Setup</a>
+          <a class="active" href="my-servers.html">My Servers</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero My Servers">
+      <div class="container">
+        <div class="hero-card">
+          <h1 class="hero-title">My Servers</h1>
+          <p class="hero-sub">
+            Status & player count update real-time via API mcstatus.io:
+            <span class="muted">https://api.mcstatus.io/v2/status/java/&lt;server-address&gt;</span>
+          </p>
+          <div class="chips" aria-label="Legend status">
+            <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Online</span>
+            <span class="chip"><span class="chip-dot" style="background:#f87171"></span> Offline</span>
+            <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Error</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Daftar server">
+      <div class="container">
+        <h2>Daftar Server</h2>
+        <p>Ganti alamat server di array <span class="muted">SERVER_LIST</span> pada script bawah.</p>
+
+        <div class="grid" aria-label="Server cards">
+          <article class="server-card" data-server-card="srv1">
+            <div class="server-top">
+              <div class="server-logo" aria-hidden="true">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="s1g" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity=".55" />
+                      <stop offset="100%" stop-color="#facc15" stop-opacity=".35" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="48" height="48" rx="14" fill="url(#s1g)" />
+                  <text x="24" y="29" text-anchor="middle" font-family="Arial" font-size="16" font-weight="900" fill="#0b1220">MC</text>
+                </svg>
+                <img src="assets/server1.png" alt="" onerror="this.style.display='none';" />
+              </div>
+              <div class="server-meta">
+                <h3 class="server-name">Kandang Alwi</h3>
+                <p class="server-addr" data-addr>play.kandangalwi.net</p>
+              </div>
+            </div>
+            <div class="server-stats">
+              <span class="status-badge status--loading" data-status-badge>
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-status-text>Loading</span>
+              </span>
+              <div class="players" aria-label="Player count">
+                <small>Players</small>
+                <span data-player-text>—</span>
+              </div>
+            </div>
+            <div class="server-actions">
+              <button class="btn primary" type="button" data-copy>Copy IP</button>
+              <button class="btn" type="button" data-refresh>Refresh</button>
+              <span class="muted" style="font-weight:900;font-size:12px;" data-updated>—</span>
+            </div>
+          </article>
+
+          <article class="server-card" data-server-card="srv2">
+            <div class="server-top">
+              <div class="server-logo" aria-hidden="true">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="s2g" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity=".55" />
+                      <stop offset="100%" stop-color="#facc15" stop-opacity=".35" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="48" height="48" rx="14" fill="url(#s2g)" />
+                  <text x="24" y="29" text-anchor="middle" font-family="Arial" font-size="16" font-weight="900" fill="#0b1220">MC</text>
+                </svg>
+                <img src="assets/server2.png" alt="" onerror="this.style.display='none';" />
+              </div>
+              <div class="server-meta">
+                <h3 class="server-name">VoxenSMP</h3>
+                <p class="server-addr" data-addr>play.voxensmp.net</p>
+              </div>
+            </div>
+            <div class="server-stats">
+              <span class="status-badge status--loading" data-status-badge>
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-status-text>Loading</span>
+              </span>
+              <div class="players" aria-label="Player count">
+                <small>Players</small>
+                <span data-player-text>—</span>
+              </div>
+            </div>
+            <div class="server-actions">
+              <button class="btn primary" type="button" data-copy>Copy IP</button>
+              <button class="btn" type="button" data-refresh>Refresh</button>
+              <span class="muted" style="font-weight:900;font-size:12px;" data-updated>—</span>
+            </div>
+          </article>
+
+          <article class="server-card" data-server-card="srv3">
+            <div class="server-top">
+              <div class="server-logo" aria-hidden="true">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="s3g" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity=".55" />
+                      <stop offset="100%" stop-color="#facc15" stop-opacity=".35" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="0" y="0" width="48" height="48" rx="14" fill="url(#s3g)" />
+                  <text x="24" y="29" text-anchor="middle" font-family="Arial" font-size="16" font-weight="900" fill="#0b1220">MC</text>
+                </svg>
+                <img src="assets/server3.png" alt="" onerror="this.style.display='none';" />
+              </div>
+              <div class="server-meta">
+                <h3 class="server-name">Noverin</h3>
+                <p class="server-addr" data-addr>play.noverin.net</p>
+              </div>
+            </div>
+            <div class="server-stats">
+              <span class="status-badge status--loading" data-status-badge>
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-status-text>Loading</span>
+              </span>
+              <div class="players" aria-label="Player count">
+                <small>Players</small>
+                <span data-player-text>—</span>
+              </div>
+            </div>
+            <div class="server-actions">
+              <button class="btn primary" type="button" data-copy>Copy IP</button>
+              <button class="btn" type="button" data-refresh>Refresh</button>
+              <span class="muted" style="font-weight:900;font-size:12px;" data-updated>—</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
+        <p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta. Dilarang menyalin tanpa izin.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const SERVER_LIST = [
+      { id: "srv1", name: "Kandang Alwi", address: "play.kandangalwi.net", logo: "assets/server1.png" },
+      { id: "srv2", name: "VoxenSMP", address: "play.voxensmp.net", logo: "assets/server2.png" },
+      { id: "srv3", name: "Noverin", address: "play.noverin.net", logo: "assets/server3.png" }
+    ];
+
+    const REFRESH_INTERVAL_MS = 30000;
+    const REQUEST_TIMEOUT_MS = 8000;
+
+    const toastEl = document.getElementById("toast");
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add("show");
+      window.clearTimeout(showToast._t);
+      showToast._t = window.setTimeout(() => toastEl.classList.remove("show"), 1600);
+    }
+
+    function formatTime(ts) {
+      const d = new Date(ts);
+      const hh = String(d.getHours()).padStart(2, "0");
+      const mm = String(d.getMinutes()).padStart(2, "0");
+      const ss = String(d.getSeconds()).padStart(2, "0");
+      return hh + ":" + mm + ":" + ss;
+    }
+
+    function setBadgeState(badgeEl, stateText, stateClass) {
+      badgeEl.classList.remove("status--online", "status--offline", "status--error", "status--loading");
+      badgeEl.classList.add(stateClass);
+      const textEl = badgeEl.querySelector("[data-status-text]");
+      if (textEl) textEl.textContent = stateText;
+    }
+
+    function getCardElements(serverId) {
+      const card = document.querySelector('[data-server-card="' + serverId + '"]');
+      if (!card) return null;
+      return {
+        card,
+        addrEl: card.querySelector("[data-addr]"),
+        statusBadgeEl: card.querySelector("[data-status-badge]"),
+        playerTextEl: card.querySelector("[data-player-text]"),
+        updatedEl: card.querySelector("[data-updated]"),
+        copyBtn: card.querySelector("[data-copy]"),
+        refreshBtn: card.querySelector("[data-refresh]")
+      };
+    }
+
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const t = window.setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const res = await fetch(url, { signal: controller.signal, cache: "no-store" });
+        const text = await res.text();
+        let data = null;
+        try { data = text ? JSON.parse(text) : null; } catch { data = null; }
+        return { ok: res.ok, status: res.status, data, raw: text };
+      } finally {
+        window.clearTimeout(t);
+      }
+    }
+
+    function extractPlayerText(data) {
+      const online = data && data.players && typeof data.players.online === "number" ? data.players.online : null;
+      const max = data && data.players && typeof data.players.max === "number" ? data.players.max : null;
+      if (online === null && max === null) return "—";
+      if (online !== null && max !== null) return String(online) + " / " + String(max);
+      if (online !== null && max === null) return String(online) + " / —";
+      return "—";
+    }
+
+    function normalizeStatus(result) {
+      if (!result || !result.ok) return { state: "error", label: "Error" };
+      if (!result.data || typeof result.data.online !== "boolean") return { state: "error", label: "Error" };
+      return result.data.online ? { state: "online", label: "Online" } : { state: "offline", label: "Offline" };
+    }
+
+    async function updateServer(server) {
+      const els = getCardElements(server.id);
+      if (!els) return;
+
+      els.addrEl.textContent = server.address;
+      setBadgeState(els.statusBadgeEl, "Loading", "status--loading");
+      els.playerTextEl.textContent = "—";
+      els.updatedEl.textContent = "Updating…";
+
+      const url = "https://api.mcstatus.io/v2/status/java/" + encodeURIComponent(server.address);
+      let result = null;
+
+      try {
+        result = await fetchWithTimeout(url, REQUEST_TIMEOUT_MS);
+      } catch {
+        result = { ok: false, status: 0, data: null, raw: "" };
+      }
+
+      const status = normalizeStatus(result);
+
+      if (status.state === "online") setBadgeState(els.statusBadgeEl, status.label, "status--online");
+      if (status.state === "offline") setBadgeState(els.statusBadgeEl, status.label, "status--offline");
+      if (status.state === "error") setBadgeState(els.statusBadgeEl, status.label, "status--error");
+
+      if (status.state === "online") {
+        els.playerTextEl.textContent = extractPlayerText(result.data);
+      } else if (status.state === "offline") {
+        const pt = extractPlayerText(result.data);
+        els.playerTextEl.textContent = pt === "—" ? "0 / —" : pt;
+      } else {
+        els.playerTextEl.textContent = "—";
+      }
+
+      els.updatedEl.textContent = "Updated " + formatTime(Date.now());
+    }
+
+    async function updateAllServers() {
+      await Promise.allSettled(SERVER_LIST.map(updateServer));
+    }
+
+    function initCards() {
+      SERVER_LIST.forEach(server => {
+        const els = getCardElements(server.id);
+        if (!els) return;
+
+        if (els.copyBtn) {
+          els.copyBtn.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(server.address);
+              showToast("IP disalin: " + server.address);
+            } catch {
+              showToast("Gagal copy. Salin manual: " + server.address);
+            }
+          });
+        }
+
+        if (els.refreshBtn) {
+          els.refreshBtn.addEventListener("click", () => updateServer(server));
+        }
+      });
+    }
+
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+    initCards();
+    updateAllServers();
+    window.setInterval(updateAllServers, REFRESH_INTERVAL_MS);
+  </script>
+</body>
+</html>

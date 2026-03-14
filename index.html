@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ReiiKajurawa — Home</title>
+  <meta name="description" content="ReiiKajurawa: Home, Store, Jasa Setup, My Servers, Contact." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%2338bdf8%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%23facc15%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%2748%27%20height%3D%2748%27%20rx%3D%2714%27%20fill%3D%27url(%23g)%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2739%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2724%27%20font-weight%3D%27900%27%20fill%3D%27%230b1220%27%3ERK%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --card:#1e293b;
+      --cardHover:#334155;
+      --border:rgba(148,163,184,.18);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --online:#38bdf8;
+      --offline:#f87171;
+      --error:#facc15;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --shadowSoft: 0 10px 24px rgba(0,0,0,.25);
+      --radius: 16px;
+      --radiusSm: 12px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand-badge{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
+      border:1px solid rgba(148,163,184,.22);
+      box-shadow: var(--shadowSoft);
+      display:grid;
+      place-items:center;
+      user-select:none;
+    }
+    .brand-badge svg{ width:22px; height:22px; display:block; }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      font-weight:700;
+      font-size:14px;
+    }
+    .menu a:hover{
+      transform: translateY(-1px);
+      background: rgba(148,163,184,.08);
+      border-color: rgba(148,163,184,.14);
+      color: var(--text);
+    }
+    .menu a.active{
+      background: rgba(56,189,248,.10);
+      border-color: rgba(56,189,248,.22);
+      color: var(--text);
+    }
+    .hero{ padding: 26px 0 10px; }
+    .hero-grid{ display:grid; grid-template-columns: 1.25fr .75fr; gap:18px; }
+    .hero-card{
+      background: rgba(15,23,42,.70);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadowSoft);
+    }
+    .hero-title{ margin:0 0 6px; font-size: 28px; letter-spacing:.2px; }
+    .hero-sub{ margin:0; color: var(--muted); max-width: 70ch; }
+    .chips{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(148,163,184,.08);
+      border: 1px solid rgba(148,163,184,.14);
+      color: var(--text);
+      font-weight:700;
+      font-size:13px;
+    }
+    .chip-dot{ width:8px; height:8px; border-radius:999px; background: var(--muted); opacity:.9; }
+    .quick{ display:grid; gap:10px; }
+    .quick a{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 12px 14px;
+      border-radius: var(--radiusSm);
+      background: rgba(148,163,184,.06);
+      border: 1px solid rgba(148,163,184,.12);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      color: var(--text);
+      font-weight:800;
+    }
+    .quick a:hover{
+      transform: translateY(-2px);
+      background: rgba(148,163,184,.10);
+      border-color: rgba(148,163,184,.18);
+    }
+    .quick small{ color: var(--muted); font-weight:700; }
+    .section{ padding: 20px 0; }
+    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing:.2px; }
+    .section p{ margin:0; color: var(--muted); }
+    .split{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .panel{
+      background: rgba(15,23,42,.70);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadowSoft);
+    }
+    .list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .list li{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(148,163,184,.06);
+      border: 1px solid rgba(148,163,184,.12);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .list li:hover{
+      transform: translateY(-2px);
+      background: rgba(148,163,184,.10);
+      border-color: rgba(148,163,184,.18);
+    }
+    .tag{
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .cta-row{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(148,163,184,.12);
+      border-color: rgba(148,163,184,.26);
+    }
+    .btn.primary{
+      background: rgba(56,189,248,.14);
+      border-color: rgba(56,189,248,.26);
+    }
+    .btn.primary:hover{
+      background: rgba(56,189,248,.18);
+      border-color: rgba(56,189,248,.34);
+    }
+    .footer{
+      margin-top: 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(15,23,42,.70);
+    }
+    .footer-inner{
+      padding: 18px 0;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .footer p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 80ch;
+    }
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+      .hero-title{ font-size: 24px; }
+    }
+    @media (max-width: 620px){
+      .menu a{ padding:9px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Ke Home">
+          <div class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <defs>
+                <linearGradient id="rkGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#facc15" />
+                </linearGradient>
+              </defs>
+              <rect x="8" y="8" width="48" height="48" rx="14" fill="url(#rkGrad)" />
+              <text x="32" y="39" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#0b1220">RK</text>
+            </svg>
+          </div>
+          <div>ReiiKajurawa</div>
+        </a>
+        <nav class="menu" aria-label="Menu utama">
+          <a class="active" href="index.html">Home</a>
+          <a href="store.html">Store</a>
+          <a href="jasa-setup.html">Jasa Setup</a>
+          <a href="my-servers.html">My Servers</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero Home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h1 class="hero-title">ReiiKajurawa — Control Center</h1>
+            <p class="hero-sub">
+              Home ini spill sedikit dari halaman lain yang populer.
+              Buat cek server Minecraft kamu, lihat store dummy, dan jasa setup dummy.
+            </p>
+            <div class="chips" aria-label="Highlights">
+              <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Dark modern UI</span>
+              <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Smooth hover</span>
+              <span class="chip"><span class="chip-dot" style="background:#94a3b8"></span> Responsive</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn primary" href="my-servers.html">Buka My Servers</a>
+              <a class="btn" href="store.html">Lihat Store</a>
+              <a class="btn" href="jasa-setup.html">Lihat Jasa Setup</a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="quick" aria-label="Quick links">
+              <a href="my-servers.html">
+                <span>My Servers</span>
+                <small>Status real-time</small>
+              </a>
+              <a href="store.html">
+                <span>Store</span>
+                <small>Item populer</small>
+              </a>
+              <a href="jasa-setup.html">
+                <span>Jasa Setup</span>
+                <small>Paket terlaris</small>
+              </a>
+              <a href="contact.html">
+                <span>Contact</span>
+                <small>Discord / Email / WA / GitHub</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Spill Populer">
+      <div class="container">
+        <div class="split">
+          <div class="panel">
+            <h2>Populer di Store (Spill)</h2>
+            <p>Dummy dulu, nanti tinggal ganti nama/price.</p>
+            <ul class="list" aria-label="Store populer">
+              <li><span>Rank VIP</span><span class="tag">Rp 25k</span></li>
+              <li><span>Rank MVP</span><span class="tag">Rp 50k</span></li>
+              <li><span>Key Crate x5</span><span class="tag">Rp 10k</span></li>
+              <li><span>Key Crate x20</span><span class="tag">Rp 35k</span></li>
+              <li><span>Cosmetic Pack</span><span class="tag">Rp 15k</span></li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h2>Jasa Setup (Spill)</h2>
+            <p>Dummy list, nanti gampang diganti sesuai layanan kamu.</p>
+            <ul class="list" aria-label="Jasa setup populer">
+              <li><span>Setup SMP Basic</span><span class="tag">48 jam</span></li>
+              <li><span>Setup Plugin Pack</span><span class="tag">72 jam</span></li>
+              <li><span>Konfigurasi Permission</span><span class="tag">1 hari</span></li>
+              <li><span>Anti-Cheat & Security</span><span class="tag">1–2 hari</span></li>
+              <li><span>Optimasi TPS</span><span class="tag">1 hari</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
+        <p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta. Dilarang menyalin tanpa izin.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
