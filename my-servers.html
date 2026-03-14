@@ -432,7 +432,7 @@
           <article class="server-card" data-server-card="srv1">
             <div class="server-top">
               <div class="server-logo" aria-hidden="true">
-                <img src="assets/server1.png" alt="Logo Kandang Alwi" onerror="this.style.display='none';" />
+                <img data-server-logo style="display:none;" alt="" onerror="this.style.display='none';" />
               </div>
               <div class="server-meta">
                 <h3 class="server-name">Kandang Alwi</h3>
@@ -459,7 +459,7 @@
           <article class="server-card" data-server-card="srv2">
             <div class="server-top">
               <div class="server-logo" aria-hidden="true">
-                <img src="assets/server2.png" alt="Logo VoxenSMP" onerror="this.style.display='none';" />
+                <img data-server-logo style="display:none;" alt="" onerror="this.style.display='none';" />
               </div>
               <div class="server-meta">
                 <h3 class="server-name">VoxenSMP</h3>
@@ -486,7 +486,7 @@
           <article class="server-card" data-server-card="srv3">
             <div class="server-top">
               <div class="server-logo" aria-hidden="true">
-                <img src="assets/server3.png" alt="Logo Noverin" onerror="this.style.display='none';" />
+                <img data-server-logo style="display:none;" alt="" onerror="this.style.display='none';" />
               </div>
               <div class="server-meta">
                 <h3 class="server-name">Noverin</h3>
@@ -527,9 +527,9 @@
 
   <script>
     const SERVER_LIST = [
-      { id: "srv1", name: "Kandang Alwi", address: "play.kandangalwi.net", logo: "assets/server1.png" },
-      { id: "srv2", name: "VoxenSMP", address: "play.voxensmp.net", logo: "assets/server2.png" },
-      { id: "srv3", name: "Noverin", address: "play.noverin.net", logo: "assets/server3.png" }
+      { id: "srv1", name: "Kandang Alwi", address: "play.kandangalwi.net" },
+      { id: "srv2", name: "VoxenSMP", address: "play.voxensmp.net" },
+      { id: "srv3", name: "Noverin", address: "play.noverin.net" }
     ];
 
     const REFRESH_INTERVAL_MS = 30000;
@@ -565,6 +565,7 @@
       return {
         card,
         addrEl: card.querySelector("[data-addr]"),
+        logoImgEl: card.querySelector("[data-server-logo]"),
         statusBadgeEl: card.querySelector("[data-status-badge]"),
         playerTextEl: card.querySelector("[data-player-text]"),
         updatedEl: card.querySelector("[data-updated]"),
@@ -602,6 +603,23 @@
       return result.data.online ? { state: "online", label: "Online" } : { state: "offline", label: "Offline" };
     }
 
+    function extractServerIcon(data) {
+      const v =
+        (data && typeof data.icon === "string" && data.icon) ||
+        (data && typeof data.favicon === "string" && data.favicon) ||
+        (data && typeof data.icon_data === "string" && data.icon_data) ||
+        "";
+
+      if (!v) return "";
+      if (v.startsWith("data:image/")) return v;
+      if (v.startsWith("http://") || v.startsWith("https://")) return v;
+
+      const b64 = v.replace(/\s/g, "");
+      const looksBase64 = /^[A-Za-z0-9+/]+=*$/.test(b64) && b64.length > 80;
+      if (looksBase64) return "data:image/png;base64," + b64;
+      return "";
+    }
+
     async function updateServer(server) {
       const els = getCardElements(server.id);
       if (!els) return;
@@ -610,6 +628,12 @@
       setBadgeState(els.statusBadgeEl, "Memuat", "status--loading");
       els.playerTextEl.textContent = "—";
       els.updatedEl.textContent = "Memperbarui…";
+
+      if (els.logoImgEl) {
+        els.logoImgEl.style.display = "none";
+        els.logoImgEl.removeAttribute("src");
+        els.logoImgEl.setAttribute("alt", "Ikon server " + server.name);
+      }
 
       const url = "https://api.mcstatus.io/v2/status/java/" + encodeURIComponent(server.address);
       let result = null;
@@ -633,6 +657,14 @@
         els.playerTextEl.textContent = pt === "—" ? "0 / —" : pt;
       } else {
         els.playerTextEl.textContent = "—";
+      }
+
+      if (els.logoImgEl && result && result.data) {
+        const icon = extractServerIcon(result.data);
+        if (icon) {
+          els.logoImgEl.src = icon;
+          els.logoImgEl.style.display = "block";
+        }
       }
 
       els.updatedEl.textContent = "Diperbarui " + formatTime(Date.now());
