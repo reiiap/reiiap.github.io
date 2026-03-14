@@ -27,18 +27,20 @@
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       background:
+        repeating-linear-gradient(0deg, rgba(148,163,184,.06) 0 1px, rgba(0,0,0,0) 1px 32px),
+        repeating-linear-gradient(90deg, rgba(148,163,184,.05) 0 1px, rgba(0,0,0,0) 1px 32px),
         radial-gradient(1200px 700px at 15% 10%, rgba(56,189,248,.10), rgba(0,0,0,0) 60%),
         radial-gradient(900px 600px at 85% 20%, rgba(250,204,21,.08), rgba(0,0,0,0) 55%),
         radial-gradient(900px 700px at 50% 90%, rgba(248,113,113,.08), rgba(0,0,0,0) 55%),
         linear-gradient(rgba(11,18,32,.72), rgba(11,18,32,.72)),
         url("assets/minecraft-bg.png"),
         var(--bg);
-      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
-      background-size: auto, auto, auto, auto, 560px 560px, auto;
-      background-position: center, center, center, center, top left, center;
-      background-attachment: scroll, scroll, scroll, scroll, fixed, scroll;
+      background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
+      background-size: auto, auto, auto, auto, auto, auto, 560px 560px, auto;
+      background-position: center, center, center, center, center, center, top left, center;
+      background-attachment: scroll, scroll, scroll, scroll, scroll, scroll, fixed, scroll;
       color:var(--text);
       line-height:1.55;
       overflow-x:hidden;
@@ -353,11 +355,11 @@
             <h2>Paket Populer di Toko</h2>
             <p>Berikut contoh paket yang paling sering diminta (dapat disesuaikan).</p>
             <ul class="list" aria-label="Toko populer">
-              <li><span>VPS Basic (SMP kecil)</span><span class="tag">Rp 85k/bln</span></li>
-              <li><span>VPS Pro (SMP ramai)</span><span class="tag">Rp 165k/bln</span></li>
-              <li><span>Install Panel Pterodactyl</span><span class="tag">Rp 150k</span></li>
-              <li><span>Setup Server + Plugin Pack</span><span class="tag">Rp 120k</span></li>
-              <li><span>Optimasi TPS & Keamanan</span><span class="tag">Rp 100k</span></li>
+              <li><span>VPS Basic (SMP kecil)</span><span class="tag">Rp 45k/bln</span></li>
+              <li><span>VPS Pro (SMP ramai)</span><span class="tag">Rp 90k/bln</span></li>
+              <li><span>Install Panel Pterodactyl</span><span class="tag">Rp 75k</span></li>
+              <li><span>Setup Server (Paper/Purpur)</span><span class="tag">Rp 80k</span></li>
+              <li><span>Optimasi TPS & Keamanan</span><span class="tag">Rp 60k</span></li>
             </ul>
           </div>
 
