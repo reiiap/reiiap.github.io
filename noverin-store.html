@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Noverin — Store</title>
+  <meta name="description" content="Noverin Store: Gems Shop dan Rank Shop." />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f172a;
+      --card:#1e293b;
+      --cardHover:#334155;
+      --border:rgba(148,163,184,.18);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --shadowSoft: 0 10px 24px rgba(0,0,0,.25);
+      --radius: 16px;
+      --radiusSm: 12px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      isolation:isolate;
+      background:
+        radial-gradient(1200px 900px at 16% 12%, rgba(56,189,248,.34), rgba(0,0,0,0) 60%),
+        radial-gradient(1100px 900px at 86% 10%, rgba(37,99,235,.28), rgba(0,0,0,0) 62%),
+        radial-gradient(980px 860px at 74% 78%, rgba(167,139,250,.20), rgba(0,0,0,0) 60%),
+        radial-gradient(860px 760px at 28% 86%, rgba(34,211,238,.16), rgba(0,0,0,0) 60%),
+        conic-gradient(from 230deg at 50% 50%, rgba(56,189,248,.16), rgba(99,102,241,.14), rgba(34,211,238,.12), rgba(147,51,234,.12), rgba(56,189,248,.16)),
+        repeating-linear-gradient(0deg, rgba(56,189,248,.08) 0 1px, rgba(0,0,0,0) 1px 42px),
+        repeating-linear-gradient(90deg, rgba(34,211,238,.07) 0 1px, rgba(0,0,0,0) 1px 42px),
+        radial-gradient(1400px 1000px at 50% 55%, rgba(0,0,0,0) 36%, rgba(0,0,0,.78) 100%),
+        linear-gradient(180deg, rgba(6,10,24,.92), rgba(11,18,32,.97)),
+        var(--bg);
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
+      background-size: auto, auto, auto, auto, auto, auto, auto, auto, auto, auto;
+      background-position: center, center, center, center, center, center, center, center, center, center;
+      background-attachment: fixed, fixed, fixed, fixed, fixed, scroll, scroll, fixed, fixed, scroll;
+      color:var(--text);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      background:
+        radial-gradient(60% 60% at 20% 22%, rgba(56,189,248,.28), rgba(0,0,0,0) 65%),
+        radial-gradient(60% 60% at 82% 18%, rgba(37,99,235,.22), rgba(0,0,0,0) 62%),
+        radial-gradient(65% 65% at 66% 74%, rgba(147,51,234,.18), rgba(0,0,0,0) 66%),
+        linear-gradient(120deg, rgba(56,189,248,.18), rgba(59,130,246,.12), rgba(147,51,234,.10));
+      filter: blur(90px);
+      opacity:.58;
+      transform: translate3d(0,0,0);
+      animation: drift 10s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:-1;
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(255,255,255,.90) .8px, rgba(0,0,0,0) 1.4px),
+        radial-gradient(rgba(255,255,255,.60) 1px, rgba(0,0,0,0) 1.7px),
+        radial-gradient(rgba(255,255,255,.38) 1.1px, rgba(0,0,0,0) 1.9px),
+        radial-gradient(rgba(56,189,248,.50) 1px, rgba(0,0,0,0) 2.1px),
+        radial-gradient(rgba(167,139,250,.40) 1px, rgba(0,0,0,0) 2.2px);
+      background-size: 96px 96px, 150px 150px, 240px 240px, 420px 420px, 560px 560px;
+      background-position: 0 0, 70px 40px, 140px 120px, 30px 220px, 260px 80px;
+      opacity:.52;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 10px rgba(56,189,248,.28)) drop-shadow(0 0 18px rgba(147,51,234,.18));
+      transform: translate3d(0,0,0);
+      animation: starDrift 85s linear infinite, starTwinkle 4.8s ease-in-out infinite alternate;
+      pointer-events:none;
+      z-index:-1;
+    }
+    @keyframes drift{
+      0%{ transform: translate3d(-2%, -1%, 0) rotate(0.2deg); }
+      100%{ transform: translate3d(2%, 1%, 0) rotate(-0.2deg); }
+    }
+    @keyframes starDrift{
+      0%{ transform: translate3d(0,0,0); }
+      100%{ transform: translate3d(-180px,-120px,0); }
+    }
+    @keyframes starTwinkle{
+      0%{ opacity:.22; }
+      100%{ opacity:.58; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      body::before, body::after{ animation:none; }
+      *{ scroll-behavior:auto !important; }
+    }
+    a{ color:inherit; text-decoration:none; }
+    input,button{ font-family:inherit; }
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand-badge{
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
+      border:1px solid rgba(148,163,184,.22);
+      box-shadow: var(--shadowSoft);
+      display:grid;
+      place-items:center;
+      user-select:none;
+    }
+    .brand-badge img{ width:22px; height:22px; display:block; }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      font-weight:700;
+      font-size:14px;
+    }
+    .menu a:hover{
+      transform: translateY(-1px);
+      background: rgba(148,163,184,.08);
+      border-color: rgba(148,163,184,.14);
+      color: var(--text);
+    }
+    .menu a.active{
+      background: rgba(56,189,248,.10);
+      border-color: rgba(56,189,248,.16);
+      color: var(--text);
+    }
+    .section{ padding: 26px 0; }
+    .panel{
+      background: rgba(15,23,42,.70);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadowSoft);
+    }
+    .head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .title{ margin:0; font-size: 22px; letter-spacing:.2px; }
+    .sub{ margin:6px 0 0; color: var(--muted); font-weight: 700; max-width: 80ch; }
+    .grid{ margin-top: 14px; display:grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
+    .card{
+      grid-column: span 6;
+      background: rgba(30,41,59,.50);
+      border: 1px solid rgba(148,163,184,.14);
+      border-radius: 16px;
+      padding: 14px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      background: rgba(30,41,59,.62);
+      border-color: rgba(148,163,184,.22);
+    }
+    .card-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .card-title{ margin:0; font-size: 16px; letter-spacing:.15px; }
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(56,189,248,.12);
+      border: 1px solid rgba(56,189,248,.18);
+      font-weight:900;
+      font-size: 12px;
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .desc{ margin: 10px 0 0; color: var(--muted); font-weight: 700; font-size: 13px; }
+    .meta{ margin-top: 12px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .price{ font-weight: 1000; letter-spacing:.2px; }
+    .tag{
+      padding: 6px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      white-space:nowrap;
+    }
+    .actions{ margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(148,163,184,.12);
+      border-color: rgba(148,163,184,.26);
+    }
+    .btn.primary{
+      background: rgba(56,189,248,.14);
+      border-color: rgba(56,189,248,.26);
+    }
+    .btn.primary:hover{
+      background: rgba(56,189,248,.18);
+      border-color: rgba(56,189,248,.34);
+    }
+    .split{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .box{
+      background: rgba(30,41,59,.50);
+      border: 1px solid rgba(148,163,184,.14);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .box h2{ margin:0; font-size: 16px; letter-spacing:.15px; }
+    .calc{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr 160px;
+      gap: 10px;
+      align-items:end;
+    }
+    .field{
+      display:grid;
+      gap:6px;
+    }
+    .label{
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .input{
+      width:100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(15,23,42,.55);
+      color: var(--text);
+      padding: 10px 12px;
+      font-weight: 900;
+      font-size: 13px;
+      outline:none;
+    }
+    .rows{
+      margin-top: 12px;
+      display:grid;
+      gap:10px;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(148,163,184,.06);
+      border: 1px solid rgba(148,163,184,.12);
+      flex-wrap:wrap;
+    }
+    .row strong{ letter-spacing:.2px; }
+    .row small{ color: var(--muted); font-weight: 800; }
+    .cols{
+      margin-top: 12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .list{
+      margin: 8px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap: 8px;
+    }
+    .list li{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(15,23,42,.45);
+      border: 1px solid rgba(148,163,184,.12);
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--text);
+    }
+    .list li span:first-child{ color: var(--muted); font-weight: 900; }
+    .rank-block{ margin-top: 10px; display:grid; gap: 10px; }
+    .rank-h{ margin: 10px 0 0; font-size: 13px; font-weight: 1000; letter-spacing:.15px; }
+    .chips{ margin-top: 10px; display:flex; gap: 10px; flex-wrap:wrap; }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(148,163,184,.08);
+      color: var(--text);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .chip-dot{
+      width:8px;
+      height:8px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 0 4px rgba(56,189,248,.12);
+    }
+    .footer{
+      margin-top: 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(15,23,42,.70);
+    }
+    .footer-inner{
+      padding: 18px 0;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+    }
+    .footer p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 80ch;
+    }
+    @media (max-width: 920px){
+      .split{ grid-template-columns: 1fr; }
+      .card{ grid-column: span 12; }
+      .cols{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px){
+      .menu a{ padding:9px 10px; }
+      .calc{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html" aria-label="Ke Beranda">
+          <div class="brand-badge" aria-hidden="true">
+            <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
+          </div>
+          <div>ReiiKajurawa</div>
+        </a>
+        <nav class="menu" aria-label="Menu utama">
+          <a href="index.html">Beranda</a>
+          <a href="store.html">Toko</a>
+          <a href="jasa-setup.html">Jasa Setup</a>
+          <a href="my-servers.html">Server Saya</a>
+          <a class="active" href="noverin-store.html">Noverin Store</a>
+          <a href="contact.html">Kontak</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-label="Noverin Store">
+      <div class="container">
+        <div class="panel">
+          <div class="head">
+            <div>
+              <h1 class="title">Noverin Store</h1>
+              <p class="sub">Pembelian melalui WhatsApp dan QRIS. Pilih shop di bawah ini sesuai kebutuhan.</p>
+            </div>
+            <div class="chips" aria-label="Akses cepat">
+              <a class="chip" href="qris.html"><span class="chip-dot" aria-hidden="true"></span> Pembayaran QRIS</a>
+              <a class="chip" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20item%20di%20Noverin%20Store.%20Detail%20pembelian%3A%20" target="_blank" rel="noopener"><span class="chip-dot" aria-hidden="true" style="background:#a78bfa;box-shadow:0 0 0 4px rgba(167,139,250,.12)"></span> WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="split" aria-label="Shop">
+            <div class="box" aria-label="Gems Shop">
+              <h2>Gems Shop</h2>
+              <p class="desc">Harga mengikuti rumus: 1.000 Gems = Rp 10.000. Maksimum 100.000 Gems per pembelian.</p>
+
+              <div class="calc" aria-label="Kalkulator gems">
+                <div class="field">
+                  <div class="label">Jumlah Gems (kelipatan 1.000)</div>
+                  <input class="input" id="gemsInput" type="number" min="1000" max="100000" step="1000" value="1000" />
+                </div>
+                <div class="field">
+                  <div class="label">Total Harga</div>
+                  <input class="input" id="gemsPrice" type="text" value="Rp 10.000" readonly />
+                </div>
+              </div>
+
+              <div class="actions" aria-label="Aksi gems">
+                <a class="btn primary" id="gemsQris" href="qris.html?item=Gems%201000&price=10000">Bayar QRIS</a>
+                <a class="btn" id="gemsWa" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Gems%201000%20(Rp%2010.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Beli via WhatsApp</a>
+              </div>
+
+              <div class="rows" aria-label="Paket cepat">
+                <div class="row">
+                  <div>
+                    <strong>10.000 Gems</strong><br />
+                    <small>Rp 100.000</small>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Gems%2010000&price=100000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Gems%2010.000%20(Rp%20100.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div>
+                    <strong>50.000 Gems</strong><br />
+                    <small>Rp 500.000</small>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Gems%2050000&price=500000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Gems%2050.000%20(Rp%20500.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div>
+                    <strong>100.000 Gems</strong><br />
+                    <small>Rp 1.000.000</small>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Gems%20100000&price=1000000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Gems%20100.000%20(Rp%201.000.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box" aria-label="Rank Shop">
+              <h2>Rank Shop</h2>
+              <p class="desc">Rank bersifat permanen sesuai ketentuan server. Pembelian via QRIS dan konfirmasi melalui WhatsApp.</p>
+
+              <div class="grid" aria-label="Daftar rank">
+                <div class="card" style="grid-column: span 12;">
+                  <div class="card-head">
+                    <h3 class="card-title">VIP</h3>
+                    <span class="pill">Rp 10.000</span>
+                  </div>
+                  <div class="cols">
+                    <div>
+                      <div class="rank-h">Fitur</div>
+                      <ul class="list">
+                        <li><span>ID Card & Kit</span><span>VIP Exclusive</span></li>
+                        <li><span>Set Home</span><span>5x</span></li>
+                        <li><span>Balance</span><span>$70.000</span></li>
+                        <li><span>Wave Coins</span><span>100</span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="rank-h">Gacha Rewards</div>
+                      <ul class="list">
+                        <li><span>Adventure</span><span>2x</span></li>
+                        <li><span>Mistic</span><span>1x</span></li>
+                        <li><span>Heroic</span><span>1x</span></li>
+                        <li><span>Legen</span><span>1x</span></li>
+                        <li><span>Abyss</span><span>1x</span></li>
+                        <li><span>Wave</span><span>1x</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="rank-block">
+                    <div class="rank-h">Akses Command</div>
+                    <div class="chips">
+                      <span class="chip">/backpack</span>
+                      <span class="chip">/ec</span>
+                      <span class="chip">/feed</span>
+                      <span class="chip">/hat</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Rank%20VIP%20(Noverin)&price=10000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20VIP%20Noverin%20(Rp%2010.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+                  </div>
+                </div>
+
+                <div class="card" style="grid-column: span 12;">
+                  <div class="card-head">
+                    <h3 class="card-title">VIP+</h3>
+                    <span class="pill">Rp 25.000</span>
+                  </div>
+                  <div class="cols">
+                    <div>
+                      <div class="rank-h">Fitur</div>
+                      <ul class="list">
+                        <li><span>Benefit</span><span>Semua fitur VIP</span></li>
+                        <li><span>Set Home</span><span>7x</span></li>
+                        <li><span>Balance</span><span>$150.000</span></li>
+                        <li><span>Wave Coins</span><span>250</span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="rank-h">Gacha Rewards</div>
+                      <ul class="list">
+                        <li><span>Adventure</span><span>3x</span></li>
+                        <li><span>Mistic</span><span>2x</span></li>
+                        <li><span>Heroic</span><span>2x</span></li>
+                        <li><span>Legen</span><span>2x</span></li>
+                        <li><span>Abyss</span><span>1x</span></li>
+                        <li><span>Wave</span><span>1x</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="rank-block">
+                    <div class="rank-h">Akses Command</div>
+                    <div class="chips">
+                      <span class="chip">/anvil</span>
+                      <span class="chip">/rename</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Rank%20VIP%2B%20(Noverin)&price=25000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20VIP%2B%20Noverin%20(Rp%2025.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+                  </div>
+                </div>
+
+                <div class="card" style="grid-column: span 12;">
+                  <div class="card-head">
+                    <h3 class="card-title">MVP</h3>
+                    <span class="pill">Rp 50.000</span>
+                  </div>
+                  <div class="cols">
+                    <div>
+                      <div class="rank-h">Fitur</div>
+                      <ul class="list">
+                        <li><span>Benefit</span><span>Semua fitur VIP+</span></li>
+                        <li><span>Set Home</span><span>10x</span></li>
+                        <li><span>Balance</span><span>$200.000</span></li>
+                        <li><span>Wave Coins</span><span>500</span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="rank-h">Gacha Rewards</div>
+                      <ul class="list">
+                        <li><span>Adventure</span><span>5x</span></li>
+                        <li><span>Mistic</span><span>2x</span></li>
+                        <li><span>Heroic</span><span>2x</span></li>
+                        <li><span>Legend</span><span>2x</span></li>
+                        <li><span>Abyss</span><span>1x</span></li>
+                        <li><span>Wave</span><span>1x</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="rank-block">
+                    <div class="rank-h">Akses Command</div>
+                    <div class="chips">
+                      <span class="chip">/fly</span>
+                      <span class="chip">/heal</span>
+                      <span class="chip">/repair</span>
+                      <span class="chip">/craft</span>
+                      <span class="chip">/jump</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Rank%20MVP%20(Noverin)&price=50000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20MVP%20Noverin%20(Rp%2050.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+                  </div>
+                </div>
+
+                <div class="card" style="grid-column: span 12;">
+                  <div class="card-head">
+                    <h3 class="card-title">MVP+</h3>
+                    <span class="pill">Rp 100.000</span>
+                  </div>
+                  <div class="cols">
+                    <div>
+                      <div class="rank-h">Fitur</div>
+                      <ul class="list">
+                        <li><span>Benefit</span><span>Semua fitur MVP</span></li>
+                        <li><span>Set Home</span><span>15x</span></li>
+                        <li><span>Balance</span><span>$250.000</span></li>
+                        <li><span>Wave Coins</span><span>700</span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="rank-h">Gacha Rewards</div>
+                      <ul class="list">
+                        <li><span>Adventure</span><span>5x</span></li>
+                        <li><span>Mistic</span><span>2x</span></li>
+                        <li><span>Heroic</span><span>2x</span></li>
+                        <li><span>Legen</span><span>2x</span></li>
+                        <li><span>Abyss</span><span>1x</span></li>
+                        <li><span>Wave</span><span>1x</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="rank-block">
+                    <div class="rank-h">Akses Command</div>
+                    <div class="chips">
+                      <span class="chip">/nick</span>
+                      <span class="chip">/sethome 15</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Rank%20MVP%2B%20(Noverin)&price=100000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20MVP%2B%20Noverin%20(Rp%20100.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+                  </div>
+                </div>
+
+                <div class="card" style="grid-column: span 12;">
+                  <div class="card-head">
+                    <h3 class="card-title">KING</h3>
+                    <span class="pill">Rp 150.000</span>
+                  </div>
+                  <div class="cols">
+                    <div>
+                      <div class="rank-h">Fitur</div>
+                      <ul class="list">
+                        <li><span>Benefit</span><span>Semua fitur MVP+</span></li>
+                        <li><span>Set Home</span><span>20x</span></li>
+                        <li><span>Balance</span><span>$500.000</span></li>
+                        <li><span>Wave Coins</span><span>1200</span></li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="rank-h">Gacha Rewards</div>
+                      <ul class="list">
+                        <li><span>Adventure</span><span>10x</span></li>
+                        <li><span>Mistic</span><span>5x</span></li>
+                        <li><span>Heroic</span><span>5x</span></li>
+                        <li><span>Legen</span><span>5x</span></li>
+                        <li><span>Abyss</span><span>3x</span></li>
+                        <li><span>Wave</span><span>3x</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="rank-block">
+                    <div class="rank-h">Akses Command</div>
+                    <div class="chips">
+                      <span class="chip">/repair all</span>
+                      <span class="chip">/vanish</span>
+                      <span class="chip">/sethome 20</span>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <a class="btn primary" href="qris.html?item=Rank%20KING%20(Noverin)&price=150000">Bayar QRIS</a>
+                    <a class="btn" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20KING%20Noverin%20(Rp%20150.000).%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener">Konfirmasi via WhatsApp</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
+        <p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta. Dilarang menyalin tanpa izin.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+
+    const waNumber = "6287828254466";
+
+    function formatRupiah(number) {
+      return "Rp " + Number(number).toLocaleString("id-ID");
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function roundStep(value, step) {
+      return Math.round(value / step) * step;
+    }
+
+    function updateGems() {
+      const input = document.getElementById("gemsInput");
+      const gemsPriceEl = document.getElementById("gemsPrice");
+      const gemsQris = document.getElementById("gemsQris");
+      const gemsWa = document.getElementById("gemsWa");
+
+      const raw = Number(input.value || 0);
+      const clamped = clamp(raw, 1000, 100000);
+      const gems = roundStep(clamped, 1000);
+      input.value = String(gems);
+
+      const price = (gems / 1000) * 10000;
+      gemsPriceEl.value = formatRupiah(price);
+
+      gemsQris.setAttribute("href", "qris.html?item=" + encodeURIComponent("Gems " + gems) + "&price=" + encodeURIComponent(String(price)));
+
+      const waText = "Halo ReiiKajurawa, saya ingin membeli " + gems.toLocaleString("id-ID") + " Gems (" + formatRupiah(price) + "). Bukti pembayaran: ";
+      gemsWa.setAttribute("href", "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(waText));
+    }
+
+    document.getElementById("gemsInput").addEventListener("input", updateGems);
+    updateGems();
+  </script>
+</body>
+</html>
