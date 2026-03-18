@@ -849,9 +849,9 @@
                   <div>
                     <div class="card-head" style="margin:0;">
                       <h3 class="card-title"><svg class="ico ico-lg ico-gold ico-shadow" aria-hidden="true"><use href="#ico-crown"></use></svg>Rank Custom</h3>
-                      <span class="pill">Mulai dari Rp 250.000</span>
+                      <span class="pill">Mulai dari Rp 150.000</span>
                     </div>
-                    <p class="desc">Base sudah termasuk semua fitur rank tertinggi (KING). Tambahkan fitur eksklusif lain sesuai kebutuhan.</p>
+                    <p class="desc">Base sudah termasuk semua fitur rank tertinggi (KING) + ID Card & Kit Custom (wajib). Tambahkan fitur eksklusif lain sesuai kebutuhan.</p>
                   </div>
                   <div class="builder-actions" aria-label="Aksi cepat">
                     <a class="btn primary" href="qris.html"><svg class="ico ico-cyan" aria-hidden="true"><use href="#ico-qr"></use></svg>QRIS</a>
@@ -866,15 +866,14 @@
                       <input class="input" id="customRankName" type="text" placeholder="Contoh: GALAXY / LEGEND / NOX" />
                     </div>
 
+                    <div class="rank-h">Include (Wajib)</div>
+                    <ul class="list" aria-label="Include wajib">
+                      <li><span>Benefit</span><span>Semua fitur KING</span></li>
+                      <li><span>ID Card & Kit</span><span>Custom (wajib)</span></li>
+                    </ul>
+
                     <div class="rank-h">Add-on Eksklusif (di luar KING)</div>
                     <div class="checkgrid" aria-label="Pilihan fitur">
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="ID Card & Kit Custom" data-price="35000" />
-                        <div>
-                          <strong><svg class="ico ico-emerald ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>ID Card & Kit Custom</strong>
-                          <small>+ Rp 35.000</small>
-                        </div>
-                      </label>
                       <label class="check">
                         <input type="checkbox" data-custom-addon data-label="Akses /gmsp" data-price="40000" />
                         <div>
@@ -1004,15 +1003,15 @@
                         <h3><svg class="ico ico-lg ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Total</h3>
                         <span class="tag" id="customCountTag">0 fitur</span>
                       </div>
-                      <div class="note" id="customBaseTag">Base Rp 250.000 (termasuk fitur KING)</div>
+                      <div class="note" id="customBaseTag">Base Rp 150.000 (termasuk fitur KING + ID Card & Kit Custom)</div>
                       <div class="field" style="margin-top:10px;">
                         <div class="label">Total Harga</div>
-                        <input class="input" id="customTotal" type="text" value="Rp 250.000" readonly />
+                        <input class="input" id="customTotal" type="text" value="Rp 150.000" readonly />
                       </div>
                       <ul class="summary-list" id="customSummary" aria-label="Ringkasan pilihan"></ul>
                       <div class="actions" aria-label="Aksi rank custom" style="margin-top:12px;">
-                        <a class="btn primary" id="customQris" href="qris.html?item=Rank%20Custom%20(Noverin)&price=250000"><svg class="ico ico-cyan" aria-hidden="true"><use href="#ico-qr"></use></svg>Bayar QRIS</a>
-                        <a class="btn" id="customWa" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20Custom%20Noverin%20(Rp%20250.000).%20Nama%20rank%3A%20.%20Fitur%3A%20.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener"><svg class="ico ico-violet" aria-hidden="true"><use href="#ico-chat"></use></svg>Konfirmasi via WhatsApp</a>
+                        <a class="btn primary" id="customQris" href="qris.html?item=Rank%20Custom%20(Noverin)&price=150000"><svg class="ico ico-cyan" aria-hidden="true"><use href="#ico-qr"></use></svg>Bayar QRIS</a>
+                        <a class="btn" id="customWa" href="https://wa.me/6287828254466?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20membeli%20Rank%20Custom%20Noverin%20(Rp%20150.000).%20Nama%20rank%3A%20.%20Fitur%3A%20.%20Bukti%20pembayaran%3A%20" target="_blank" rel="noopener"><svg class="ico ico-violet" aria-hidden="true"><use href="#ico-chat"></use></svg>Konfirmasi via WhatsApp</a>
                       </div>
                       <div class="note">Harga total dapat terus bertambah sesuai fitur tambahan yang dipilih.</div>
                     </div>
@@ -1083,7 +1082,7 @@
     }
 
     function updateCustomRank() {
-      const base = 250000;
+      const base = 150000;
       const nameInput = document.getElementById("customRankName");
       const rankName = (nameInput && String(nameInput.value || "").trim()) || "Custom Rank";
 
@@ -1161,6 +1160,7 @@
         rows.push('<li><span>Nama Rank</span><span>' + rankName.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span></li>");
         rows.push('<li><span>Harga Dasar</span><span>' + formatRupiah(base) + "</span></li>");
         rows.push('<li><span>Include</span><span>Semua fitur KING</span></li>');
+        rows.push('<li><span>Include</span><span>ID Card & Kit Custom</span></li>');
         if (picked.length) {
           for (const p of picked) {
             rows.push('<li><span>' + p.label.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span><span>+ " + formatRupiah(p.price) + "</span></li>");
@@ -1183,6 +1183,7 @@
       }
 
       const noteParts = [];
+      noteParts.push("Include: KING + ID Card & Kit Custom");
       if (picked.length) noteParts.push("Fitur: " + picked.map((p) => p.label).join(", "));
       if (csrPrice > 0) noteParts.push(String(csrLabel));
       if (prefixPrice > 0) noteParts.push(String(prefixLabel));
