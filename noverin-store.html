@@ -368,9 +368,22 @@
     .builder-grid{
       margin-top: 12px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 12px;
+      grid-template-columns: 1fr 360px;
+      gap: 14px;
       align-items:start;
+    }
+    .builder-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .builder-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
     .checkgrid{
       margin-top: 12px;
@@ -381,11 +394,11 @@
     .check{
       display:flex;
       gap: 10px;
-      padding: 10px 10px;
+      padding: 10px 12px;
       border-radius: 14px;
       background: rgba(148,163,184,.06);
       border: 1px solid rgba(148,163,184,.12);
-      align-items:flex-start;
+      align-items:center;
       cursor:pointer;
       user-select:none;
     }
@@ -394,14 +407,16 @@
       border-color: rgba(148,163,184,.18);
     }
     .check input{
-      margin-top: 2px;
+      margin-top: 0;
       width: 16px;
       height: 16px;
       accent-color: #38bdf8;
       flex: 0 0 auto;
     }
     .check strong{
-      display:block;
+      display:flex;
+      align-items:center;
+      gap: 8px;
       font-weight: 1000;
       letter-spacing:.1px;
       font-size: 13px;
@@ -417,6 +432,8 @@
     .summary{
       display:grid;
       gap: 10px;
+      position: sticky;
+      top: 86px;
     }
     .summary-box{
       background: rgba(15,23,42,.55);
@@ -490,6 +507,7 @@
       .card{ grid-column: span 12; }
       .cols{ grid-template-columns: 1fr; }
       .builder-grid{ grid-template-columns: 1fr; }
+      .summary{ position: static; }
     }
     @media (max-width: 620px){
       .menu a{ padding:9px 10px; }
@@ -827,11 +845,19 @@
               </div>
             </div>
               <div class="builder" aria-label="Rank Custom">
-                <div class="card-head">
-                  <h3 class="card-title"><svg class="ico ico-lg ico-gold ico-shadow" aria-hidden="true"><use href="#ico-crown"></use></svg>Rank Custom</h3>
-                  <span class="pill">Mulai dari Rp 250.000</span>
+                <div class="builder-top">
+                  <div>
+                    <div class="card-head" style="margin:0;">
+                      <h3 class="card-title"><svg class="ico ico-lg ico-gold ico-shadow" aria-hidden="true"><use href="#ico-crown"></use></svg>Rank Custom</h3>
+                      <span class="pill">Mulai dari Rp 250.000</span>
+                    </div>
+                    <p class="desc">Base sudah termasuk semua fitur rank tertinggi (KING). Tambahkan fitur eksklusif lain sesuai kebutuhan.</p>
+                  </div>
+                  <div class="builder-actions" aria-label="Aksi cepat">
+                    <a class="btn primary" href="qris.html"><svg class="ico ico-cyan" aria-hidden="true"><use href="#ico-qr"></use></svg>QRIS</a>
+                    <button class="btn" type="button" id="customReset"><svg class="ico ico-violet" aria-hidden="true"><use href="#ico-star"></use></svg>Reset</button>
+                  </div>
                 </div>
-                <p class="desc">Isi nama rank, pilih fitur tambahan, lalu total harga akan menyesuaikan secara otomatis.</p>
 
                 <div class="builder-grid" aria-label="Builder rank custom">
                   <div class="summary-box" aria-label="Konfigurasi rank custom">
@@ -840,7 +866,7 @@
                       <input class="input" id="customRankName" type="text" placeholder="Contoh: GALAXY / LEGEND / NOX" />
                     </div>
 
-                    <div class="rank-h">Fitur Tambahan</div>
+                    <div class="rank-h">Add-on Eksklusif (di luar KING)</div>
                     <div class="checkgrid" aria-label="Pilihan fitur">
                       <label class="check">
                         <input type="checkbox" data-custom-addon data-label="ID Card & Kit Custom" data-price="35000" />
@@ -850,66 +876,10 @@
                         </div>
                       </label>
                       <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Custom Prefix & Color" data-price="30000" />
+                        <input type="checkbox" data-custom-addon data-label="Akses /gmsp" data-price="40000" />
                         <div>
-                          <strong><svg class="ico ico-violet ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Custom Prefix & Color</strong>
-                          <small>+ Rp 30.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /fly" data-price="75000" />
-                        <div>
-                          <strong><svg class="ico ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-rocket"></use></svg>Akses /fly</strong>
-                          <small>+ Rp 75.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /vanish" data-price="80000" />
-                        <div>
-                          <strong><svg class="ico ico-violet ico-shadow" aria-hidden="true"><use href="#ico-shield"></use></svg>Akses /vanish</strong>
-                          <small>+ Rp 80.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /repair all" data-price="120000" />
-                        <div>
-                          <strong><svg class="ico ico-gold ico-shadow" aria-hidden="true"><use href="#ico-crown"></use></svg>Akses /repair all</strong>
-                          <small>+ Rp 120.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /nick" data-price="50000" />
-                        <div>
-                          <strong><svg class="ico ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Akses /nick</strong>
-                          <small>+ Rp 50.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /ec + /backpack" data-price="30000" />
-                        <div>
-                          <strong><svg class="ico ico-emerald ico-shadow" aria-hidden="true"><use href="#ico-shield"></use></svg>Akses /ec + /backpack</strong>
-                          <small>+ Rp 30.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /heal + /feed" data-price="35000" />
-                        <div>
-                          <strong><svg class="ico ico-emerald ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Akses /heal + /feed</strong>
-                          <small>+ Rp 35.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /anvil + /rename" data-price="30000" />
-                        <div>
-                          <strong><svg class="ico ico-violet ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Akses /anvil + /rename</strong>
-                          <small>+ Rp 30.000</small>
-                        </div>
-                      </label>
-                      <label class="check">
-                        <input type="checkbox" data-custom-addon data-label="Akses /craft + /jump + /hat" data-price="25000" />
-                        <div>
-                          <strong><svg class="ico ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Akses /craft + /jump + /hat</strong>
-                          <small>+ Rp 25.000</small>
+                          <strong><svg class="ico ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-rocket"></use></svg>Akses /gmsp</strong>
+                          <small>+ Rp 40.000</small>
                         </div>
                       </label>
                       <label class="check">
@@ -927,6 +897,73 @@
                         </div>
                       </label>
                     </div>
+
+                    <div class="rank-h">Kit CSR (Eksklusif)</div>
+                    <div class="calc" aria-label="Kit CSR">
+                      <div class="field">
+                        <div class="label">Pilih Kit CSR</div>
+                        <select class="input" id="customCsrKit">
+                          <option value="0" data-label="—" selected>Tidak</option>
+                          <option value="60000" data-label="Kit CSR 1">Kit CSR 1 (+ Rp 60.000)</option>
+                          <option value="100000" data-label="Kit CSR 2">Kit CSR 2 (+ Rp 100.000)</option>
+                          <option value="150000" data-label="Kit CSR 3">Kit CSR 3 (+ Rp 150.000)</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <div class="label">Harga</div>
+                        <input class="input" id="customCsrPrice" type="text" value="Rp 0" readonly />
+                      </div>
+                    </div>
+
+                    <div class="rank-h">Request Prefix</div>
+                    <div class="calc" aria-label="Request prefix">
+                      <div class="field">
+                        <div class="label">Paket Prefix</div>
+                        <select class="input" id="customPrefixTier">
+                          <option value="0" data-label="—" selected>Tidak</option>
+                          <option value="25000" data-label="Prefix Basic">Prefix Basic (+ Rp 25.000)</option>
+                          <option value="60000" data-label="Prefix Variatif">Prefix Variatif (+ Rp 60.000)</option>
+                          <option value="100000" data-label="Prefix Premium">Prefix Premium (+ Rp 100.000)</option>
+                        </select>
+                      </div>
+                      <div class="field">
+                        <div class="label">Harga</div>
+                        <input class="input" id="customPrefixPrice" type="text" value="Rp 0" readonly />
+                      </div>
+                    </div>
+
+                    <div class="rank-h">Merchandise (Opsional)</div>
+                    <div class="checkgrid" aria-label="Pilihan merchandise">
+                      <label class="check">
+                        <input type="checkbox" data-custom-merch data-label="Merch T-Shirt" data-price="150000" />
+                        <div>
+                          <strong><svg class="ico ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>T-Shirt</strong>
+                          <small>+ Rp 150.000</small>
+                        </div>
+                      </label>
+                      <label class="check">
+                        <input type="checkbox" data-custom-merch data-label="Merch Gantungan Kunci" data-price="35000" />
+                        <div>
+                          <strong><svg class="ico ico-emerald ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Gantungan Kunci</strong>
+                          <small>+ Rp 35.000</small>
+                        </div>
+                      </label>
+                      <label class="check">
+                        <input type="checkbox" data-custom-merch data-label="Merch Sticker Pack" data-price="20000" />
+                        <div>
+                          <strong><svg class="ico ico-violet ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Sticker Pack</strong>
+                          <small>+ Rp 20.000</small>
+                        </div>
+                      </label>
+                      <label class="check">
+                        <input type="checkbox" data-custom-merch data-label="Merch Hoodie" data-price="300000" />
+                        <div>
+                          <strong><svg class="ico ico-gold ico-shadow" aria-hidden="true"><use href="#ico-crown"></use></svg>Hoodie</strong>
+                          <small>+ Rp 300.000</small>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="note">Biaya pengiriman dan detail desain/ukuran dibahas via WhatsApp.</div>
 
                     <div class="rank-h">Bonus (Opsional)</div>
                     <div class="calc" aria-label="Bonus opsional">
@@ -965,8 +1002,9 @@
                     <div class="summary-box">
                       <div class="summary-title">
                         <h3><svg class="ico ico-lg ico-cyan ico-shadow" aria-hidden="true"><use href="#ico-star"></use></svg>Total</h3>
-                        <span class="tag" id="customBaseTag">Base Rp 250.000</span>
+                        <span class="tag" id="customCountTag">0 fitur</span>
                       </div>
+                      <div class="note" id="customBaseTag">Base Rp 250.000 (termasuk fitur KING)</div>
                       <div class="field" style="margin-top:10px;">
                         <div class="label">Total Harga</div>
                         <input class="input" id="customTotal" type="text" value="Rp 250.000" readonly />
@@ -986,7 +1024,6 @@
         </div>
       </div>
     </section>
-  </main>
   </main>
 
   <footer class="footer" aria-label="Footer">
@@ -1076,24 +1113,70 @@
         picked.push({ label, price });
       }
 
-      const total = base + addonTotal + homePrice + balancePrice + wavePrice;
+      const csrEl = document.getElementById("customCsrKit");
+      const csrValue = csrEl ? Number(csrEl.value || 0) : 0;
+      const csrLabel = csrEl ? (csrEl.options[csrEl.selectedIndex]?.getAttribute("data-label") || "") : "";
+      const csrPrice = Number.isFinite(csrValue) ? csrValue : 0;
+      const csrPriceEl = document.getElementById("customCsrPrice");
+      if (csrPriceEl) csrPriceEl.value = formatRupiah(csrPrice);
+
+      const prefixEl = document.getElementById("customPrefixTier");
+      const prefixValue = prefixEl ? Number(prefixEl.value || 0) : 0;
+      const prefixLabel = prefixEl ? (prefixEl.options[prefixEl.selectedIndex]?.getAttribute("data-label") || "") : "";
+      const prefixPrice = Number.isFinite(prefixValue) ? prefixValue : 0;
+      const prefixPriceEl = document.getElementById("customPrefixPrice");
+      if (prefixPriceEl) prefixPriceEl.value = formatRupiah(prefixPrice);
+
+      const merchEls = Array.from(document.querySelectorAll("[data-custom-merch]"));
+      const merchPicked = [];
+      let merchTotal = 0;
+      for (const m of merchEls) {
+        if (!m.checked) continue;
+        const label = m.getAttribute("data-label") || "Merch";
+        const price = Number(m.getAttribute("data-price") || 0) || 0;
+        merchTotal += price;
+        merchPicked.push({ label, price });
+      }
+
+      const total = base + addonTotal + csrPrice + prefixPrice + merchTotal + homePrice + balancePrice + wavePrice;
       const totalEl = document.getElementById("customTotal");
       if (totalEl) totalEl.value = formatRupiah(total);
+
+      const countTag = document.getElementById("customCountTag");
+      if (countTag) {
+        const c =
+          picked.length +
+          merchPicked.length +
+          (csrPrice > 0 ? 1 : 0) +
+          (prefixPrice > 0 ? 1 : 0) +
+          (homeExtra > 0 ? 1 : 0) +
+          (balanceStep > 0 ? 1 : 0) +
+          (waveStep > 0 ? 1 : 0);
+        countTag.textContent = c + " fitur";
+      }
 
       const summaryEl = document.getElementById("customSummary");
       if (summaryEl) {
         const rows = [];
         rows.push('<li><span>Nama Rank</span><span>' + rankName.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span></li>");
         rows.push('<li><span>Harga Dasar</span><span>' + formatRupiah(base) + "</span></li>");
+        rows.push('<li><span>Include</span><span>Semua fitur KING</span></li>');
         if (picked.length) {
           for (const p of picked) {
+            rows.push('<li><span>' + p.label.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span><span>+ " + formatRupiah(p.price) + "</span></li>");
+          }
+        }
+        if (csrPrice > 0) rows.push('<li><span>' + csrLabel.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span><span>+ " + formatRupiah(csrPrice) + "</span></li>");
+        if (prefixPrice > 0) rows.push('<li><span>' + prefixLabel.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span><span>+ " + formatRupiah(prefixPrice) + "</span></li>");
+        if (merchPicked.length) {
+          for (const p of merchPicked) {
             rows.push('<li><span>' + p.label.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</span><span>+ " + formatRupiah(p.price) + "</span></li>");
           }
         }
         if (homeExtra > 0) rows.push('<li><span>Tambahan Set Home</span><span>+ ' + formatRupiah(homePrice) + "</span></li>");
         if (balanceStep > 0) rows.push('<li><span>Bonus Balance</span><span>+ ' + formatRupiah(balancePrice) + "</span></li>");
         if (waveStep > 0) rows.push('<li><span>Bonus Wave Coins</span><span>+ ' + formatRupiah(wavePrice) + "</span></li>");
-        if (!picked.length && homeExtra === 0 && balanceStep === 0 && waveStep === 0) {
+        if (!picked.length && merchPicked.length === 0 && csrPrice === 0 && prefixPrice === 0 && homeExtra === 0 && balanceStep === 0 && waveStep === 0) {
           rows.push('<li><span>Fitur Tambahan</span><span>—</span></li>');
         }
         summaryEl.innerHTML = rows.join("");
@@ -1101,6 +1184,9 @@
 
       const noteParts = [];
       if (picked.length) noteParts.push("Fitur: " + picked.map((p) => p.label).join(", "));
+      if (csrPrice > 0) noteParts.push(String(csrLabel));
+      if (prefixPrice > 0) noteParts.push(String(prefixLabel));
+      if (merchPicked.length) noteParts.push("Merch: " + merchPicked.map((p) => p.label.replace(/^Merch\s+/i, "")).join(", "));
       if (homeExtra > 0) noteParts.push("SetHome +" + homeExtra);
       if (balanceStep > 0) noteParts.push("Balance +" + (balanceStep * 100000));
       if (waveStep > 0) noteParts.push("WaveCoins +" + (waveStep * 100));
@@ -1134,8 +1220,40 @@
       const el = document.getElementById(id);
       if (el) el.addEventListener("input", updateCustomRank);
     }
+    const customSelects = ["customCsrKit", "customPrefixTier"];
+    for (const id of customSelects) {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", updateCustomRank);
+    }
     for (const el of Array.from(document.querySelectorAll("[data-custom-addon]"))) {
       el.addEventListener("change", updateCustomRank);
+    }
+    for (const el of Array.from(document.querySelectorAll("[data-custom-merch]"))) {
+      el.addEventListener("change", updateCustomRank);
+    }
+    const resetBtn = document.getElementById("customReset");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        const nameEl = document.getElementById("customRankName");
+        if (nameEl) nameEl.value = "";
+        const homeEl = document.getElementById("customHomeExtra");
+        if (homeEl) homeEl.value = "0";
+        const balEl = document.getElementById("customBalanceStep");
+        if (balEl) balEl.value = "0";
+        const waveEl = document.getElementById("customWaveStep");
+        if (waveEl) waveEl.value = "0";
+        const csrEl = document.getElementById("customCsrKit");
+        if (csrEl) csrEl.value = "0";
+        const prefixEl = document.getElementById("customPrefixTier");
+        if (prefixEl) prefixEl.value = "0";
+        for (const el of Array.from(document.querySelectorAll("[data-custom-addon]"))) {
+          el.checked = false;
+        }
+        for (const el of Array.from(document.querySelectorAll("[data-custom-merch]"))) {
+          el.checked = false;
+        }
+        updateCustomRank();
+      });
     }
     updateCustomRank();
   </script>
