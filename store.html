@@ -152,30 +152,20 @@
       border-radius: 12px;
       color: var(--muted);
       border: 1px solid transparent;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
       font-weight:700;
       font-size:14px;
     }
     .menu a:hover{
       transform: translateY(-1px);
-      background: rgba(148,163,184,.08);
-      border-color: rgba(148,163,184,.14);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
       color: var(--text);
     }
     .menu a.active{
-      background: rgba(56,189,248,.10);
-      border-color: rgba(56,189,248,.22);
+      background: linear-gradient(120deg, rgba(75,217,255,.16), rgba(139,107,255,.12));
+      border-color: rgba(75,217,255,.36);
       color: var(--text);
-    }
-    .menu a.panel-link{
-      color:#fbbf24;
-      border-color: rgba(251,191,36,.28);
-      background: rgba(251,191,36,.08);
-    }
-    .menu a.panel-link:hover{
-      color:#fde68a;
-      border-color: rgba(251,191,36,.42);
-      background: rgba(251,191,36,.14);
     }
     .section{ padding: 26px 0; }
     .panel{
@@ -226,7 +216,7 @@
       font-size: 12px;
       font-weight: 900;
       border: 1px solid rgba(148,163,184,.18);
-      background: rgba(148,163,184,.08);
+      background: rgba(255,255,255,.06);
       color: var(--text);
       white-space:nowrap;
     }
@@ -234,7 +224,7 @@
     .btn{
       appearance:none;
       border: 1px solid rgba(148,163,184,.18);
-      background: rgba(148,163,184,.08);
+      background: rgba(255,255,255,.06);
       color: var(--text);
       padding: 10px 12px;
       border-radius: 12px;
@@ -425,7 +415,7 @@
           <div class="brand-badge" aria-hidden="true">
             <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
           </div>
-          <div>ReiiKajurawa</div>
+          <div>ReiiKajurawa - Development</div>
         </a>
         <nav class="menu" aria-label="Menu utama">
           <a href="index.html">Beranda</a>
@@ -433,8 +423,7 @@
           <a href="jasa-setup.html">Jasa Setup</a>
           <a href="my-servers.html">Server Saya</a>
           <a href="https://reiiapweb.xyz/deluxemenuseditor-reii/" target="_blank" rel="noopener noreferrer">DeluxeMenus Editor</a>
-          <a class="panel-link" href="https://panel.reiiapweb.xyz" target="_blank" rel="noopener noreferrer">Panel</a>
-          <a href="contact.html">Kontak</a>
+                    <a href="contact.html">Kontak</a>
         </nav>
       </div>
     </div>
