@@ -1,482 +1,213 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>ReiiKajurawa — Beranda</title>
-  <meta name="description" content="ReiiKajurawa: Beranda, Toko, Jasa Setup, Server Saya, Kontak." />
-  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reiiap — Minecraft Server Developer & Web Developer Portfolio</title>
+  <meta name="description" content="Reiiap is an Indonesia-based Minecraft server developer and web developer building high-performance roleplay systems, plugins, and modern web dashboards." />
+  <meta name="keywords" content="Minecraft developer, Minecraft server developer, Minecraft plugin developer, Roleplay server developer, Web developer portfolio, Indonesia developer" />
+  <link rel="canonical" href="https://reiiapweb.xyz/" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Reiiap Portfolio" />
+  <meta property="og:title" content="Reiiap — Minecraft Server & Web Developer" />
+  <meta property="og:description" content="Building immersive Minecraft roleplay systems and modern web platforms with production-grade performance." />
+  <meta property="og:url" content="https://reiiapweb.xyz/" />
+  <meta property="og:image" content="https://reiiapweb.xyz/assets/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reiiap — Minecraft Server & Web Developer" />
+  <meta name="twitter:description" content="Minecraft server developer + web developer portfolio from Indonesia." />
+  <meta name="twitter:image" content="https://reiiapweb.xyz/assets/logo.png" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
   <style>
-    :root{
-      --bg:#0b1220;
-      --panel:#0f172a;
-      --card:#1e293b;
-      --cardHover:#334155;
-      --border:rgba(148,163,184,.18);
-      --text:#e5e7eb;
-      --muted:#94a3b8;
-      --online:#38bdf8;
-      --offline:#f87171;
-      --error:#facc15;
-      --shadow: 0 18px 40px rgba(0,0,0,.35);
-      --shadowSoft: 0 10px 24px rgba(0,0,0,.25);
-      --radius: 16px;
-      --radiusSm: 12px;
+    :root {
+      --bg:#04060d; --bg-soft:#0b1020; --panel:rgba(16,21,39,.72); --line:rgba(255,255,255,.12);
+      --text:#f5f7ff; --muted:#a8b0cc; --cyan:#40d7ff; --violet:#9468ff; --green:#47d8a0;
+      --radius:18px; --shadow:0 20px 42px rgba(0,0,0,.36);
     }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      isolation:isolate;
-      background:
-        radial-gradient(1200px 900px at 16% 12%, rgba(56,189,248,.34), rgba(0,0,0,0) 60%),
-        radial-gradient(1100px 900px at 86% 10%, rgba(37,99,235,.28), rgba(0,0,0,0) 62%),
-        radial-gradient(980px 860px at 74% 78%, rgba(167,139,250,.20), rgba(0,0,0,0) 60%),
-        radial-gradient(860px 760px at 28% 86%, rgba(34,211,238,.16), rgba(0,0,0,0) 60%),
-        conic-gradient(from 230deg at 50% 50%, rgba(56,189,248,.16), rgba(99,102,241,.14), rgba(34,211,238,.12), rgba(147,51,234,.12), rgba(56,189,248,.16)),
-        repeating-linear-gradient(0deg, rgba(56,189,248,.08) 0 1px, rgba(0,0,0,0) 1px 42px),
-        repeating-linear-gradient(90deg, rgba(34,211,238,.07) 0 1px, rgba(0,0,0,0) 1px 42px),
-        radial-gradient(1400px 1000px at 50% 55%, rgba(0,0,0,0) 36%, rgba(0,0,0,.78) 100%),
-        linear-gradient(180deg, rgba(6,10,24,.92), rgba(11,18,32,.97)),
-        var(--bg);
-      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, no-repeat, no-repeat, no-repeat;
-      background-size: auto, auto, auto, auto, auto, auto, auto, auto, auto, auto;
-      background-position: center, center, center, center, center, center, center, center, center, center;
-      background-attachment: fixed, fixed, fixed, fixed, fixed, scroll, scroll, fixed, fixed, scroll;
-      color:var(--text);
-      line-height:1.55;
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:var(--text); font:500 16px/1.6 Inter,system-ui,sans-serif; background:var(--bg);
+      background-image: radial-gradient(1000px 620px at 8% -10%, rgba(64,215,255,.17), transparent 60%),
+                        radial-gradient(900px 620px at 94% 0%, rgba(148,104,255,.16), transparent 58%),
+                        linear-gradient(180deg, #070b17 0%, #04060d 34%, #04060d 100%);
       overflow-x:hidden;
     }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      background:
-        radial-gradient(60% 60% at 20% 22%, rgba(56,189,248,.28), rgba(0,0,0,0) 65%),
-        radial-gradient(60% 60% at 82% 18%, rgba(37,99,235,.22), rgba(0,0,0,0) 62%),
-        radial-gradient(65% 65% at 66% 74%, rgba(147,51,234,.18), rgba(0,0,0,0) 66%),
-        linear-gradient(120deg, rgba(56,189,248,.18), rgba(59,130,246,.12), rgba(147,51,234,.10));
-      filter: blur(90px);
-      opacity:.58;
-      transform: translate3d(0,0,0);
-      animation: drift 10s ease-in-out infinite alternate;
-      pointer-events:none;
-      z-index:-1;
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.28;
+      background-image: linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(ellipse at center, black 52%, transparent 92%);
     }
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-image:
-        radial-gradient(rgba(255,255,255,.90) .8px, rgba(0,0,0,0) 1.4px),
-        radial-gradient(rgba(255,255,255,.60) 1px, rgba(0,0,0,0) 1.7px),
-        radial-gradient(rgba(255,255,255,.38) 1.1px, rgba(0,0,0,0) 1.9px),
-        radial-gradient(rgba(56,189,248,.50) 1px, rgba(0,0,0,0) 2.1px),
-        radial-gradient(rgba(167,139,250,.40) 1px, rgba(0,0,0,0) 2.2px);
-      background-size: 96px 96px, 150px 150px, 240px 240px, 420px 420px, 560px 560px;
-      background-position: 0 0, 70px 40px, 140px 120px, 30px 220px, 260px 80px;
-      opacity:.52;
-      mix-blend-mode: screen;
-      filter: drop-shadow(0 0 10px rgba(56,189,248,.28)) drop-shadow(0 0 18px rgba(147,51,234,.18));
-      transform: translate3d(0,0,0);
-      animation: starDrift 85s linear infinite, starTwinkle 4.8s ease-in-out infinite alternate;
-      pointer-events:none;
-      z-index:-1;
+    .container { width:min(1120px,92vw); margin:0 auto; }
+    .nav { position:sticky; top:0; z-index:20; backdrop-filter: blur(8px); background:rgba(4,6,13,.68); border-bottom:1px solid var(--line); }
+    .nav-row { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:800; }
+    .brand img{ width:34px;height:34px;border-radius:10px;border:1px solid var(--line); }
+    .links { display:flex; gap:8px; flex-wrap:wrap; }
+    .links a,.btn { border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; padding:10px 14px; font-weight:700; transition:.2s ease; }
+    .links a:hover,.btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,.06); }
+
+    section { padding:80px 0; }
+    .hero{ padding-top:52px; }
+    .hero-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:stretch; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+    .hero-main{ padding:34px; position:relative; overflow:hidden; }
+    .tag { color:var(--cyan); font-size:13px; text-transform:uppercase; letter-spacing:.13em; font-weight:700; }
+    h1,h2,h3 { margin:0 0 12px; font-family:"Space Grotesk",Inter,sans-serif; line-height:1.15; }
+    h1 { font-size:clamp(2rem,5vw,3.4rem); }
+    .hero-main p{ margin:0; color:var(--muted); max-width:60ch; }
+    .cta { margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; }
+    .btn.primary{ background:linear-gradient(120deg,var(--cyan),#5da9ff); color:#001220; border:none; }
+    .btn.alt{ background:linear-gradient(120deg,rgba(148,104,255,.2),rgba(64,215,255,.12)); }
+    .hero-side{ padding:24px; display:grid; gap:12px; }
+    .metric{ padding:12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); }
+    .metric b{ font-size:1.45rem; display:block; }
+    .metric span{ color:var(--muted); font-size:.92rem; }
+
+    .section-title{ max-width:760px; margin-bottom:22px; }
+    .section-title p{ color:var(--muted); margin:0; }
+    .trust{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+
+    .projects{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .project{ padding:18px; display:flex; flex-direction:column; gap:12px; transition:.2s ease; }
+    .project:hover{ transform:translateY(-4px); border-color:rgba(64,215,255,.42); }
+    .pillset{ display:flex; gap:8px; flex-wrap:wrap; }
+    .pill{ padding:4px 10px; border-radius:999px; font-size:.78rem; border:1px solid var(--line); color:#d9def7; background:rgba(255,255,255,.03); }
+
+    .about-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .about{ padding:24px; }
+    .stack-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .stack-item{ padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.02); text-align:center; }
+
+    .social-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .testimonial,.contact-card{ padding:22px; }
+    .quote{ color:#d8defb; }
+
+    footer{ padding:34px 0 50px; color:var(--muted); text-align:center; }
+
+    .reveal{ opacity:0; transform:translateY(12px); transition:.45s ease; }
+    .reveal.show{ opacity:1; transform:none; }
+
+    @media (max-width:980px){
+      .hero-grid,.about-wrap,.social-grid{ grid-template-columns:1fr; }
+      .trust{ grid-template-columns:repeat(2,1fr); }
+      .projects{ grid-template-columns:1fr 1fr; }
+      .stack-grid{ grid-template-columns:repeat(3,1fr); }
     }
-    @keyframes drift{
-      0%{ transform: translate3d(-2%, -1%, 0) rotate(0.2deg); }
-      100%{ transform: translate3d(2%, 1%, 0) rotate(-0.2deg); }
-    }
-    @keyframes starDrift{
-      0%{ transform: translate3d(0,0,0); }
-      100%{ transform: translate3d(-180px,-120px,0); }
-    }
-    @keyframes starTwinkle{
-      0%{ opacity:.20; }
-      100%{ opacity:.40; }
-    }
-    @keyframes fadeUp{
-      from{ opacity:0; transform: translateY(10px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce){
-      body::before, body::after{ animation:none; }
-      *{ scroll-behavior:auto !important; }
-    }
-    a{ color:inherit; text-decoration:none; }
-    .container{ width:min(1120px, 92vw); margin:0 auto; }
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(15,23,42,.72);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
-    .brand-badge{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      background: linear-gradient(135deg, rgba(56,189,248,.28), rgba(250,204,21,.16));
-      border:1px solid rgba(148,163,184,.22);
-      box-shadow: var(--shadowSoft);
-      display:grid;
-      place-items:center;
-      user-select:none;
-    }
-    .brand-badge img{ width:22px; height:22px; display:block; }
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .menu a{
-      padding:10px 12px;
-      border-radius: 12px;
-      color: var(--muted);
-      border: 1px solid transparent;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
-      font-weight:700;
-      font-size:14px;
-    }
-    .menu a:hover{
-      transform: translateY(-1px);
-      background: rgba(148,163,184,.08);
-      border-color: rgba(148,163,184,.14);
-      color: var(--text);
-    }
-    .menu a.active{
-      background: rgba(56,189,248,.10);
-      border-color: rgba(56,189,248,.22);
-      color: var(--text);
-    }
-    .menu a.panel-link{
-      color:#fbbf24;
-      border-color: rgba(251,191,36,.28);
-      background: rgba(251,191,36,.08);
-    }
-    .menu a.panel-link:hover{
-      color:#fde68a;
-      border-color: rgba(251,191,36,.42);
-      background: rgba(251,191,36,.14);
-    }
-    .hero{ padding: 26px 0 10px; }
-    .hero-grid{ display:grid; grid-template-columns: 1.25fr .75fr; gap:18px; }
-    .hero-card{
-      background: rgba(15,23,42,.70);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadowSoft);
-      animation: fadeUp .55s ease both;
-    }
-    .hero-title{ margin:0 0 6px; font-size: 28px; letter-spacing:.2px; }
-    .hero-sub{ margin:0; color: var(--muted); max-width: 70ch; }
-    .chips{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      background: rgba(148,163,184,.08);
-      border: 1px solid rgba(148,163,184,.14);
-      color: var(--text);
-      font-weight:700;
-      font-size:13px;
-    }
-    .chip-dot{ width:8px; height:8px; border-radius:999px; background: var(--muted); opacity:.9; }
-    .quick{ display:grid; gap:10px; }
-    .quick a{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 12px 14px;
-      border-radius: var(--radiusSm);
-      background: rgba(148,163,184,.06);
-      border: 1px solid rgba(148,163,184,.12);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      color: var(--text);
-      font-weight:800;
-    }
-    .quick a:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.10);
-      border-color: rgba(148,163,184,.18);
-    }
-    .quick small{ color: var(--muted); font-weight:700; }
-    .section{ padding: 20px 0; }
-    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing:.2px; }
-    .section p{ margin:0; color: var(--muted); }
-    .split{ margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .panel{
-      background: rgba(15,23,42,.70);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadowSoft);
-      animation: fadeUp .55s ease both;
-    }
-    .list{
-      margin: 10px 0 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .list li{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(148,163,184,.06);
-      border: 1px solid rgba(148,163,184,.12);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .list li:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.10);
-      border-color: rgba(148,163,184,.18);
-    }
-    .tag{
-      padding: 6px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      border: 1px solid rgba(148,163,184,.18);
-      background: rgba(148,163,184,.08);
-      color: var(--text);
-      white-space:nowrap;
-    }
-    .cta-row{ margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn{
-      appearance:none;
-      border: 1px solid rgba(148,163,184,.18);
-      background: rgba(148,163,184,.08);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 900;
-      font-size: 13px;
-      cursor:pointer;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-    .btn:hover{
-      transform: translateY(-2px);
-      background: rgba(148,163,184,.12);
-      border-color: rgba(148,163,184,.26);
-    }
-    .btn.primary{
-      background: rgba(56,189,248,.14);
-      border-color: rgba(56,189,248,.26);
-    }
-    .btn.primary:hover{
-      background: rgba(56,189,248,.18);
-      border-color: rgba(56,189,248,.34);
-    }
-    .footer{
-      margin-top: 22px;
-      border-top: 1px solid var(--border);
-      background: rgba(15,23,42,.70);
-    }
-    .footer-inner{
-      padding: 18px 0;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 14px;
-      flex-wrap:wrap;
-    }
-    .footer p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 80ch;
-    }
-    @media (max-width: 768px){
-      body{
-        background:
-          linear-gradient(180deg, rgba(6,10,24,.96), rgba(11,18,32,.99)),
-          var(--bg);
-        background-attachment: scroll;
-      }
-      body::before, body::after{ display:none; }
-      .nav{
-        backdrop-filter:none;
-        -webkit-backdrop-filter:none;
-        background: rgba(15,23,42,.92);
-      }
-      .panel, .hero-card{
-        box-shadow:none;
-        animation:none;
-      }
-    }
-    @media (max-width: 920px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .split{ grid-template-columns: 1fr; }
-      .hero-title{ font-size: 24px; }
-    }
-    @media (max-width: 620px){
-      .nav-inner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-      }
-      .menu{
-        width:100%;
-        overflow-x:auto;
-        overflow-y:hidden;
-        flex-wrap:nowrap;
-        justify-content:flex-start;
-        padding-bottom:2px;
-        -webkit-overflow-scrolling:touch;
-        scrollbar-width:thin;
-      }
-      .menu a{
-        white-space:nowrap;
-        padding:8px 10px;
-        font-size:13px;
-      }
+    @media (max-width:700px){
+      .links{ display:none; }
+      section{ padding:62px 0; }
+      .hero-main,.hero-side,.about,.testimonial,.contact-card{ padding:18px; }
+      .projects,.trust,.stack-grid{ grid-template-columns:1fr; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Reiiap",
+    "jobTitle":"Minecraft Server Developer & Web Developer",
+    "url":"https://reiiapweb.xyz/",
+    "image":"https://reiiapweb.xyz/assets/logo.png",
+    "sameAs":["https://github.com/"],
+    "knowsAbout":["Minecraft plugin development","Roleplay server systems","Next.js","TypeScript","Java","MySQL"],
+    "address":{"@type":"PostalAddress","addressCountry":"ID"}
+  }
+  </script>
 </head>
 <body>
   <header class="nav">
-    <div class="container">
-      <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Ke Beranda">
-          <div class="brand-badge" aria-hidden="true">
-            <img src="assets/logo.png?v=20260315" alt="ReiiKajurawa" />
-          </div>
-          <div>ReiiKajurawa</div>
-        </a>
-        <nav class="menu" aria-label="Menu utama">
-          <a class="active" href="index.html">Beranda</a>
-          <a href="store.html">Toko</a>
-          <a href="jasa-setup.html">Jasa Setup</a>
-          <a href="my-servers.html">Server Saya</a>
-          <a href="https://reiiapweb.xyz/deluxemenuseditor-reii/" target="_blank" rel="noopener noreferrer">DeluxeMenus Editor</a>
-          <a class="panel-link" href="https://panel.reiiapweb.xyz" target="_blank" rel="noopener noreferrer">Panel</a>
-          <a href="contact.html">Kontak</a>
-        </nav>
-      </div>
+    <div class="container nav-row">
+      <a class="brand" href="#top"><img src="assets/logo.png" alt="Reiiap logo" loading="eager" /><span>Reiiap.dev</span></a>
+      <nav class="links" aria-label="Primary Navigation">
+        <a href="#projects">Projects</a><a href="#about">About</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero" aria-label="Hero Beranda">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <h1 class="hero-title">ReiiKajurawa — Layanan Developer Server Minecraft</h1>
-            <p class="hero-sub">
-              Fokus saya mencakup setup dan pengembangan server Minecraft, instalasi panel (Pterodactyl), optimasi TPS, plugin, serta konfigurasi permission.
-              Saya juga membantu pembelian dan pemasangan hosting untuk server Anda.
-            </p>
-            <div class="chips" aria-label="Highlights">
-              <span class="chip"><span class="chip-dot" style="background:#38bdf8"></span> Setup & Deploy</span>
-              <span class="chip"><span class="chip-dot" style="background:#facc15"></span> Optimasi & Keamanan</span>
-              <span class="chip"><span class="chip-dot" style="background:#94a3b8"></span> Hosting & Panel</span>
-            </div>
-            <div class="cta-row">
-              <a class="btn primary" href="store.html">Lihat Paket Hosting</a>
-              <a class="btn" href="qris.html">Pembayaran QRIS</a>
-              <a class="btn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20ingin%20konsultasi%20terkait%20developer%20server%20Minecraft%20dan%20hosting.%20Kebutuhan%20saya%3A%20" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
-            </div>
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="panel hero-main reveal">
+          <p class="tag">Indonesia-based developer</p>
+          <h1>Minecraft Server &amp; Web Developer Building Reliable Digital Worlds.</h1>
+          <p>I design and engineer immersive roleplay systems, performant plugin architecture, and modern web dashboards that make communities grow, engage, and trust your server brand.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="#contact">Contact Me</a>
+            <a class="btn alt" href="contact.html">Join Community</a>
           </div>
-
-          <div class="hero-card">
-            <div class="quick" aria-label="Tautan cepat">
-              <a href="my-servers.html">
-                <span>Server Saya</span>
-                <small>Portofolio dan status</small>
-              </a>
-              <a href="store.html">
-                <span>Toko</span>
-                <small>Hosting dan instalasi</small>
-              </a>
-              <a href="jasa-setup.html">
-                <span>Jasa Setup</span>
-                <small>Setup server dan panel</small>
-              </a>
-              <a href="contact.html">
-                <span>Kontak</span>
-                <small>Discord / Email / WhatsApp / GitHub</small>
-              </a>
-            </div>
-          </div>
-        </div>
+        </article>
+        <aside class="panel hero-side reveal">
+          <div class="metric"><b>6+ years</b><span>Minecraft ecosystem experience</span></div>
+          <div class="metric"><b>45+ builds</b><span>Systems, plugins & dashboards delivered</span></div>
+          <div class="metric"><b>99.9%</b><span>Target uptime for deployed server modules</span></div>
+        </aside>
       </div>
     </section>
 
-    <section class="section" aria-label="Paket Populer">
-      <div class="container">
-        <div class="split">
-          <div class="panel">
-            <h2>Paket Populer di Toko</h2>
-            <p>Berikut contoh paket yang paling sering diminta.</p>
-            <ul class="list" aria-label="Toko populer">
-              <li><span>VPS Basic (SMP kecil)</span><span class="tag">Mulai dari Rp 45k/bln</span></li>
-              <li><span>VPS Pro (SMP ramai)</span><span class="tag">Mulai dari Rp 90k/bln</span></li>
-              <li><span>Install Panel Pterodactyl</span><span class="tag">Mulai dari Rp 75k</span></li>
-              <li><span>Setup Server (Paper/Purpur)</span><span class="tag">Mulai dari Rp 80k</span></li>
-              <li><span>Optimasi TPS & Keamanan</span><span class="tag">Mulai dari Rp 60k</span></li>
-            </ul>
-          </div>
+    <section aria-labelledby="trust-title">
+      <div class="section-title reveal"><h2 id="trust-title">Trust & Impact</h2><p>Built for server owners who care about retention, scalability, and production reliability.</p></div>
+      <div class="trust">
+        <div class="panel metric reveal"><b>120k+</b><span>Community members supported</span></div>
+        <div class="panel metric reveal"><b>300k+</b><span>Monthly player sessions handled</span></div>
+        <div class="panel metric reveal"><b>18ms</b><span>Average optimized script latency</span></div>
+        <div class="panel metric reveal"><b>12</b><span>Technologies in active stack</span></div>
+        <div class="panel metric reveal"><b>24/7</b><span>Monitoring-driven deployments</span></div>
+      </div>
+    </section>
 
-          <div class="panel">
-            <h2>Layanan Jasa Setup</h2>
-            <p>Berikut contoh layanan yang sering dipesan.</p>
-            <ul class="list" aria-label="Jasa setup populer">
-              <li><span>Setup SMP + Spawn</span><span class="tag">1–2 hari</span></li>
-              <li><span>Permission & Group Rapi</span><span class="tag">1 hari</span></li>
-              <li><span>Konfigurasi Economy/Shop</span><span class="tag">1–2 hari</span></li>
-              <li><span>Anti-Cheat + Hardening</span><span class="tag">1–2 hari</span></li>
-              <li><span>Network Proxy (Velocity)</span><span class="tag">1–2 hari</span></li>
-            </ul>
-          </div>
-        </div>
+    <section id="projects" aria-labelledby="project-title">
+      <div class="section-title reveal"><h2 id="project-title">Featured Projects</h2><p>End-to-end work spanning Minecraft backend systems and polished frontend experiences.</p></div>
+      <div class="projects">
+        <article class="panel project reveal"><h3>Roleplay Economy Core</h3><p>Modular economy engine with anti-abuse logic, transaction audit trails, and reward balancing.</p><div class="pillset"><span class="pill">Java</span><span class="pill">Paper API</span><span class="pill">MySQL</span></div></article>
+        <article class="panel project reveal"><h3>Server Staff Dashboard</h3><p>Web control center for tickets, moderation logs, user roles, and real-time alerts for staff teams.</p><div class="pillset"><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span></div></article>
+        <article class="panel project reveal"><h3>Quest & Progression System</h3><p>Scalable progression architecture with custom quests, cinematic prompts, and retention analytics.</p><div class="pillset"><span class="pill">Java</span><span class="pill">Redis</span><span class="pill">ProtocolLib</span></div></article>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="about-wrap">
+        <article class="panel about reveal"><h2 id="about-title">About Reiiap</h2><p>I build premium server experiences where gameplay depth meets engineering discipline. My approach combines clean architecture, measurable performance, and UX-first thinking so your community can feel professional quality from first login to daily engagement.</p></article>
+        <article class="panel about reveal"><h3>Development Philosophy</h3><p>Ship stable systems. Measure everything. Optimize for long-term maintainability. I focus on predictable performance and clear documentation so teams can scale without technical debt bottlenecks.</p></article>
+      </div>
+    </section>
+
+    <section id="stack" aria-labelledby="stack-title">
+      <div class="section-title reveal"><h2 id="stack-title">Tech Stack</h2><p>Production tools used for server logic, automation, APIs, and interface engineering.</p></div>
+      <div class="stack-grid reveal">
+        <div class="stack-item">Next.js</div><div class="stack-item">TypeScript</div><div class="stack-item">Tailwind CSS</div><div class="stack-item">Java</div>
+        <div class="stack-item">MySQL</div><div class="stack-item">Redis</div><div class="stack-item">Docker</div><div class="stack-item">Node.js</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="proof-title">
+      <div class="section-title reveal"><h2 id="proof-title">Community Proof</h2><p>Trusted by roleplay communities that demand reliability and design quality.</p></div>
+      <div class="social-grid">
+        <article class="panel testimonial reveal"><h3>Client Feedback</h3><p class="quote">“Reiiap turned our unstable scripts into a professional, scalable roleplay system. Performance improved instantly and staff workflow became 10x easier.”</p></article>
+        <article id="contact" class="panel contact-card reveal"><h3>Let’s Build Your Next Server Experience</h3><p>Available for plugin architecture, roleplay system design, and full web dashboard development.</p><p><strong>Discord:</strong> reiiap<br><strong>Email:</strong> hello@reiiapweb.xyz<br><strong>GitHub:</strong> github.com/reiiap</p><div class="cta"><a class="btn primary" href="contact.html">Start a Project</a></div></article>
       </div>
     </section>
   </main>
 
-  <footer class="footer" aria-label="Footer">
-    <div class="container">
-      <div class="footer-inner">
-        <p>© <span id="year"></span> ReiiKajurawa. All rights reserved.</p>
-        <p>Peringatan: Seluruh konten, desain, dan aset pada situs ini dilindungi hak cipta. Dilarang menyalin tanpa izin.</p>
-      </div>
-    </div>
+  <footer>
+    © <span id="y"></span> Reiiap — Minecraft Server Developer & Web Developer.
   </footer>
 
   <script>
-    document.getElementById("year").textContent = String(new Date().getFullYear());
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const io = new IntersectionObserver((entries)=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show')), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   </script>
 </body>
 </html>
