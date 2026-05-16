@@ -310,7 +310,22 @@
         font-size:13px;
       }
     }
-  </style>
+  
+/* Unified theme override with homepage style */
+:root{--bg:#060913;--panel:rgba(16,20,36,.78);--line:rgba(255,255,255,.12);--txt:#f2f6ff;--muted:#aab6d4;--a:#4bd9ff;--b:#8b6bff;--r:16px}
+body{background:radial-gradient(900px 500px at 0 -10%,rgba(75,217,255,.17),transparent 60%),radial-gradient(900px 500px at 100% 0,rgba(139,107,255,.15),transparent 58%),var(--bg)!important;color:var(--txt)!important}
+body:before{opacity:.2!important}
+.nav{background:rgba(6,9,19,.78)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(8px)!important}
+.brand,.menu a{color:var(--txt)!important}
+.menu a{border:1px solid var(--line)!important;border-radius:11px!important;padding:10px 14px!important;font-weight:700!important;background:transparent!important}
+.menu a:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)!important;border-color:rgba(255,255,255,.2)!important}
+.menu a.active{background:linear-gradient(120deg,rgba(75,217,255,.16),rgba(139,107,255,.12))!important;border-color:rgba(75,217,255,.36)!important}
+.panel,.hero-card,.server-card,.product-card,.service-card,.info,.qris-box{background:var(--panel)!important;border:1px solid var(--line)!important;border-radius:var(--r)!important;box-shadow:none!important}
+.btn,.tag,.chip,.status-badge,.pill{background:rgba(255,255,255,.06)!important;border:1px solid var(--line)!important;color:var(--txt)!important}
+.btn.primary{background:linear-gradient(120deg,#4bd9ff,#6ba9ff)!important;color:#05101d!important;border-color:transparent!important}
+@media (max-width:620px){.nav-inner{flex-direction:column;align-items:flex-start}.menu{width:100%;overflow-x:auto;flex-wrap:nowrap}.menu a{white-space:nowrap;padding:8px 10px!important;font-size:13px!important}}
+
+</style>
 </head>
 <body>
   <header class="nav">
