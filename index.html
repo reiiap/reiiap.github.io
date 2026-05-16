@@ -3,211 +3,64 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Reiiap — Minecraft Server Developer & Web Developer Portfolio</title>
-  <meta name="description" content="Reiiap is an Indonesia-based Minecraft server developer and web developer building high-performance roleplay systems, plugins, and modern web dashboards." />
+  <title>ReiiKajurawa - Development | Minecraft Server & Web Developer</title>
+  <meta name="description" content="ReiiKajurawa - Development adalah developer Minecraft server dan web dari Indonesia yang membangun sistem roleplay, plugin, serta dashboard modern yang cepat dan stabil." />
   <meta name="keywords" content="Minecraft developer, Minecraft server developer, Minecraft plugin developer, Roleplay server developer, Web developer portfolio, Indonesia developer" />
-  <link rel="canonical" href="https://reiiapweb.xyz/" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://reiiapweb.xyz/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Reiiap Portfolio" />
-  <meta property="og:title" content="Reiiap — Minecraft Server & Web Developer" />
-  <meta property="og:description" content="Building immersive Minecraft roleplay systems and modern web platforms with production-grade performance." />
+  <meta property="og:site_name" content="ReiiKajurawa - Development" />
+  <meta property="og:title" content="ReiiKajurawa - Development" />
+  <meta property="og:description" content="Portofolio developer Minecraft server dan web dengan fokus performa, stabilitas, dan pengalaman pengguna." />
   <meta property="og:url" content="https://reiiapweb.xyz/" />
   <meta property="og:image" content="https://reiiapweb.xyz/assets/logo.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Reiiap — Minecraft Server & Web Developer" />
-  <meta name="twitter:description" content="Minecraft server developer + web developer portfolio from Indonesia." />
+  <meta name="twitter:title" content="ReiiKajurawa - Development" />
+  <meta name="twitter:description" content="Developer Minecraft server + web dari Indonesia." />
   <meta name="twitter:image" content="https://reiiapweb.xyz/assets/logo.png" />
-
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg:#04060d; --bg-soft:#0b1020; --panel:rgba(16,21,39,.72); --line:rgba(255,255,255,.12);
-      --text:#f5f7ff; --muted:#a8b0cc; --cyan:#40d7ff; --violet:#9468ff; --green:#47d8a0;
-      --radius:18px; --shadow:0 20px 42px rgba(0,0,0,.36);
-    }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      margin:0; color:var(--text); font:500 16px/1.6 Inter,system-ui,sans-serif; background:var(--bg);
-      background-image: radial-gradient(1000px 620px at 8% -10%, rgba(64,215,255,.17), transparent 60%),
-                        radial-gradient(900px 620px at 94% 0%, rgba(148,104,255,.16), transparent 58%),
-                        linear-gradient(180deg, #070b17 0%, #04060d 34%, #04060d 100%);
-      overflow-x:hidden;
-    }
-    body::before {
-      content:""; position:fixed; inset:0; pointer-events:none; opacity:.28;
-      background-image: linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: radial-gradient(ellipse at center, black 52%, transparent 92%);
-    }
-    .container { width:min(1120px,92vw); margin:0 auto; }
-    .nav { position:sticky; top:0; z-index:20; backdrop-filter: blur(8px); background:rgba(4,6,13,.68); border-bottom:1px solid var(--line); }
-    .nav-row { min-height:72px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
-    .brand { display:flex; gap:10px; align-items:center; font-weight:800; }
-    .brand img{ width:34px;height:34px;border-radius:10px;border:1px solid var(--line); }
-    .links { display:flex; gap:8px; flex-wrap:wrap; }
-    .links a,.btn { border:1px solid var(--line); border-radius:12px; color:var(--text); text-decoration:none; padding:10px 14px; font-weight:700; transition:.2s ease; }
-    .links a:hover,.btn:hover{ transform:translateY(-2px); background:rgba(255,255,255,.06); }
-
-    section { padding:80px 0; }
-    .hero{ padding-top:52px; }
-    .hero-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:stretch; }
-    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
-    .hero-main{ padding:34px; position:relative; overflow:hidden; }
-    .tag { color:var(--cyan); font-size:13px; text-transform:uppercase; letter-spacing:.13em; font-weight:700; }
-    h1,h2,h3 { margin:0 0 12px; font-family:"Space Grotesk",Inter,sans-serif; line-height:1.15; }
-    h1 { font-size:clamp(2rem,5vw,3.4rem); }
-    .hero-main p{ margin:0; color:var(--muted); max-width:60ch; }
-    .cta { margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn.primary{ background:linear-gradient(120deg,var(--cyan),#5da9ff); color:#001220; border:none; }
-    .btn.alt{ background:linear-gradient(120deg,rgba(148,104,255,.2),rgba(64,215,255,.12)); }
-    .hero-side{ padding:24px; display:grid; gap:12px; }
-    .metric{ padding:12px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); }
-    .metric b{ font-size:1.45rem; display:block; }
-    .metric span{ color:var(--muted); font-size:.92rem; }
-
-    .section-title{ max-width:760px; margin-bottom:22px; }
-    .section-title p{ color:var(--muted); margin:0; }
-    .trust{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
-
-    .projects{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-    .project{ padding:18px; display:flex; flex-direction:column; gap:12px; transition:.2s ease; }
-    .project:hover{ transform:translateY(-4px); border-color:rgba(64,215,255,.42); }
-    .pillset{ display:flex; gap:8px; flex-wrap:wrap; }
-    .pill{ padding:4px 10px; border-radius:999px; font-size:.78rem; border:1px solid var(--line); color:#d9def7; background:rgba(255,255,255,.03); }
-
-    .about-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .about{ padding:24px; }
-    .stack-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-    .stack-item{ padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.02); text-align:center; }
-
-    .social-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-    .testimonial,.contact-card{ padding:22px; }
-    .quote{ color:#d8defb; }
-
-    footer{ padding:34px 0 50px; color:var(--muted); text-align:center; }
-
-    .reveal{ opacity:0; transform:translateY(12px); transition:.45s ease; }
-    .reveal.show{ opacity:1; transform:none; }
-
-    @media (max-width:980px){
-      .hero-grid,.about-wrap,.social-grid{ grid-template-columns:1fr; }
-      .trust{ grid-template-columns:repeat(2,1fr); }
-      .projects{ grid-template-columns:1fr 1fr; }
-      .stack-grid{ grid-template-columns:repeat(3,1fr); }
-    }
-    @media (max-width:700px){
-      .links{ display:none; }
-      section{ padding:62px 0; }
-      .hero-main,.hero-side,.about,.testimonial,.contact-card{ padding:18px; }
-      .projects,.trust,.stack-grid{ grid-template-columns:1fr; }
-    }
+    :root{--bg:#060913;--panel:rgba(16,20,36,.78);--line:rgba(255,255,255,.12);--txt:#f2f6ff;--muted:#aab6d4;--a:#4bd9ff;--b:#8b6bff;--r:16px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--txt);font:500 16px/1.6 Inter,system-ui,sans-serif;background:radial-gradient(900px 500px at 0 -10%,rgba(75,217,255,.17),transparent 60%),radial-gradient(900px 500px at 100% 0,rgba(139,107,255,.15),transparent 58%),var(--bg);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:44px 44px}
+    .container{width:min(1120px,92vw);margin:auto}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(6,9,19,.78);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav-row{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand img{width:34px;height:34px;border-radius:10px;border:1px solid var(--line)}
+    .links{display:flex;flex-wrap:wrap;gap:8px}.links a,.btn{color:var(--txt);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:11px;font-weight:700;transition:.2s}.links a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
+    main section{padding:72px 0}.hero{padding-top:48px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.hero-main{padding:30px}.hero-side{padding:18px;display:grid;gap:10px}
+    .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--a);font-weight:800}h1,h2,h3{margin:0 0 10px;line-height:1.16}h1{font-size:clamp(2rem,4.8vw,3.2rem)}p{margin:0;color:var(--muted)}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn.primary{background:linear-gradient(120deg,var(--a),#6ba9ff);color:#05101d;border:none}
+    .metric{padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}.metric b{font-size:1.3rem;display:block}.metric span{font-size:.93rem;color:var(--muted)}
+    .title{margin-bottom:18px;max-width:780px}.trust{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.project{padding:16px;transition:.2s}.project:hover{transform:translateY(-3px);border-color:rgba(75,217,255,.4)}
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{font-size:.78rem;padding:4px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{padding:20px}.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tech{padding:10px;border:1px solid var(--line);border-radius:10px;text-align:center;background:rgba(255,255,255,.02)}
+    .proof{display:grid;grid-template-columns:1fr 1fr;gap:12px}footer{padding:32px 0 42px;color:var(--muted);text-align:center}
+    .reveal{opacity:0;transform:translateY(10px);transition:.4s}.reveal.show{opacity:1;transform:none}
+    @media(max-width:980px){.hero-grid,.split,.proof{grid-template-columns:1fr}.projects{grid-template-columns:1fr 1fr}.trust{grid-template-columns:repeat(2,1fr)}.stack{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:700px){.links{display:none}main section{padding:56px 0}.hero-main,.hero-side,.box{padding:16px}.projects,.trust,.stack{grid-template-columns:1fr}}
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Reiiap",
-    "jobTitle":"Minecraft Server Developer & Web Developer",
-    "url":"https://reiiapweb.xyz/",
-    "image":"https://reiiapweb.xyz/assets/logo.png",
-    "sameAs":["https://github.com/"],
-    "knowsAbout":["Minecraft plugin development","Roleplay server systems","Next.js","TypeScript","Java","MySQL"],
-    "address":{"@type":"PostalAddress","addressCountry":"ID"}
-  }
-  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"ReiiKajurawa - Development","jobTitle":"Minecraft Server Developer & Web Developer","url":"https://reiiapweb.xyz/","image":"https://reiiapweb.xyz/assets/logo.png","address":{"@type":"PostalAddress","addressCountry":"ID"}}</script>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-row">
-      <a class="brand" href="#top"><img src="assets/logo.png" alt="Reiiap logo" loading="eager" /><span>Reiiap.dev</span></a>
-      <nav class="links" aria-label="Primary Navigation">
-        <a href="#projects">Projects</a><a href="#about">About</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
+  <header class="nav"><div class="container nav-row"><a class="brand" href="#top"><img src="assets/logo.png" alt="Logo ReiiKajurawa - Development" loading="eager"/><span>ReiiKajurawa - Development</span></a><nav class="links" aria-label="Navigasi Utama"><a href="#projects">Proyek</a><a href="#about">Tentang</a><a href="#stack">Tech Stack</a><a href="#contact">Kontak</a></nav></div></header>
   <main id="top" class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <article class="panel hero-main reveal">
-          <p class="tag">Indonesia-based developer</p>
-          <h1>Minecraft Server &amp; Web Developer Building Reliable Digital Worlds.</h1>
-          <p>I design and engineer immersive roleplay systems, performant plugin architecture, and modern web dashboards that make communities grow, engage, and trust your server brand.</p>
-          <div class="cta">
-            <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn" href="#contact">Contact Me</a>
-            <a class="btn alt" href="contact.html">Join Community</a>
-          </div>
-        </article>
-        <aside class="panel hero-side reveal">
-          <div class="metric"><b>6+ years</b><span>Minecraft ecosystem experience</span></div>
-          <div class="metric"><b>45+ builds</b><span>Systems, plugins & dashboards delivered</span></div>
-          <div class="metric"><b>99.9%</b><span>Target uptime for deployed server modules</span></div>
-        </aside>
-      </div>
-    </section>
+    <section class="hero"><div class="hero-grid"><article class="panel hero-main reveal"><p class="tag">Developer Indonesia</p><h1>Membangun Sistem Minecraft Server dan Web Modern yang Cepat, Stabil, dan Terukur.</h1><p>Saya membantu komunitas dan owner server membuat sistem roleplay yang rapi, plugin yang efisien, serta dashboard web yang memudahkan operasional harian.</p><div class="cta"><a class="btn primary" href="#projects">Lihat Proyek</a><a class="btn" href="#contact">Hubungi Saya</a><a class="btn" href="contact.html">Gabung Komunitas</a></div></article><aside class="panel hero-side reveal"><div class="metric"><b>6+ Tahun</b><span>Pengalaman di ekosistem Minecraft</span></div><div class="metric"><b>45+ Proyek</b><span>Plugin, sistem, dan dashboard selesai</span></div><div class="metric"><b>99.9%</b><span>Target uptime modul produksi</span></div></aside></div></section>
 
-    <section aria-labelledby="trust-title">
-      <div class="section-title reveal"><h2 id="trust-title">Trust & Impact</h2><p>Built for server owners who care about retention, scalability, and production reliability.</p></div>
-      <div class="trust">
-        <div class="panel metric reveal"><b>120k+</b><span>Community members supported</span></div>
-        <div class="panel metric reveal"><b>300k+</b><span>Monthly player sessions handled</span></div>
-        <div class="panel metric reveal"><b>18ms</b><span>Average optimized script latency</span></div>
-        <div class="panel metric reveal"><b>12</b><span>Technologies in active stack</span></div>
-        <div class="panel metric reveal"><b>24/7</b><span>Monitoring-driven deployments</span></div>
-      </div>
-    </section>
+    <section><div class="title reveal"><h2>Kepercayaan & Dampak</h2><p>Fokus pada performa, maintainability, dan pengalaman pemain yang konsisten.</p></div><div class="trust"><div class="panel metric reveal"><b>120k+</b><span>Member komunitas terlayani</span></div><div class="panel metric reveal"><b>300k+</b><span>Sesi pemain per bulan</span></div><div class="panel metric reveal"><b>18ms</b><span>Rata-rata latensi skrip optimal</span></div><div class="panel metric reveal"><b>12</b><span>Teknologi aktif digunakan</span></div><div class="panel metric reveal"><b>24/7</b><span>Monitoring & deployment</span></div></div></section>
 
-    <section id="projects" aria-labelledby="project-title">
-      <div class="section-title reveal"><h2 id="project-title">Featured Projects</h2><p>End-to-end work spanning Minecraft backend systems and polished frontend experiences.</p></div>
-      <div class="projects">
-        <article class="panel project reveal"><h3>Roleplay Economy Core</h3><p>Modular economy engine with anti-abuse logic, transaction audit trails, and reward balancing.</p><div class="pillset"><span class="pill">Java</span><span class="pill">Paper API</span><span class="pill">MySQL</span></div></article>
-        <article class="panel project reveal"><h3>Server Staff Dashboard</h3><p>Web control center for tickets, moderation logs, user roles, and real-time alerts for staff teams.</p><div class="pillset"><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span></div></article>
-        <article class="panel project reveal"><h3>Quest & Progression System</h3><p>Scalable progression architecture with custom quests, cinematic prompts, and retention analytics.</p><div class="pillset"><span class="pill">Java</span><span class="pill">Redis</span><span class="pill">ProtocolLib</span></div></article>
-      </div>
-    </section>
+    <section id="projects"><div class="title reveal"><h2>Proyek Unggulan</h2><p>Portofolio kerja dari sistem backend Minecraft hingga interface web yang bersih.</p></div><div class="projects"><article class="panel project reveal"><h3>Roleplay Economy Core</h3><p>Sistem ekonomi modular dengan anti-abuse, audit transaksi, dan balancing reward.</p><div class="pills"><span class="pill">Java</span><span class="pill">Paper API</span><span class="pill">MySQL</span></div></article><article class="panel project reveal"><h3>Dashboard Staff Server</h3><p>Panel web untuk tiket, log moderasi, role management, dan notifikasi real-time.</p><div class="pills"><span class="pill">Next.js</span><span class="pill">TypeScript</span><span class="pill">Tailwind</span></div></article><article class="panel project reveal"><h3>Quest & Progression System</h3><p>Arsitektur progression yang scalable dengan quest kustom dan analytics retensi.</p><div class="pills"><span class="pill">Java</span><span class="pill">Redis</span><span class="pill">ProtocolLib</span></div></article></div></section>
 
-    <section id="about" aria-labelledby="about-title">
-      <div class="about-wrap">
-        <article class="panel about reveal"><h2 id="about-title">About Reiiap</h2><p>I build premium server experiences where gameplay depth meets engineering discipline. My approach combines clean architecture, measurable performance, and UX-first thinking so your community can feel professional quality from first login to daily engagement.</p></article>
-        <article class="panel about reveal"><h3>Development Philosophy</h3><p>Ship stable systems. Measure everything. Optimize for long-term maintainability. I focus on predictable performance and clear documentation so teams can scale without technical debt bottlenecks.</p></article>
-      </div>
-    </section>
+    <section id="about"><div class="split"><article class="panel box reveal"><h2>Tentang Saya</h2><p>Saya adalah developer yang menggabungkan engineering discipline dengan pengalaman bermain yang imersif. Tujuan saya sederhana: server kamu terasa profesional sejak pemain pertama login.</p></article><article class="panel box reveal"><h3>Prinsip Kerja</h3><p>Stabil dulu, cepat berikutnya. Semua sistem harus terukur, terdokumentasi, dan mudah dikembangkan tim dalam jangka panjang.</p></article></div></section>
 
-    <section id="stack" aria-labelledby="stack-title">
-      <div class="section-title reveal"><h2 id="stack-title">Tech Stack</h2><p>Production tools used for server logic, automation, APIs, and interface engineering.</p></div>
-      <div class="stack-grid reveal">
-        <div class="stack-item">Next.js</div><div class="stack-item">TypeScript</div><div class="stack-item">Tailwind CSS</div><div class="stack-item">Java</div>
-        <div class="stack-item">MySQL</div><div class="stack-item">Redis</div><div class="stack-item">Docker</div><div class="stack-item">Node.js</div>
-      </div>
-    </section>
+    <section id="stack"><div class="title reveal"><h2>Tech Stack</h2><p>Teknologi utama untuk backend server, API, automasi, dan frontend modern.</p></div><div class="stack reveal"><div class="tech">Next.js</div><div class="tech">TypeScript</div><div class="tech">Tailwind CSS</div><div class="tech">Java</div><div class="tech">MySQL</div><div class="tech">Redis</div><div class="tech">Docker</div><div class="tech">Node.js</div></div></section>
 
-    <section aria-labelledby="proof-title">
-      <div class="section-title reveal"><h2 id="proof-title">Community Proof</h2><p>Trusted by roleplay communities that demand reliability and design quality.</p></div>
-      <div class="social-grid">
-        <article class="panel testimonial reveal"><h3>Client Feedback</h3><p class="quote">“Reiiap turned our unstable scripts into a professional, scalable roleplay system. Performance improved instantly and staff workflow became 10x easier.”</p></article>
-        <article id="contact" class="panel contact-card reveal"><h3>Let’s Build Your Next Server Experience</h3><p>Available for plugin architecture, roleplay system design, and full web dashboard development.</p><p><strong>Discord:</strong> reiiap<br><strong>Email:</strong> hello@reiiapweb.xyz<br><strong>GitHub:</strong> github.com/reiiap</p><div class="cta"><a class="btn primary" href="contact.html">Start a Project</a></div></article>
-      </div>
-    </section>
+    <section><div class="title reveal"><h2>Bukti Sosial & Komunitas</h2><p>Dipercaya oleh komunitas roleplay yang membutuhkan kualitas sistem dan tampilan profesional.</p></div><div class="proof"><article class="panel box reveal"><h3>Testimoni</h3><p>“Setelah dikerjakan ReiiKajurawa, sistem kami jauh lebih stabil, mudah dipakai staff, dan performa server meningkat signifikan.”</p></article><article id="contact" class="panel box reveal"><h3>Bangun Project Kamu</h3><p>Terbuka untuk pengembangan plugin, sistem roleplay, dan dashboard web server.</p><p><strong>Discord:</strong> reiiap<br><strong>Email:</strong> hello@reiiapweb.xyz<br><strong>GitHub:</strong> github.com/reiiap</p><div class="cta"><a class="btn primary" href="contact.html">Mulai Konsultasi</a></div></article></div></section>
   </main>
-
-  <footer>
-    © <span id="y"></span> Reiiap — Minecraft Server Developer & Web Developer.
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const io = new IntersectionObserver((entries)=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show')), {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
+  <footer>© <span id="y"></span> ReiiKajurawa - Development. Seluruh hak cipta dilindungi.</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();const io=new IntersectionObserver((e)=>e.forEach(i=>i.isIntersecting&&i.target.classList.add('show')),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
 </body>
 </html>
