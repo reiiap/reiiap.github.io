@@ -29,7 +29,7 @@
     .container{width:min(1120px,92vw);margin:auto}.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
     .nav{position:sticky;top:0;z-index:10;background:rgba(6,9,19,.78);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
     .nav-row{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand img{width:34px;height:34px;border-radius:10px;border:1px solid var(--line)}
-    .links{display:flex;flex-wrap:wrap;gap:8px}.links a,.btn{color:var(--txt);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:11px;font-weight:700;transition:.2s}.links a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}
+    .links{display:flex;flex-wrap:wrap;gap:8px}.links a,.btn{color:var(--txt);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:11px;font-weight:700;transition:.2s}.links a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.05)}.links a.active{background:linear-gradient(120deg,rgba(75,217,255,.16),rgba(139,107,255,.12));border-color:rgba(75,217,255,.36);color:var(--txt)}
     main section{padding:72px 0}.hero{padding-top:48px}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.hero-main{padding:30px}.hero-side{padding:18px;display:grid;gap:10px}
     .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--a);font-weight:800}h1,h2,h3{margin:0 0 10px;line-height:1.16}h1{font-size:clamp(2rem,4.8vw,3.2rem)}p{margin:0;color:var(--muted)}
     .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn.primary{background:linear-gradient(120deg,var(--a),#6ba9ff);color:#05101d;border:none}
@@ -40,13 +40,13 @@
     .proof{display:grid;grid-template-columns:1fr 1fr;gap:12px}footer{padding:32px 0 42px;color:var(--muted);text-align:center}
     .reveal{opacity:0;transform:translateY(10px);transition:.4s}.reveal.show{opacity:1;transform:none}
     @media(max-width:980px){.hero-grid,.split,.proof{grid-template-columns:1fr}.projects{grid-template-columns:1fr 1fr}.trust{grid-template-columns:repeat(2,1fr)}.stack{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:700px){.links{display:none}main section{padding:56px 0}.hero-main,.hero-side,.box{padding:16px}.projects,.trust,.stack{grid-template-columns:1fr}}
+    @media(max-width:700px){main section{padding:56px 0}.hero-main,.hero-side,.box{padding:16px}.projects,.trust,.stack{grid-template-columns:1fr}.nav-row{flex-direction:column;align-items:flex-start}.links{width:100%;overflow-x:auto;flex-wrap:nowrap}.links a{white-space:nowrap;padding:8px 10px;font-size:13px}}
   </style>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"ReiiKajurawa - Development","jobTitle":"Minecraft Server Developer & Web Developer","url":"https://reiiapweb.xyz/","image":"https://reiiapweb.xyz/assets/logo.png","address":{"@type":"PostalAddress","addressCountry":"ID"}}</script>
 </head>
 <body>
-  <header class="nav"><div class="container nav-row"><a class="brand" href="#top"><img src="assets/logo.png" alt="Logo ReiiKajurawa - Development" loading="eager"/><span>ReiiKajurawa - Development</span></a><nav class="links" aria-label="Navigasi Utama"><a href="#projects">Proyek</a><a href="#about">Tentang</a><a href="#stack">Tech Stack</a><a href="#contact">Kontak</a></nav></div></header>
+  <header class="nav"><div class="container nav-row"><a class="brand" href="#top"><img src="assets/logo.png" alt="Logo ReiiKajurawa - Development" loading="eager"/><span>ReiiKajurawa - Development</span></a><nav class="links" aria-label="Navigasi Utama"><a class="active" href="index.html">Beranda</a><a href="store.html">Toko</a><a href="jasa-setup.html">Jasa Setup</a><a href="my-servers.html">Server Saya</a><a href="contact.html">Kontak</a></nav></div></header>
   <main id="top" class="container">
     <section class="hero"><div class="hero-grid"><article class="panel hero-main reveal"><p class="tag">Developer Indonesia</p><h1>Membangun Sistem Minecraft Server dan Web Modern yang Cepat, Stabil, dan Terukur.</h1><p>Saya membantu komunitas dan owner server membuat sistem roleplay yang rapi, plugin yang efisien, serta dashboard web yang memudahkan operasional harian.</p><div class="cta"><a class="btn primary" href="#projects">Lihat Proyek</a><a class="btn" href="#contact">Hubungi Saya</a><a class="btn" href="contact.html">Gabung Komunitas</a></div></article><aside class="panel hero-side reveal"><div class="metric"><b>6+ Tahun</b><span>Pengalaman di ekosistem Minecraft</span></div><div class="metric"><b>45+ Proyek</b><span>Plugin, sistem, dan dashboard selesai</span></div><div class="metric"><b>99.9%</b><span>Target uptime modul produksi</span></div></aside></div></section>
 
