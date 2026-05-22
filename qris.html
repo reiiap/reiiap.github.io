@@ -378,7 +378,7 @@ body:before{opacity:.2!important}
               </div>
 
               <div class="actions" aria-label="Aksi pembayaran">
-                <a class="btn primary" id="waBtn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Item%3A%20Custom%20Order.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" rel="noopener">Saya Sudah Bayar (WhatsApp)</a>
+                <a class="btn primary" id="waBtn" href="https://wa.me/6285191201723?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Item%3A%20Custom%20Order.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" rel="noopener">Saya Sudah Bayar (WhatsApp)</a>
                 <a class="btn" href="store.html">Kembali ke Toko</a>
                 <a class="btn" href="contact.html">Buka Halaman Kontak</a>
               </div>
@@ -415,7 +415,7 @@ body:before{opacity:.2!important}
     const formatted = price ? "Rp " + Number(price).toLocaleString("id-ID") : "—";
     document.getElementById("priceText").textContent = formatted;
 
-    const waNumber = "6287828254466"
+    const waNumber = "6285191201723"
     const text = "Halo ReiiKajurawa, saya sudah melakukan pembayaran via QRIS. Item: " + item + ". Nominal: " + (price ? formatted : "-") + ". Bukti pembayaran: ";
     const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
     document.getElementById("waBtn").setAttribute("href", waUrl);
