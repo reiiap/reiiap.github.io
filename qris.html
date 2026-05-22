@@ -6,8 +6,20 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>ReiiKajurawa — Pembayaran QRIS</title>
-  <meta name="description" content="Halaman pembayaran QRIS ReiiKajurawa." />
+  <title>Pembayaran QRIS Jasa Setup & Web | ReiiKajurawa</title>
+  <meta name="description" content="Halaman pembayaran QRIS resmi ReiiKajurawa untuk pemesanan jasa setup server game, hosting, dan pengembangan website." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://reiiapweb.xyz/qris.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ReiiKajurawa - Development" />
+  <meta property="og:title" content="Pembayaran QRIS Jasa Setup & Web | ReiiKajurawa" />
+  <meta property="og:description" content="Halaman pembayaran QRIS resmi ReiiKajurawa untuk pemesanan jasa setup server game, hosting, dan pengembangan website." />
+  <meta property="og:url" content="https://reiiapweb.xyz/qris.html" />
+  <meta property="og:image" content="https://reiiapweb.xyz/assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pembayaran QRIS Jasa Setup & Web | ReiiKajurawa" />
+  <meta name="twitter:description" content="Halaman pembayaran QRIS resmi ReiiKajurawa untuk pemesanan jasa setup server game, hosting, dan pengembangan website." />
+  <meta name="twitter:image" content="https://reiiapweb.xyz/assets/logo.png" />
   <link rel="icon" type="image/png" href="assets/favicon.png?v=20260315" />
   <style>
     :root{
@@ -326,6 +338,7 @@ body:before{opacity:.2!important}
 @media (max-width:620px){.nav-inner{flex-direction:column;align-items:flex-start}.menu{width:100%;overflow-x:auto;flex-wrap:nowrap}.menu a{white-space:nowrap;padding:8px 10px!important;font-size:13px!important}}
 
 </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"ReiiKajurawa - Development","url":"https://reiiapweb.xyz/","image":"https://reiiapweb.xyz/assets/logo.png","description":"Halaman pembayaran QRIS resmi ReiiKajurawa untuk pemesanan jasa setup server game, hosting, dan pengembangan website.","areaServed":"Indonesia","sameAs":["https://github.com/reiiap"]}</script>
 </head>
 <body>
   <header class="nav">
@@ -378,7 +391,7 @@ body:before{opacity:.2!important}
               </div>
 
               <div class="actions" aria-label="Aksi pembayaran">
-                <a class="btn primary" id="waBtn" href="https://wa.me/6281200000000?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Item%3A%20Custom%20Order.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" rel="noopener">Saya Sudah Bayar (WhatsApp)</a>
+                <a class="btn primary" id="waBtn" href="https://wa.me/6285191201723?text=Halo%20ReiiKajurawa%2C%20saya%20sudah%20melakukan%20pembayaran%20via%20QRIS.%20Item%3A%20Custom%20Order.%20Nominal%3A%20.%20Bukti%20pembayaran%3A%20" rel="noopener">Saya Sudah Bayar (WhatsApp)</a>
                 <a class="btn" href="store.html">Kembali ke Toko</a>
                 <a class="btn" href="contact.html">Buka Halaman Kontak</a>
               </div>
@@ -415,7 +428,7 @@ body:before{opacity:.2!important}
     const formatted = price ? "Rp " + Number(price).toLocaleString("id-ID") : "—";
     document.getElementById("priceText").textContent = formatted;
 
-    const waNumber = "6287828254466"
+    const waNumber = "6285191201723"
     const text = "Halo ReiiKajurawa, saya sudah melakukan pembayaran via QRIS. Item: " + item + ". Nominal: " + (price ? formatted : "-") + ". Bukti pembayaran: ";
     const waUrl = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(text);
     document.getElementById("waBtn").setAttribute("href", waUrl);
