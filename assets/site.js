@@ -1,3 +1,14 @@
+
+window.addEventListener('load', () => {
+  window.setTimeout(() => {
+    document.body.classList.add('loading-complete');
+    const loader = document.querySelector('.site-loader');
+    if (loader) {
+      window.setTimeout(() => loader.remove(), 520);
+    }
+  }, 2100);
+});
+
 const nav = document.getElementById('nav');
 if (nav) {
   const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 8);
