@@ -1,3 +1,22 @@
+document.body.classList.add('loading');
+
+const loader = document.getElementById('site-loader');
+const hideLoader = () => {
+  if (!loader) return;
+  loader.classList.add('is-hidden');
+  document.body.classList.remove('loading');
+  setTimeout(() => loader.remove(), 520);
+};
+
+if (loader) {
+  const startedAt = performance.now();
+  window.addEventListener('load', () => {
+    const elapsed = performance.now() - startedAt;
+    setTimeout(hideLoader, Math.max(0, 2100 - elapsed));
+  }, { once: true });
+  setTimeout(hideLoader, 2900);
+}
+
 const nav = document.getElementById('nav');
 if (nav) {
   const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 8);
@@ -5,7 +24,6 @@ if (nav) {
   window.addEventListener('scroll', setNav, { passive: true });
 }
 
-const counters = document.querySelectorAll('.counter');
 const animateCounter = (el) => {
   const target = Number(el.dataset.target || 0);
   const duration = 950;
@@ -28,7 +46,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries)
       animateCounter(entry.target);
     }
   });
-}, { threshold: .16 }) : null;
+}, { threshold: 0.16 }) : null;
 
 document.querySelectorAll('.reveal, .counter').forEach((el) => {
   if (io) io.observe(el);
