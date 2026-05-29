@@ -83,6 +83,24 @@ if (nav) {
   window.addEventListener('scroll', setNav, { passive: true });
 }
 
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.links');
+if (nav && navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('menu-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('menu-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    });
+  });
+}
+
 const counters = document.querySelectorAll('.counter');
 const animateCounter = (el) => {
   const target = Number(el.dataset.target || 0);
