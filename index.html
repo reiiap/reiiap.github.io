@@ -8,399 +8,99 @@
   <meta name="keywords" content="Minecraft plugin development, Minecraft server optimization, web development, digital store, ReiiKajurawa, server setup, developer Indonesia" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://reiiapweb.xyz/" />
-
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ReiiKajurawa Development Service" />
   <meta property="og:title" content="ReiiKajurawa Development Service" />
   <meta property="og:description" content="Custom Minecraft systems, plugins, and modern web development built for performance and scalability." />
   <meta property="og:url" content="https://reiiapweb.xyz/" />
   <meta property="og:image" content="https://reiiapweb.xyz/assets/logo.png" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ReiiKajurawa Development Service" />
   <meta name="twitter:description" content="Premium development service and digital store for Minecraft systems, plugins, optimization, and web projects." />
   <meta name="twitter:image" content="https://reiiapweb.xyz/assets/logo.png" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-
-  <style>
-    :root{
-      --bg:#050711;
-      --bg-soft:#090d1c;
-      --panel:rgba(14,20,36,.78);
-      --panel-strong:rgba(18,26,46,.88);
-      --line:rgba(151,171,210,.16);
-      --line-bright:rgba(75,217,255,.34);
-      --txt:#f6f8ff;
-      --muted:#a7b3cf;
-      --muted-2:#7f8ba8;
-      --a:#4bd9ff;
-      --b:#8b6bff;
-      --ok:#8effc1;
-      --warn:#ffd166;
-      --shadow:0 24px 80px rgba(0,0,0,.36);
-      --r:22px;
-      --r-sm:14px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--txt);
-      font:500 16px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(900px 520px at 10% -10%,rgba(75,217,255,.18),transparent 62%),
-        radial-gradient(900px 560px at 92% 6%,rgba(139,107,255,.16),transparent 64%),
-        linear-gradient(180deg,#050711 0%,#070a15 52%,#050711 100%);
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-1;
-      opacity:.18;
-      background-image:
-        linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
-      background-size:56px 56px;
-      mask-image:linear-gradient(to bottom,black,transparent 78%);
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(1180px,92vw);margin:auto}
-    .nav{
-      position:sticky;top:0;z-index:30;
-      border-bottom:1px solid var(--line);
-      background:rgba(5,7,17,.72);
-      backdrop-filter:blur(16px);
-      transition:box-shadow .25s,border-color .25s,background .25s;
-    }
-    .nav.scrolled{background:rgba(5,7,17,.9);border-color:rgba(75,217,255,.22);box-shadow:0 14px 44px rgba(0,0,0,.32)}
-    .nav-row{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:max-content;font-weight:900;letter-spacing:-.02em}
-    .brand img{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);box-shadow:0 0 0 4px rgba(75,217,255,.05)}
-    .brand small{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.02em;margin-top:-4px}
-    .links{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-    .links a,.btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      color:var(--txt);padding:10px 14px;border:1px solid transparent;border-radius:999px;
-      font-weight:800;font-size:14px;transition:transform .2s,background .2s,border-color .2s,color .2s,box-shadow .2s;
-    }
-    .links a{color:var(--muted)}
-    .links a:hover,.links a.active{color:var(--txt);background:rgba(255,255,255,.055);border-color:var(--line)}
-    .links .contact-pill{border-color:rgba(75,217,255,.22);color:#dff8ff;background:rgba(75,217,255,.075)}
-    .links .hire{color:#07111f;background:linear-gradient(135deg,var(--a),#77a7ff);border-color:transparent;box-shadow:0 10px 32px rgba(75,217,255,.18)}
-    .btn{border-color:var(--line);background:rgba(255,255,255,.035)}
-    .btn:hover{transform:translateY(-2px);border-color:var(--line-bright);background:rgba(255,255,255,.07)}
-    .btn.primary{color:#05101d;background:linear-gradient(135deg,var(--a),#71a9ff);border:0;box-shadow:0 16px 42px rgba(75,217,255,.20)}
-    .btn.dark{background:rgba(8,13,27,.72);border-color:rgba(255,255,255,.12)}
-    .btn.full{width:100%}
-    main section{padding:88px 0;scroll-margin-top:96px}
-    .hero{padding:74px 0 46px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:24px;align-items:stretch}
-    .panel,.card{
-      background:linear-gradient(180deg,rgba(18,26,46,.84),rgba(11,16,30,.76));
-      border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
-    }
-    .hero-main{position:relative;overflow:hidden;padding:42px;min-height:520px;display:flex;flex-direction:column;justify-content:center}
-    .hero-main::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,17,.94),rgba(5,7,17,.76)),url("assets/minecraft-bg.png") center/cover;opacity:.72;z-index:0}
-    .hero-main>*{position:relative;z-index:1}
-    .eyebrow{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;padding:8px 12px;border:1px solid rgba(75,217,255,.22);border-radius:999px;background:rgba(75,217,255,.075);color:#c7f4ff;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 14px rgba(142,255,193,.7)}
-    h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.04em}
-    h1{margin-top:20px;font-size:clamp(2.45rem,5.4vw,5.4rem);max-width:860px}
-    h2{font-size:clamp(2rem,3.2vw,3.4rem)}
-    h3{font-size:1.18rem;letter-spacing:-.02em}
-    p{margin:0;color:var(--muted)}
-    .hero-sub{margin-top:18px;font-size:clamp(1.04rem,1.6vw,1.35rem);max-width:780px;color:#dbe6ff}
-    .hero-desc{margin-top:10px;max-width:650px;color:var(--muted)}
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    .hero-side{padding:24px;display:grid;gap:16px}
-    .logo-card{padding:26px;display:grid;place-items:center;text-align:center;min-height:230px;background:radial-gradient(circle at 50% 30%,rgba(75,217,255,.16),transparent 60%),rgba(255,255,255,.025)}
-    .logo-card img{width:112px;height:112px;border-radius:28px;border:1px solid var(--line);box-shadow:0 18px 60px rgba(75,217,255,.12)}
-    .logo-card b{display:block;margin-top:16px;font-size:1.15rem}
-    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .mini{padding:16px;border:1px solid var(--line);border-radius:var(--r-sm);background:rgba(255,255,255,.035)}
-    .mini strong{display:block;font-size:1.55rem;line-height:1;color:#fff}.mini span{color:var(--muted);font-size:13px}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:28px}
-    .section-head p{max-width:680px;margin-top:12px}.kicker{color:var(--a);font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin-bottom:10px}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{padding:22px}.stat b{display:block;font-size:clamp(1.8rem,3vw,2.65rem);letter-spacing:-.04em}.stat span{color:var(--muted)}
-    .grid{display:grid;gap:16px}.services{grid-template-columns:repeat(5,1fr)}.service{padding:22px;min-height:250px;transition:.2s}.service:hover,.product:hover,.portfolio-card:hover,.why-item:hover{transform:translateY(-4px);border-color:rgba(75,217,255,.32)}
-    .icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;background:rgba(75,217,255,.09);border:1px solid rgba(75,217,255,.18);font-size:20px}.service p,.product p,.portfolio-card p{margin-top:10px;font-size:.95rem}
-    .store{grid-template-columns:repeat(3,1fr)}.product{padding:22px;display:flex;flex-direction:column;gap:16px;transition:.2s}.product-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.badge{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 9px;color:#d9e5ff;background:rgba(255,255,255,.045);font-size:11px;font-weight:900;text-transform:uppercase;white-space:nowrap}.price{font-size:1.2rem;color:#fff;font-weight:900}.product-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
-    .portfolio{grid-template-columns:repeat(3,1fr)}.portfolio-card{overflow:hidden;transition:.2s}.shot{height:180px;background:linear-gradient(135deg,rgba(75,217,255,.12),rgba(139,107,255,.12));border-bottom:1px solid var(--line);display:grid;place-items:center;position:relative}.shot img{width:100%;height:100%;object-fit:cover;opacity:.72}.shot.logo-shot img{width:86px;height:86px;object-fit:contain;opacity:1;border-radius:22px}.portfolio-body{padding:20px}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.pill{font-size:12px;color:#d8e7ff;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);border-radius:999px;padding:5px 9px}
-    .why{grid-template-columns:1fr 1fr 1fr 1fr 1fr}.why-item{padding:18px;transition:.2s}.why-item b{display:block;margin-bottom:8px}.why-item span{color:var(--muted);font-size:.94rem}
-    .testimonials{grid-template-columns:1fr 1fr}.quote{padding:24px}.quote p{font-size:1.1rem;color:#dbe6ff}.quote footer{margin-top:18px;color:var(--muted);font-weight:800}
-    .contact-grid{display:grid;grid-template-columns:1fr .78fr;gap:18px}.contact-card{padding:26px}.contact-list{display:grid;gap:12px;margin-top:20px}.contact-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035)}.contact-row span{color:var(--muted)}.qris-card{padding:26px;display:grid;gap:16px}.qris-card img{width:150px;border-radius:18px;border:1px solid var(--line);background:#fff;padding:8px}
-    .site-footer{border-top:1px solid var(--line);padding:34px 0 44px;background:rgba(5,7,17,.52)}.footer-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:18px;align-items:start}.footer-brand{display:flex;gap:12px;align-items:center}.footer-brand img{width:42px;height:42px;border-radius:14px}.footer-links{display:flex;flex-wrap:wrap;gap:10px}.footer-links a{color:var(--muted);font-weight:800}.copyright{margin-top:24px;color:var(--muted-2);font-size:14px}
-    .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}.reveal.show{opacity:1;transform:none}
-    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal{opacity:1;transform:none;transition:none}.btn,.service,.product,.portfolio-card,.why-item{transition:none!important}}
-    @media(max-width:1100px){.services,.why{grid-template-columns:repeat(2,1fr)}.store,.portfolio{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:900px){.nav-row{align-items:flex-start;flex-direction:column;padding:14px 0}.links{width:100%;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.links a{white-space:nowrap}.hero-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}.hero-main{min-height:auto}.stats{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){main section{padding:64px 0}.hero{padding-top:38px}.hero-main,.contact-card,.qris-card{padding:24px}.hero-side{padding:16px}.mini-grid,.stats,.services,.store,.portfolio,.why,.testimonials{grid-template-columns:1fr}.section-head{display:block}.contact-row{align-items:flex-start;flex-direction:column}.product-actions .btn{width:100%}.brand span{font-size:.95rem}.brand small{display:none}}
-  </style>
-
+  <link rel="stylesheet" href="assets/site.css" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"ReiiKajurawa Development Service","url":"https://reiiapweb.xyz/","image":"https://reiiapweb.xyz/assets/logo.png","description":"Custom Minecraft systems, plugins, server optimization, web development, and digital products built for performance and scalability.","areaServed":"Indonesia","sameAs":["https://github.com/reiiap","https://discord.gg/MCc7gPvj"]}</script>
 </head>
 <body>
   <header class="nav" id="nav">
     <div class="container nav-row">
-      <a class="brand" href="#top" aria-label="ReiiKajurawa Development Service home">
-        <img src="assets/logo.png" alt="Logo ReiiKajurawa Development Service" loading="eager" />
-        <span>ReiiKajurawa<br><small>Development Service</small></span>
-      </a>
+      <a class="brand" href="index.html" aria-label="ReiiKajurawa Development Service home"><img src="assets/logo.png" alt="Logo ReiiKajurawa Development Service" loading="eager" /><span>ReiiKajurawa<br><small>Development Service</small></span></a>
       <nav class="links" aria-label="Main navigation">
-        <a class="active" href="#top">Home</a>
-        <a href="#services">Services</a>
-        <a href="#store">Store</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-        <a class="contact-pill" href="https://wa.me/6285191201723" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="contact-pill" href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">Discord</a>
-        <a class="hire" href="#contact">Hire Me</a>
+        <a class="active" href="index.html">Home</a><a href="services.html">Services</a><a href="store.html">Store</a><a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a><a class="contact-pill" href="https://wa.me/6285191201723" target="_blank" rel="noopener">WhatsApp</a><a class="contact-pill" href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">Discord</a><a class="hire" href="contact.html">Hire Me</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main>
+    <section class="hero-home">
       <div class="container hero-grid">
         <article class="panel hero-main reveal">
           <span class="eyebrow"><span class="dot"></span> Premium dev service + digital store</span>
           <h1>ReiiKajurawa Development Service</h1>
           <p class="hero-sub">Custom Minecraft Systems, Plugins &amp; Web Development built for performance and scalability.</p>
           <p class="hero-desc">Professional solutions for serious servers, creators, and digital projects.</p>
-          <div class="cta">
-            <a class="btn primary" href="#services">View Services</a>
-            <a class="btn" href="#store">Visit Store</a>
-            <a class="btn dark" href="https://wa.me/6285191201723" target="_blank" rel="noopener">Contact</a>
-          </div>
+          <div class="cta"><a class="btn primary" href="services.html">View Services</a><a class="btn" href="store.html">Visit Store</a><a class="btn dark" href="contact.html">Contact</a></div>
         </article>
         <aside class="hero-side panel reveal" aria-label="Service highlights">
-          <div class="logo-card">
-            <div>
-              <img src="assets/logo.png" alt="ReiiKajurawa logo" loading="eager" />
-              <b>Development that feels production-ready.</b>
-              <p>Clean systems, clear delivery, and support channels that are easy to reach.</p>
-            </div>
-          </div>
-          <div class="mini-grid">
-            <div class="mini"><strong>Fast</strong><span>Consultation response</span></div>
-            <div class="mini"><strong>Clean</strong><span>Code &amp; setup structure</span></div>
-            <div class="mini"><strong>Secure</strong><span>Hardening mindset</span></div>
-            <div class="mini"><strong>Scale</strong><span>Built for growth</span></div>
-          </div>
+          <div class="logo-card"><div><img src="assets/logo.png" alt="ReiiKajurawa logo" loading="eager" /><b>Development that feels production-ready.</b><p>Clean systems, clear delivery, and support channels that are easy to reach.</p></div></div>
+          <div class="mini-grid"><div class="mini"><strong>Fast</strong><span>Consultation response</span></div><div class="mini"><strong>Clean</strong><span>Code &amp; setup structure</span></div><div class="mini"><strong>Secure</strong><span>Hardening mindset</span></div><div class="mini"><strong>Scale</strong><span>Built for growth</span></div></div>
         </aside>
       </div>
     </section>
 
     <section aria-labelledby="stats-title">
       <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Trust Signals</p>
-            <h2 id="stats-title">Reliable delivery for real digital projects.</h2>
-          </div>
-          <p>Simple numbers, clear outcomes, and a workflow designed around performance, communication, and maintainable systems.</p>
-        </div>
-        <div class="stats">
-          <div class="card stat reveal"><b><span class="counter" data-target="45">0</span>+</b><span>Projects Completed</span></div>
-          <div class="card stat reveal"><b><span class="counter" data-target="120">0</span>+</b><span>Systems Built</span></div>
-          <div class="card stat reveal"><b><span class="counter" data-target="18">0</span>+</b><span>Active Clients</span></div>
-          <div class="card stat reveal"><b>24/7</b><span>Fast Support</span></div>
-        </div>
+        <div class="section-head reveal"><div><p class="kicker">Trust Signals</p><h2 id="stats-title">Reliable delivery for real digital projects.</h2></div><p>Simple numbers, clear outcomes, and a workflow designed around performance, communication, and maintainable systems.</p></div>
+        <div class="grid stats"><div class="card stat reveal"><b><span class="counter" data-target="45">0</span>+</b><span>Projects Completed</span></div><div class="card stat reveal"><b><span class="counter" data-target="120">0</span>+</b><span>Systems Built</span></div><div class="card stat reveal"><b><span class="counter" data-target="18">0</span>+</b><span>Active Clients</span></div><div class="card stat reveal"><b>24/7</b><span>Fast Support</span></div></div>
       </div>
     </section>
 
-    <section id="services" aria-labelledby="services-title">
+    <section aria-labelledby="services-title">
       <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Services</p>
-            <h2 id="services-title">Development services made clear.</h2>
-          </div>
-          <p>Choose a focused service or request a private commission when your project needs something fully custom.</p>
-        </div>
-        <div class="grid services">
+        <div class="section-head reveal"><div><p class="kicker">Services</p><h2 id="services-title">Development services made clear.</h2></div><p>Choose a focused service or request a private commission when your project needs something fully custom.</p></div>
+        <div class="grid services compact">
           <article class="card service reveal"><div class="icon">⚙️</div><h3>Plugin Development</h3><p>Custom Minecraft plugins with advanced systems and performance optimization.</p></article>
           <article class="card service reveal"><div class="icon">🌐</div><h3>Web Development</h3><p>Modern responsive websites with clean UI and fast performance.</p></article>
           <article class="card service reveal"><div class="icon">🚀</div><h3>Server Optimization</h3><p>Improve TPS, reduce lag, optimize configs and performance.</p></article>
           <article class="card service reveal"><div class="icon">🧩</div><h3>Config &amp; System Setup</h3><p>Professional setup for Survival, RPG, CPvP, and custom servers.</p></article>
           <article class="card service reveal"><div class="icon">💼</div><h3>Private Commission</h3><p>Custom development based on your exact scope, budget, and timeline.</p></article>
         </div>
+        <div class="section-foot cta reveal"><a class="btn primary" href="services.html">Explore Services</a><a class="btn" href="contact.html">Start Your Project</a></div>
       </div>
     </section>
 
-    <section id="store" aria-labelledby="store-title">
+    <section aria-labelledby="store-title">
       <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Featured Products</p>
-            <h2 id="store-title">Digital products and setup packages.</h2>
-          </div>
-          <p>A cleaner storefront preview that keeps the existing QRIS and WhatsApp purchasing flow intact.</p>
+        <div class="section-head reveal"><div><p class="kicker">Featured Products</p><h2 id="store-title">Digital products and setup packages.</h2></div><p>A cleaner storefront preview that keeps the existing QRIS and WhatsApp purchasing flow intact.</p></div>
+        <div class="grid products">
+          <article class="card product featured reveal"><div class="product-top"><h3>Optimasi TPS &amp; Keamanan</h3><span class="badge best">Best Seller</span></div><div class="tag-row"><span class="badge">Config</span><span class="badge">Performance</span></div><p>Improve server responsiveness with config tuning, hardening, and performance review.</p><div class="price">Starting from Rp 60.000</div><div class="product-actions"><a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Keamanan&note=Harga%20mulai%20dari%20Rp%2060.000.%20Total%20akhir%20menyesuaikan%20kondisi%20server%20dan%20lingkup%20tuning.">Buy Now</a><a class="btn" href="store.html">Details</a></div></article>
+          <article class="card product reveal"><div class="product-top"><h3>Install Panel Pterodactyl</h3><span class="badge">System</span></div><div class="tag-row"><span class="badge">Config</span></div><p>Panel installation with clean base configuration, ready for server management.</p><div class="price">Starting from Rp 75.000</div><div class="product-actions"><a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&note=Harga%20mulai%20dari%20Rp%2075.000.%20Total%20akhir%20menyesuaikan%20kebutuhan%20dan%20kondisi%20server.">Order Now</a><a class="btn" href="store.html">Details</a></div></article>
+          <article class="card product reveal"><div class="product-top"><h3>VPS Basic</h3><span class="badge">Hosting</span></div><div class="tag-row"><span class="badge">Store</span></div><p>Starter VPS package for small SMP servers or testing environments.</p><div class="price">Starting from Rp 45.000 /bulan</div><div class="product-actions"><a class="btn primary" href="qris.html?item=VPS%20Basic&note=Harga%20mulai%20dari%20Rp%2045.000%2Fbulan.%20Total%20akhir%20menyesuaikan%20spesifikasi%20dan%20kebutuhan.">Get Access</a><a class="btn" href="store.html">Details</a></div></article>
         </div>
-        <div class="grid store">
-          <article class="card product reveal">
-            <div class="product-top"><h3>VPS Basic</h3><span class="badge">Hosting</span></div>
-            <p>Starter VPS package for small SMP servers or testing environments.</p>
-            <div class="price">Mulai dari Rp 45.000 /bulan</div>
-            <div class="product-actions"><a class="btn primary" href="qris.html?item=VPS%20Basic&note=Harga%20mulai%20dari%20Rp%2045.000%2Fbulan.%20Total%20akhir%20menyesuaikan%20spesifikasi%20dan%20kebutuhan.">Buy</a><a class="btn" href="store.html">Details</a></div>
-          </article>
-          <article class="card product reveal">
-            <div class="product-top"><h3>Install Panel Pterodactyl</h3><span class="badge">Setup</span></div>
-            <p>Panel installation with clean base configuration, ready for server management.</p>
-            <div class="price">Mulai dari Rp 75.000</div>
-            <div class="product-actions"><a class="btn primary" href="qris.html?item=Install%20Panel%20Pterodactyl&note=Harga%20mulai%20dari%20Rp%2075.000.%20Total%20akhir%20menyesuaikan%20kebutuhan%20dan%20kondisi%20server.">Buy</a><a class="btn" href="store.html">Details</a></div>
-          </article>
-          <article class="card product reveal">
-            <div class="product-top"><h3>Optimasi TPS &amp; Keamanan</h3><span class="badge">Performance</span></div>
-            <p>Tuning configs, timings or spark review, hardening, and anti-exploit basics.</p>
-            <div class="price">Mulai dari Rp 60.000</div>
-            <div class="product-actions"><a class="btn primary" href="qris.html?item=Optimasi%20TPS%20%26%20Keamanan&note=Harga%20mulai%20dari%20Rp%2060.000.%20Total%20akhir%20menyesuaikan%20kondisi%20server%20dan%20lingkup%20tuning.">Buy</a><a class="btn" href="jasa-setup.html">Details</a></div>
-          </article>
-        </div>
-        <div class="cta reveal"><a class="btn" href="store.html">Open Full Store</a><a class="btn dark" href="qris.html">QRIS Payment</a></div>
+        <div class="section-foot cta reveal"><a class="btn primary" href="store.html">Open Full Store</a><a class="btn dark" href="qris.html">QRIS Payment</a></div>
       </div>
     </section>
 
-    <section id="portfolio" aria-labelledby="portfolio-title">
+    <section aria-labelledby="proof-title">
       <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Portfolio</p>
-            <h2 id="portfolio-title">Real work, presented with context.</h2>
-          </div>
-          <p>Selected examples of server systems, web interfaces, and digital tooling. More project details can be discussed privately.</p>
-        </div>
-        <div class="grid portfolio">
-          <article class="card portfolio-card reveal">
-            <div class="shot"><img src="assets/minecraft-bg.png" alt="Minecraft server system preview" loading="lazy" /></div>
-            <div class="portfolio-body"><h3>Survival / RPG Server Systems</h3><p>Core gameplay setup with ranks, economy, progression, permissions, and optimized server structure.</p><div class="pills"><span class="pill">Paper</span><span class="pill">LuckPerms</span><span class="pill">Optimization</span></div></div>
-          </article>
-          <article class="card portfolio-card reveal">
-            <div class="shot logo-shot"><img src="assets/logo.png" alt="ReiiKajurawa web development preview" loading="lazy" /></div>
-            <div class="portfolio-body"><h3>Developer Business Website</h3><p>Responsive landing page and store flow designed to explain services, improve trust, and convert visitors.</p><div class="pills"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">Responsive</span></div></div>
-          </article>
-          <article class="card portfolio-card reveal">
-            <div class="shot logo-shot"><img src="assets/favicon.png" alt="Digital product tooling preview" loading="lazy" /></div>
-            <div class="portfolio-body"><h3>Digital Store &amp; QRIS Flow</h3><p>Product listings connected to payment and contact actions for smoother digital product purchases.</p><div class="pills"><span class="pill">QRIS</span><span class="pill">WhatsApp</span><span class="pill">Store</span></div></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="why-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Why Choose Me</p>
-            <h2 id="why-title">Professional standards for serious builds.</h2>
-          </div>
-        </div>
-        <div class="grid why">
-          <div class="card why-item reveal"><b>Optimized Performance</b><span>Systems are planned around speed, TPS, and scalable usage.</span></div>
-          <div class="card why-item reveal"><b>Clean Code Structure</b><span>Organized work that is easier to maintain and expand later.</span></div>
-          <div class="card why-item reveal"><b>Custom Built Systems</b><span>Solutions shaped around your concept, not random templates.</span></div>
-          <div class="card why-item reveal"><b>Fast Response</b><span>Clear contact channels through WhatsApp and Discord.</span></div>
-          <div class="card why-item reveal"><b>Reliable Support</b><span>Guidance for setup, payment confirmation, and post-delivery needs.</span></div>
-        </div>
+        <div class="section-head reveal"><div><p class="kicker">Proof</p><h2 id="proof-title">Built for trust before the first message.</h2></div><p>Visible product flows, existing payment options, and project previews help buyers understand what they are getting.</p></div>
+        <div class="grid proof"><article class="card portfolio-card reveal"><div class="shot"><img src="assets/minecraft-bg.png" alt="Server system work preview" loading="lazy" /></div><div class="portfolio-body"><span class="badge">Screenshot</span><h3>Server System Preview</h3><p>Structured setup flow for gameplay systems, permissions, and performance-focused server configuration.</p></div></article><div class="proof-list"><div class="proof-row reveal"><div>✅</div><div><strong>Clear payment flow</strong><span>QRIS and WhatsApp confirmation stay available across the site.</span></div></div><div class="proof-row reveal"><div>✅</div><div><strong>Professional delivery</strong><span>Services are explained by benefit, category, and next action.</span></div></div><div class="proof-row reveal"><div>✅</div><div><strong>Consistent pages</strong><span>Services, store, portfolio, and contact now use the same design system.</span></div></div></div></div>
       </div>
     </section>
 
     <section aria-labelledby="testimonials-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="kicker">Testimonials</p>
-            <h2 id="testimonials-title">What clients value.</h2>
-          </div>
-        </div>
-        <div class="grid testimonials">
-          <blockquote class="card quote reveal"><p>“Fast and clean work, highly recommended.”</p><footer>— Server owner feedback</footer></blockquote>
-          <blockquote class="card quote reveal"><p>“Good performance and smooth system.”</p><footer>— Digital project client</footer></blockquote>
-        </div>
-      </div>
+      <div class="container"><div class="section-head reveal"><div><p class="kicker">Testimonials</p><h2 id="testimonials-title">What clients value.</h2></div></div><div class="grid testimonials"><blockquote class="card testimonial reveal"><p>“Fast and clean work, highly recommended.”</p><footer>— Server owner feedback</footer></blockquote><blockquote class="card testimonial reveal"><p>“Good performance and smooth system.”</p><footer>— Digital project client</footer></blockquote><blockquote class="card testimonial reveal"><p>“The setup is easier to manage and the support response is clear.”</p><footer>— Community project owner</footer></blockquote></div></div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-title">
-      <div class="container contact-grid">
-        <article class="card contact-card reveal">
-          <p class="kicker">Contact</p>
-          <h2 id="contact-title">Let's Work Together</h2>
-          <p>Send your project goals, server type, budget range, and deadline. I will help choose the cleanest path: service package, store product, or private commission.</p>
-          <div class="contact-list">
-            <div class="contact-row"><div><strong>WhatsApp</strong><br><span>Fast consultation and payment confirmation</span></div><a class="btn primary" href="https://wa.me/6285191201723" target="_blank" rel="noopener">Chat WhatsApp</a></div>
-            <div class="contact-row"><div><strong>Discord</strong><br><span>Community and project discussion</span></div><a class="btn" href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">Join Discord</a></div>
-            <div class="contact-row"><div><strong>Email</strong><br><span>Formal inquiries and documentation</span></div><a class="btn" href="mailto:raihanalena@gmail.com">Email Me</a></div>
-          </div>
-        </article>
-        <aside class="card qris-card reveal">
-          <div>
-            <p class="kicker">Payment</p>
-            <h3>QRIS Ready</h3>
-            <p>Existing QRIS payment remains available for store purchases and manual confirmations.</p>
-          </div>
-          <img src="assets/qris.png" alt="QRIS payment code" loading="lazy" />
-          <a class="btn primary full" href="qris.html">Open QRIS Payment</a>
-          <a class="btn full" href="contact.html">Full Contact Page</a>
-        </aside>
-      </div>
+    <section aria-label="Final call to action">
+      <div class="container"><div class="card cta-band reveal"><div><p class="kicker">Ready to build?</p><h2>Start your project with a clear scope.</h2><p>Send your idea, required features, and target launch date. I will help choose the best path.</p></div><div class="cta"><a class="btn primary" href="contact.html">Hire Me</a><a class="btn" href="portfolio.html">View Portfolio</a></div></div></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a class="footer-brand" href="#top"><img src="assets/logo.png" alt="ReiiKajurawa logo" loading="lazy" /><strong>ReiiKajurawa<br>Development Service</strong></a>
-          <p class="copyright">Professional development service and digital store for Minecraft systems, plugins, optimization, and web projects.</p>
-        </div>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="#services">Services</a><a href="#store">Store</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a><a href="my-servers.html">Servers</a>
-        </nav>
-        <nav class="footer-links" aria-label="Footer contact links">
-          <a href="https://wa.me/6285191201723" target="_blank" rel="noopener">WhatsApp</a><a href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">Discord</a><a href="qris.html">QRIS</a><a href="https://github.com/reiiap/" target="_blank" rel="noopener">GitHub</a>
-        </nav>
-      </div>
-      <div class="copyright">© <span id="y"></span> ReiiKajurawa Development Service. All rights reserved.</div>
-    </div>
+    <div class="container"><div class="footer-grid"><div><a class="footer-brand" href="index.html"><img src="assets/logo.png" alt="ReiiKajurawa logo" loading="lazy" /><strong>ReiiKajurawa<br>Development Service</strong></a><p class="copyright">Professional development service and digital store for Minecraft systems, plugins, optimization, and web projects.</p></div><nav class="footer-links" aria-label="Footer navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="store.html">Store</a><a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a></nav><nav class="footer-links" aria-label="Footer contact links"><a href="https://wa.me/6285191201723" target="_blank" rel="noopener">WhatsApp</a><a href="https://discord.gg/MCc7gPvj" target="_blank" rel="noopener">Discord</a><a href="qris.html">QRIS</a><a href="https://github.com/reiiap/" target="_blank" rel="noopener">GitHub</a></nav></div><div class="copyright">© <span id="y"></span> ReiiKajurawa Development Service. All rights reserved.</div></div>
   </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    const setNav = () => nav.classList.toggle('scrolled', window.scrollY > 8);
-    setNav();
-    window.addEventListener('scroll', setNav, { passive: true });
-
-    const counters = document.querySelectorAll('.counter');
-    const animateCounter = (el) => {
-      const target = Number(el.dataset.target || 0);
-      const duration = 950;
-      const start = performance.now();
-      const step = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(target * eased).toLocaleString('en-US');
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        if (entry.target.classList.contains('counter') && !entry.target.dataset.done) {
-          entry.target.dataset.done = 'true';
-          animateCounter(entry.target);
-        }
-      });
-    }, { threshold: .16 });
-
-    document.querySelectorAll('.reveal, .counter').forEach((el) => io.observe(el));
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script src="assets/site.js" defer></script>
 </body>
 </html>
