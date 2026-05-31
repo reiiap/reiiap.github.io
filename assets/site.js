@@ -131,5 +131,36 @@ document.querySelectorAll('.reveal, .counter').forEach((el) => {
   else el.classList.add('show');
 });
 
+
+const activityTimeline = document.querySelector('[data-activity-timeline]');
+if (activityTimeline) {
+  const activityCards = [...activityTimeline.querySelectorAll('.activity-card')];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (activityCards.length > 1 && !prefersReducedMotion) {
+    let activeIndex = activityCards.findIndex((card) => card.classList.contains('is-active'));
+    if (activeIndex < 0) activeIndex = 0;
+    window.setInterval(() => {
+      activityCards[activeIndex].classList.remove('is-active');
+      activeIndex = (activeIndex + 1) % activityCards.length;
+      activityCards[activeIndex].classList.add('is-active');
+    }, 2600);
+  }
+}
+
+document.querySelectorAll('[data-project-card]').forEach((card) => {
+  card.addEventListener('pointermove', (event) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    card.style.setProperty('--rx', `${(-y * 3).toFixed(2)}deg`);
+    card.style.setProperty('--ry', `${(x * 4).toFixed(2)}deg`);
+  });
+  card.addEventListener('pointerleave', () => {
+    card.style.setProperty('--rx', '0deg');
+    card.style.setProperty('--ry', '0deg');
+  });
+});
+
 const year = document.getElementById('y');
 if (year) year.textContent = new Date().getFullYear();
